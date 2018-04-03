@@ -1,6 +1,0 @@
-INDEX VERSION 1.122+Z:\Repostitorios\Acme-Newspaper\L10 Workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2577167521.index
-1509740343.index
-4201413936.index
-2276438518.index
-4244062545.index
