@@ -1,0 +1,19 @@
+
+package repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import domain.Admin;
+
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
+
+	@Query("select a from Admin a where a.userAccount.id=?1")
+	Admin findAdminByUserAccountId(int uA);
+
+	// C-1
+	@Query("select avg(u.organisedRendezvouses.size), sqrt(sum(u.organisedRendezvouses.size*u.organisedRendezvouses.size)/count(u.organisedRendezvouses.size)-(avg(u.organisedRendezvouses.size)*avg(u.organisedRendezvouses.size))) from User u")
+	Object[] avgSqtrUser();
+}
