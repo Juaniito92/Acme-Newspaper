@@ -5,6 +5,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Admin;
+
 @Component
 @Transactional
 public class AdminToStringConverter implements Converter<Admin, String> {

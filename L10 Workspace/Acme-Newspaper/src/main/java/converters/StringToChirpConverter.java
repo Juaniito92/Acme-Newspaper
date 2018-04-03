@@ -7,6 +7,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Chirp;
+
 @Component
 @Transactional
 public class StringToChirpConverter implements Converter<String, Chirp> {
