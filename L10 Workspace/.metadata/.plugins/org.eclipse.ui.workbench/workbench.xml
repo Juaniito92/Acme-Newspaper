@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="71" version="2.0">
+<workbench progressCount="56" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="951" x="320" y="75">
 <fastViewData fastViewLocation="1024"/>
@@ -17,7 +17,7 @@
 <coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="39" y="22"/>
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="39" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="62" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="183" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -25,14 +25,14 @@
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.server.ui.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jst.jsp.core.jspsource.source" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jst.jsp.core.jspsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.PropertiesFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.datatools.sqltools.data.internal.ui.editor.tableDataEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -41,10 +41,42 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" partName="Acme-Newspaper/pom.xml" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/pom.xml" title="Acme-Newspaper/pom.xml" tooltip="Acme-Newspaper/pom.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/pom.xml"/>
+</editor>
+<editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="web.xml" partName="web.xml" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/webapp/WEB-INF/web.xml" title="web.xml" tooltip="Acme-Newspaper/src/main/webapp/WEB-INF/web.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/webapp/WEB-INF/web.xml"/>
+</editor>
+<editor id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" name="persistence.xml" partName="persistence.xml" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/resources/META-INF/persistence.xml" title="persistence.xml" tooltip="Acme-Newspaper/src/main/resources/META-INF/persistence.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/resources/META-INF/persistence.xml"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseConfig.java" partName="DatabaseConfig.java" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java" title="DatabaseConfig.java" tooltip="Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="571" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="data.xml" partName="data.xml" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/resources/spring/config/data.xml" title="data.xml" tooltip="Acme-Newspaper/src/main/resources/spring/config/data.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/resources/spring/config/data.xml"/>
+</editor>
+<editor id="org.eclipse.jst.jsp.core.jspsource.source" name="footer.jsp" partName="footer.jsp" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp" title="footer.jsp" tooltip="Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="702" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jst.jsp.core.jspsource.source" name="header.jsp" partName="header.jsp" path="Z:/Repostitorios/Acme-Newspaper/L10 Workspace/Acme-Newspaper/src/main/webapp/views/master-page/header.jsp" title="header.jsp" tooltip="Acme-Newspaper/src/main/webapp/views/master-page/header.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme-Newspaper/src/main/webapp/views/master-page/header.jsp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="600" selectionTopPixel="30"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
@@ -86,13 +118,16 @@
 </viewState>
 </view>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="1" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (100 of 206 items)"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="219" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -258,7 +293,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="topRight" ratio="0.7564378" ratioLeft="705" ratioRight="227" relationship="2" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
+<info folder="true" part="topRight" ratio="0.8465165" ratioLeft="1616" ratioRight="293" relationship="2" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
@@ -289,7 +324,45 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" path="/Acme-Newspaper/pom.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Acme-Newspaper/src/main/webapp/WEB-INF/web.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" path="/Acme-Newspaper/src/main/resources/META-INF/persistence.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Acme-Newspaper/src/main/resources/spring/config/data.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme-Newspaper/src/main/webapp/views/master-page/header.jsp"/>
+</editors>
+<item historyLabel="Acme-Newspaper/pom.xml" index="0"/>
+<item historyLabel="web.xml" index="1">
+<position info="not_deleted" x="1268" y="0"/>
+</item>
+<item historyLabel="persistence.xml" index="2"/>
+<item historyLabel="DatabaseConfig.java" index="3">
+<position info="not_deleted" x="368" y="14"/>
+</item>
+<item historyLabel="data.xml" index="4">
+<position info="not_deleted" x="1717" y="0"/>
+</item>
+<item historyLabel="footer.jsp" index="5">
+<position info="not_deleted" x="702" y="0"/>
+</item>
+<item historyLabel="data.xml" index="4">
+<position info="not_deleted" x="1717" y="0"/>
+</item>
+<item historyLabel="header.jsp" index="6">
+<position info="not_deleted" x="600" y="0"/>
+</item>
+<item historyLabel="Acme-Newspaper/pom.xml" index="0"/>
+<item historyLabel="web.xml" index="1">
+<position info="not_deleted" x="630" y="0"/>
+</item>
+<item historyLabel="persistence.xml" index="2"/>
+<item active="true" historyLabel="DatabaseConfig.java" index="3">
+<position info="not_deleted" x="368" y="14"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -308,6 +381,27 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="header.jsp" tooltip="Acme-Newspaper/src/main/webapp/views/master-page/header.jsp">
+<persistable path="/Acme-Newspaper/src/main/webapp/views/master-page/header.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="footer.jsp" tooltip="Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp">
+<persistable path="/Acme-Newspaper/src/main/webapp/views/master-page/footer.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="data.xml" tooltip="Acme-Newspaper/src/main/resources/spring/config/data.xml">
+<persistable path="/Acme-Newspaper/src/main/resources/spring/config/data.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseConfig.java" tooltip="Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java">
+<persistable path="/Acme-Newspaper/src/main/java/utilities/DatabaseConfig.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" name="persistence.xml" tooltip="Acme-Newspaper/src/main/resources/META-INF/persistence.xml">
+<persistable path="/Acme-Newspaper/src/main/resources/META-INF/persistence.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="web.xml" tooltip="Acme-Newspaper/src/main/webapp/WEB-INF/web.xml">
+<persistable path="/Acme-Newspaper/src/main/webapp/WEB-INF/web.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" tooltip="Acme-Newspaper/pom.xml">
+<persistable path="/Acme-Newspaper/pom.xml"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Authority.java" tooltip="Sample-Project/src/main/java/security/Authority.java">
 <persistable path="/Sample-Project/src/main/java/security/Authority.java"/>
 </file>
@@ -331,27 +425,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseConfig.java" tooltip="Sample-Project/src/main/java/utilities/DatabaseConfig.java">
 <persistable path="/Sample-Project/src/main/java/utilities/DatabaseConfig.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashPassword.java" tooltip="Sample-Project/src/main/java/utilities/HashPassword.java">
-<persistable path="/Sample-Project/src/main/java/utilities/HashPassword.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PopulateDatabase.java" tooltip="Sample-Project/src/main/java/utilities/PopulateDatabase.java">
-<persistable path="/Sample-Project/src/main/java/utilities/PopulateDatabase.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Entities.map" tooltip="Sample-Project/src/main/resources/Entities.map">
-<persistable path="/Sample-Project/src/main/resources/Entities.map"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Integer.class" tooltip="java.lang.Integer">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Sample-Project/C:\/Program Files\/Java\/jdk1.7.0_13\/jre\/lib\/rt.jar&lt;java.lang(Integer.class"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="RunAfterTestMethodCallbacks.class" tooltip="org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Sample-Project/C:\/Documents and Settings\/Student\/.m2\/repository\/org\/springframework\/spring-test\/3.2.4.RELEASE\/spring-test-3.2.4.RELEASE.jar&lt;org.springframework.test.context.junit4.statements(RunAfterTestMethodCallbacks.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" tooltip="Sample-Project/src/main/resources/PopulateDatabase.xml">
-<persistable path="/Sample-Project/src/main/resources/PopulateDatabase.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DomainEntity.java" tooltip="Sample-Project/src/main/java/domain/DomainEntity.java">
-<persistable path="/Sample-Project/src/main/java/domain/DomainEntity.java"/>
 </file>
 </mruList>
 </workbench>
