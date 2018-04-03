@@ -1,6 +1,6 @@
-INDEX VERSION 1.122+X:\Templates\Templates-1.12\Sample-Workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4070390714.index
-3942208150.index
-3263324543.index
-2386746051.index
-508689703.index
+INDEX VERSION 1.122+Z:\Repostitorios\Acme-Newspaper\L10 Workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2577167521.index
+1509740343.index
+4201413936.index
+2276438518.index
+3797965548.index

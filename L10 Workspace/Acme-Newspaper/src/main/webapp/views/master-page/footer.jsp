@@ -19,7 +19,7 @@
 
 <hr />
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Sample Co., Inc.</b><br/>
+<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Acme-Newspaper Co., Inc.</b><br/>
 <spring:message code="master.page.email" var="email"/>
 <spring:message code="master.page.contact-info" /> <a href="mailto:${email}">${email}</a>.
 <div class="data-protection">
