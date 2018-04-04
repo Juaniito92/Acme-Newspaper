@@ -361,6 +361,46 @@
 		<property name="user" ref="user3" />
 
 	</bean>
+	
+	<!-- FollowUp -->
+
+	<!-- FollowUp 1 -->
+	<bean id="followUp1" class="domain.FollowUp">
+			<property name="title" value="Follow Up 1" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user1" />
+
+	</bean>
+	
+	<!-- FollowUp 2 -->
+	<bean id="followUp2" class="domain.FollowUp">
+			<property name="title" value="Follow Up 2" />
+		<property name="publicationMoment" value="05/08/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user2" />
+
+	</bean>
+	
+	<!-- FollowUp 3 -->
+	<bean id="followUp3" class="domain.FollowUp">
+			<property name="title" value="Follow Up 3" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user3" />
+
+	</bean>
+	
+	
 
 
 </beans>
