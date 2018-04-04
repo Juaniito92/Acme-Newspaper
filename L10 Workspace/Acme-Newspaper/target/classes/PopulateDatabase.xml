@@ -343,6 +343,287 @@
 		<property name="user" ref="user2" />
 
 	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Other domain beans come here -->
+
+	<!-- ADMINISTRATOR1 -->
+
+	<bean id="administrator1" class="domain.Admin">
+		<property name="name" value="Administrador" />
+		<property name="surname" value="Acme Explorer" />
+		<property name="email" value="admin@system.com" />
+		<property name="phone" value="694443000" />
+		<property name="address" value="C/ Lugo" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+
+	<!-- User -->
+	<!-- User 1 -->
+	<bean id="user1" class="domain.User">
+		<property name="name" value="Mario" />
+		<property name="surname" value="Sánchez" />
+		<property name="email" value="codec@gmail.com" />
+		<property name="phone" value="601234578" />
+		<property name="address" value="C/Margarita nº7" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+		<property name="newspaper">
+			<list>
+				<ref bean="newspaper1" />
+			</list>
+		</property>
+		<property name="article">
+			<list>
+				<ref bean="article1" />
+			</list>
+		</property>
+		<property name="followUp">
+			<list>
+				<ref bean="followUp1" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="followers1" />
+			</list>
+		</property>
+		<property name="followed">
+			<list>
+				<ref bean="followed1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- User 2 -->
+	<bean id="user2" class="domain.User">
+		<property name="name" value="Ana" />
+		<property name="surname" value="Rodríguez" />
+		<property name="email" value="ana@gmail.com" />
+		<property name="phone" value="698253684" />
+		<property name="address" value="C/La Vega nº7" />
+		<property name="userAccount" ref="userAccount6" />
+		<property name="chirps">
+			<list>
+				<ref bean="chirp1" />
+				<ref bean="chirp2" />
+				<ref bean="chirp3" />
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper2" />
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article2" />
+			</list>
+		</property>
+		<property name="followUps">
+			<list>
+				<ref bean="followUp2" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="followers2" />
+			</list>
+		</property>
+		<property name="followed">
+			<list>
+				<ref bean="followed2" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- User 3 -->
+	<bean id="user3" class="domain.User">
+		<property name="name" value="Antonio jose" />
+		<property name="surname" value="Rodríguez" />
+		<property name="email" value="jose@gmail.com" />
+		<property name="phone" value="698253678" />
+		<property name="address" value="C/La Vega nº78" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="chirps">
+			<list>
+				<ref bean="chirp4" />
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+				<ref bean="newspaper3" />
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article3" />
+			</list>
+		</property>
+		<property name="followUps">
+			<list>
+				<ref bean="followUp3" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="followers3" />
+			</list>
+		</property>
+		<property name="followed">
+			<list>
+				<ref bean="followed3" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Customers -->
+	<!-- Customer 1 -->
+	<bean id="customer1" class="domain.Customer">
+		<property name="name" value="Maria" />
+		<property name="surname" value="Rodríguez" />
+		<property name="email" value="maria@gmail.com" />
+		<property name="phone" value="698253684" />
+		<property name="address" value="C/La bu nº7" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Customer 2 -->
+	<bean id="customer2" class="domain.Customer">
+		<property name="name" value="Alejandro" />
+		<property name="surname" value="Carrasco" />
+		<property name="email" value="ale@gmail.com" />
+		<property name="phone" value="698783684" />
+		<property name="address" value="C/La Vega nº7" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription2" />
+				<ref bean="subscription3" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Subscription -->
+
+	<!-- Subscription 1 -->
+	<bean id="subscription1" class="domain.Subscription">
+		<property name="creditCard" ref="creditCard1" />
+		<property name="customer" ref="customer1" />
+		<property name="newspaper" ref="newspaper1" />
+
+	</bean>
+
+	<!-- Subscription 2 -->
+	<bean id="subscription2" class="domain.Subscription">
+		<property name="creditCard" ref="creditCard2" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper2" />
+
+	</bean>
+
+	<!-- Subscription 3 -->
+	<bean id="subscription3" class="domain.Subscription">
+		<property name="creditCard" ref="creditCard3" />
+		<property name="customer" ref="customer2" />
+		<property name="newspaper" ref="newspaper2" />
+
+	</bean>
+
+	<!-- CreditCard -->
+
+	<!-- CreditCard 1 -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holder" value="Name creditCard1" />
+		<property name="brand" value="VISA" />
+		<property name="number" value="4539009782278447" />
+		<property name="expirationMonth" value="5" />
+		<property name="expirationYear" value="2022" />
+		<property name="cvv" value="612" />
+	</bean>
+
+	<!-- CreditCard 2 -->
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holder" value="Name creditCard2" />
+		<property name="brand" value="VISA" />
+		<property name="number" value="4961155805327500" />
+		<property name="expirationMonth" value="7" />
+		<property name="expirationYear" value="2019" />
+		<property name="cvv" value="773" />
+	</bean>
+
+	<!-- CreditCard 3 -->
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holder" value="Name creditCard3" />
+		<property name="brand" value="VISA" />
+		<property name="number" value="4532255185600482" />
+		<property name="expirationMonth" value="5" />
+		<property name="expirationYear" value="2019" />
+		<property name="cvv" value="216" />
+	</bean>
+
+	<!-- Chirp -->
+
+	<!-- chirp 1 -->
+	<bean id="chirp1" class="domain.Chirp">
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="title" value="Chirp 1" />
+		<property name="description" value="Me gusta el Chirp 1" />
+		<property name="user" ref="user2" />
+
+	</bean>
+
+	<!-- chirp 2 -->
+	<bean id="chirp2" class="domain.Chirp">
+		<property name="publicationMoment" value="05/11/2017" />
+		<property name="title" value="Chirp 2" />
+		<property name="description" value="Me gusta el Chirp 2" />
+		<property name="user" ref="user2" />
+
+	</bean>
 	
 	<!-- chirp 3 -->
 	<bean id="chirp3" class="domain.Chirp">
@@ -544,6 +825,56 @@
 		<property name="followUps"/>
 		
 	</bean>
+
+
+	<!-- chirp 4 -->
+	<bean id="chirp4" class="domain.Chirp">
+		<property name="publicationMoment" value="05/01/2017" />
+		<property name="title" value="Chirp 4" />
+		<property name="description" value="Me gusta el Chirp 2" />
+		<property name="user" ref="user3" />
+
+	</bean>
+	
+	<!-- FollowUp -->
+
+	<!-- FollowUp 1 -->
+	<bean id="followUp1" class="domain.FollowUp">
+			<property name="title" value="Follow Up 1" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user1" />
+
+	</bean>
+	
+	<!-- FollowUp 2 -->
+	<bean id="followUp2" class="domain.FollowUp">
+			<property name="title" value="Follow Up 2" />
+		<property name="publicationMoment" value="05/08/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user2" />
+
+	</bean>
+	
+	<!-- FollowUp 3 -->
+	<bean id="followUp3" class="domain.FollowUp">
+			<property name="title" value="Follow Up 3" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="sumary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user3" />
+
+	</bean>
+	
+	
 
 
 </beans>
