@@ -26,3 +26,4 @@ hs_err_pid*
 L10 Workspace/\.metadata/
 
 L10 Workspace/Acme-Newspaper/target/
+*.index
