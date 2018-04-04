@@ -128,26 +128,31 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper1" />
+				<ref bean="newspaper4"/>
 			</list>
 		</property>
-		<property name="article">
+		<property name="articles">
 			<list>
 				<ref bean="article1" />
+				<ref bean="article4" />
+				<ref bean="article8" />
 			</list>
 		</property>
-		<property name="followUp">
+		<property name="followUps">
 			<list>
 				<ref bean="followUp1" />
 			</list>
 		</property>
 		<property name="followers">
 			<list>
-				<ref bean="followers1" />
+				<ref bean="user2" />
+				<ref bean="user3" />
 			</list>
 		</property>
 		<property name="followed">
 			<list>
-				<ref bean="followed1" />
+				<ref bean="user2" />
+				<ref bean="user3" />
 			</list>
 		</property>
 	</bean>
@@ -175,6 +180,9 @@
 		<property name="articles">
 			<list>
 				<ref bean="article2" />
+				<ref bean="article5" />
+				<ref bean="article6" />
+				<ref bean="article9" />
 			</list>
 		</property>
 		<property name="followUps">
@@ -184,12 +192,14 @@
 		</property>
 		<property name="followers">
 			<list>
-				<ref bean="followers2" />
+				<ref bean="user1" />
+				<ref bean="user3" />
 			</list>
 		</property>
 		<property name="followed">
 			<list>
-				<ref bean="followed2" />
+				<ref bean="user1" />
+				<ref bean="user3" />
 			</list>
 		</property>
 	</bean>
@@ -210,26 +220,32 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper3" />
+				<ref bean="newspaper5" />
+				<ref bean="newspaper6" />
 			</list>
 		</property>
 		<property name="articles">
 			<list>
 				<ref bean="article3" />
+				<ref bean="article7" />
 			</list>
 		</property>
 		<property name="followUps">
 			<list>
 				<ref bean="followUp3" />
+				<ref bean="followUp4" />
 			</list>
 		</property>
 		<property name="followers">
 			<list>
-				<ref bean="followers3" />
+				<ref bean="user2" />
+				<ref bean="user1" />
 			</list>
 		</property>
 		<property name="followed">
 			<list>
-				<ref bean="followed3" />
+				<ref bean="user2" />
+				<ref bean="user1" />
 			</list>
 		</property>
 	</bean>
@@ -288,7 +304,7 @@
 	<bean id="subscription3" class="domain.Subscription">
 		<property name="creditCard" ref="creditCard3" />
 		<property name="customer" ref="customer2" />
-		<property name="newspaper" ref="newspaper2" />
+		<property name="newspaper" ref="newspaper3" />
 
 	</bean>
 
@@ -324,24 +340,25 @@
 		<property name="cvv" value="216" />
 	</bean>
 
-	<!-- Chirp -->
-
-	<!-- chirp 1 -->
-	<bean id="chirp1" class="domain.Chirp">
-		<property name="publicationMoment" value="05/12/2017" />
-		<property name="title" value="Chirp 1" />
-		<property name="description" value="Me gusta el Chirp 1" />
-		<property name="user" ref="user2" />
-
-	</bean>
-
-	<!-- chirp 2 -->
-	<bean id="chirp2" class="domain.Chirp">
-		<property name="publicationMoment" value="05/11/2017" />
-		<property name="title" value="Chirp 2" />
-		<property name="description" value="Me gusta el Chirp 2" />
-		<property name="user" ref="user2" />
-
+	<!-- Newspaper -->
+	<!-- Newspaper 1 -->
+	<bean id="newspaper1" class="domain.Newspaper">
+		<property name="title" value="Newspaper title 1" />
+		<property name="description" value="Newspaper description 1" />
+		<property name="publicationDate" value="01/04/2018" />
+		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isPrivate" value="false" />
+		<property name="publisher" ref="user1" />
+		<property name="articles">
+			<list>
+				<ref bean="article1"/>
+			</list>
+		</property>
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription1"/>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="userAccount5" class="security.UserAccount">
@@ -406,7 +423,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="newspaper">
+		<property name="newspapers">
 			<list>
 				<ref bean="newspaper1" />
 			</list>
@@ -625,6 +642,25 @@
 
 	</bean>
 	
+	<!-- Newspaper 2 -->
+	<bean id="newspaper2" class="domain.Newspaper">
+		<property name="title" value="Newspaper title 2" />
+		<property name="description" value="Newspaper description 2" />
+		<property name="publicationDate" value="01/04/2018" />
+		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isPrivate" value="true" />
+		<property name="publisher" ref="user2" />
+		<property name="articles">
+			<list>
+				<ref bean="article2"/>
+			</list>
+		</property>
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription2"/>
+			</list>
+		</property>
+	</bean>
 	<!-- chirp 3 -->
 	<bean id="chirp3" class="domain.Chirp">
 		<property name="publicationMoment" value="25/11/2017" />
@@ -634,6 +670,164 @@
 
 	</bean>
 	
+	<!-- Newspaper 3 -->
+	<bean id="newspaper3" class="domain.Newspaper">
+		<property name="title" value="Newspaper title 3" />
+		<property name="description" value="Newspaper description 3" />
+		<property name="publicationDate" value="01/10/2018" />
+		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isPrivate" value="false" />
+		<property name="publisher" ref="user3" />
+		<property name="articles">
+			<list>
+				<ref bean="article3"/>
+			</list>
+		</property>
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Article -->
+	<!-- Article 1 -->
+	<bean id="article1" class="domain.Article">
+		<property name="title" value="Article title 1" />
+		<property name="publicationMoment" value="01/03/2018" />
+		<property name="summary" value="Article summary 1" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper1" />
+		<property name="writer" ref="user1" />
+		<property name="followUps">
+			<list>
+				<ref bean="followUp1"/>
+				<ref bean="followUp2"/>
+				<ref bean="followUp3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Article 2 -->
+	<bean id="article2" class="domain.Article">
+		<property name="title" value="Article title 2" />
+		<property name="publicationMoment" value="01/03/2018" />
+		<property name="summary" value="Article summary 2" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isFinal" value="false" />
+		<property name="newspaper" ref="newspaper2" />
+		<property name="writer" ref="user2" />
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Article 3 -->
+	<bean id="article3" class="domain.Article">
+		<property name="title" value="Article title 3" />
+		<property name="publicationMoment" value="01/03/2018" />
+		<property name="summary" value="Article summary 3" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="isFinal" value="false" />
+		<property name="newspaper" ref="newspaper3" />
+		<property name="writer" ref="user3" />
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Chirp -->
+	<!-- chirp 1 -->
+	<bean id="chirp1" class="domain.Chirp">
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="title" value="Chirp 1" />
+		<property name="description" value="Me gusta el Chirp 1" />
+		<property name="user" ref="user2" />
+
+	</bean>
+
+	<!-- chirp 2 -->
+	<bean id="chirp2" class="domain.Chirp">
+		<property name="publicationMoment" value="05/11/2017" />
+		<property name="title" value="Chirp 2" />
+		<property name="description" value="Me gusta el Chirp 2" />
+		<property name="user" ref="user2" />
+
+	</bean>
+
+	<!-- chirp 3 -->
+	<bean id="chirp3" class="domain.Chirp">
+		<property name="publicationMoment" value="25/11/2017" />
+		<property name="title" value="Chirp 3" />
+		<property name="description" value="Me gusta el Chirp 2" />
+		<property name="user" ref="user2" />
+
+	</bean>
+
+	<!-- chirp 4 -->
+	<bean id="chirp4" class="domain.Chirp">
+		<property name="publicationMoment" value="05/01/2017" />
+		<property name="title" value="Chirp 4" />
+		<property name="description" value="Me gusta el Chirp 2" />
+		<property name="user" ref="user3" />
+
+	</bean>
+
+	<!-- FollowUp -->
+
+	<!-- FollowUp 1 -->
+	<bean id="followUp1" class="domain.FollowUp">
+		<property name="title" value="Follow Up 1" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user1" />
+
+	</bean>
+
+	<!-- FollowUp 2 -->
+	<bean id="followUp2" class="domain.FollowUp">
+		<property name="title" value="Follow Up 2" />
+		<property name="publicationMoment" value="05/08/2017" />
+		<property name="summary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user2" />
+
+	</bean>
+
+	<!-- FollowUp 3 -->
+	<bean id="followUp3" class="domain.FollowUp">
+		<property name="title" value="Follow Up 3" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Me gusta el sumary 1" />
+		<property name="text" value="Me gusta " />
+		<property name="pictures" value="//www.google.com" />
+		<property name="article" ref="article1" />
+		<property name="user" ref="user3" />
+
+	</bean>
+	<!-- FollowUp 3 -->
+	<bean id="followUp4" class="domain.FollowUp">
+		<property name="title" value="Follow Up 4" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Un buen follow up" />
+		<property name="text" value="Me gusta seguir las noticias" />
+		<property name="pictures" value="www.google.com" />
+		<property name="article" ref="article7" />
+		<property name="user" ref="user3" />
+
+	</bean>
+
+
+
+
 	<!-- chirp 4 -->
 	<bean id="chirp4" class="domain.Chirp">
 		<property name="publicationMoment" value="05/01/2017" />
@@ -791,7 +985,7 @@
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper2"/>
 		<property name="followUps">
-			<ref bean="followUp1"/>
+			<ref bean="followUp4"/>
 		</property>
 		
 	</bean>
@@ -825,56 +1019,6 @@
 		<property name="followUps"/>
 		
 	</bean>
-
-
-	<!-- chirp 4 -->
-	<bean id="chirp4" class="domain.Chirp">
-		<property name="publicationMoment" value="05/01/2017" />
-		<property name="title" value="Chirp 4" />
-		<property name="description" value="Me gusta el Chirp 2" />
-		<property name="user" ref="user3" />
-
-	</bean>
-	
-	<!-- FollowUp -->
-
-	<!-- FollowUp 1 -->
-	<bean id="followUp1" class="domain.FollowUp">
-			<property name="title" value="Follow Up 1" />
-		<property name="publicationMoment" value="05/12/2017" />
-		<property name="sumary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
-		<property name="article" ref="article1" />
-		<property name="user" ref="user1" />
-
-	</bean>
-	
-	<!-- FollowUp 2 -->
-	<bean id="followUp2" class="domain.FollowUp">
-			<property name="title" value="Follow Up 2" />
-		<property name="publicationMoment" value="05/08/2017" />
-		<property name="sumary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
-		<property name="article" ref="article1" />
-		<property name="user" ref="user2" />
-
-	</bean>
-	
-	<!-- FollowUp 3 -->
-	<bean id="followUp3" class="domain.FollowUp">
-			<property name="title" value="Follow Up 3" />
-		<property name="publicationMoment" value="05/12/2017" />
-		<property name="sumary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
-		<property name="article" ref="article1" />
-		<property name="user" ref="user3" />
-
-	</bean>
-	
-	
 
 
 </beans>

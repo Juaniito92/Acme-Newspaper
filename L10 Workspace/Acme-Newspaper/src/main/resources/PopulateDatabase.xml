@@ -128,11 +128,14 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper1" />
+				<ref bean="newspaper4"/>
 			</list>
 		</property>
 		<property name="articles">
 			<list>
 				<ref bean="article1" />
+				<ref bean="article4" />
+				<ref bean="article8" />
 			</list>
 		</property>
 		<property name="followUps">
@@ -177,6 +180,9 @@
 		<property name="articles">
 			<list>
 				<ref bean="article2" />
+				<ref bean="article5" />
+				<ref bean="article6" />
+				<ref bean="article9" />
 			</list>
 		</property>
 		<property name="followUps">
@@ -214,16 +220,20 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper3" />
+				<ref bean="newspaper5" />
+				<ref bean="newspaper6" />
 			</list>
 		</property>
 		<property name="articles">
 			<list>
 				<ref bean="article3" />
+				<ref bean="article7" />
 			</list>
 		</property>
 		<property name="followUps">
 			<list>
 				<ref bean="followUp3" />
+				<ref bean="followUp4" />
 			</list>
 		</property>
 		<property name="followers">
@@ -803,6 +813,17 @@
 		<property name="user" ref="user3" />
 
 	</bean>
+	<!-- FollowUp 3 -->
+	<bean id="followUp4" class="domain.FollowUp">
+		<property name="title" value="Follow Up 4" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Un buen follow up" />
+		<property name="text" value="Me gusta seguir las noticias" />
+		<property name="pictures" value="www.google.com" />
+		<property name="article" ref="article7" />
+		<property name="user" ref="user3" />
+
+	</bean>
 
 
 
@@ -964,7 +985,7 @@
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper2"/>
 		<property name="followUps">
-			<ref bean="followUp1"/>
+			<ref bean="followUp4"/>
 		</property>
 		
 	</bean>
