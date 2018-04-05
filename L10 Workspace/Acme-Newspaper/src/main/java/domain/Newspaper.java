@@ -77,11 +77,11 @@ public class Newspaper extends DomainEntity {
 		this.picture = picture;
 	}
 
-	public boolean isPrivate() {
+	public boolean getIsPrivate() {
 		return this.isPrivate;
 	}
 
-	public void setPrivate(final boolean isPrivate) {
+	public void setIsPrivate(final boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 

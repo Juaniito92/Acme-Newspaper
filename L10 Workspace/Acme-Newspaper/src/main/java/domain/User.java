@@ -34,7 +34,7 @@ public class User extends Actor {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "followed")
+	@ManyToMany
 	public Collection<User> getFollowers() {
 		return this.followers;
 	}
@@ -45,7 +45,7 @@ public class User extends Actor {
 
 	@Valid
 	@NotNull
-	@ManyToMany(mappedBy = "followers")
+	@ManyToMany
 	public Collection<User> getFollowed() {
 		return this.followed;
 	}
@@ -56,7 +56,7 @@ public class User extends Actor {
 
 	@Valid
 	@NotNull
-	@ManyToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user")
 	public Collection<Chirp> getChirps() {
 		return this.chirps;
 	}
