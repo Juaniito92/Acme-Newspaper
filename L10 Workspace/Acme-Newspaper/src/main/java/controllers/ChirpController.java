@@ -17,7 +17,6 @@ import services.ChirpService;
 import services.UserService;
 import domain.Chirp;
 import domain.User;
-import forms.UserForm;
 
 @Controller
 @RequestMapping("/chirp")
@@ -40,7 +39,7 @@ public class ChirpController extends AbstractController {
 
 	// Listing --------------------------------------------------------------
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Chirp> chirps;
@@ -71,31 +70,26 @@ public class ChirpController extends AbstractController {
 	// Editing ---------------------------------------------------------------
 
 	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
-	public ModelAndView edit() {
+	public ModelAndView edit(final int chirpId) {
 		ModelAndView result;
-		User user;
-		UserForm editUserForm;
+		final Chirp chirp = this.chirpService.findOne(chirpId);
 
-		user = this.userService.findByPrincipal();
-		editUserForm = this.userService.construct(user);
-
-		result = this.createEditModelAndViewEdit(editUserForm);
+		result = this.createEditModelAndView(chirp);					//Cambiar por el de Editar
 
 		return result;
 	}
 
 	@RequestMapping(value = "/user/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView editSave(@Valid final UserForm userForm, final BindingResult binding) {
+	public ModelAndView editSave(@Valid final Chirp c, final BindingResult binding) {
 		ModelAndView res;
 		if (binding.hasErrors())
-			res = this.createEditModelAndViewEdit(userForm, "user.params.error");
+			res = this.createEditModelAndView(c, "user.params.error");	//Cambiar por el de Editar			
 		else
 			try {
-				final User user = this.userService.reconstruct(userForm, binding);
-				this.userService.save(user);
+				this.chirpService.save(c);
 				res = new ModelAndView("redirect:../../");
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndViewEdit(userForm, "user.commit.error");
+				res = this.createEditModelAndView(c, "user.commit.error");	//Cambiar por el de editar
 			}
 		System.out.println(binding);
 
@@ -104,71 +98,48 @@ public class ChirpController extends AbstractController {
 
 	// Registering ----------------------------------------------------------
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/create", method = RequestMethod.GET)
 	public ModelAndView create() {
-		ModelAndView res;
-		UserForm userForm;
+		ModelAndView result;
+		Chirp chirp;
 
-		userForm = new UserForm();
-		res = this.createEditModelAndView(userForm);
+		chirp = this.chirpService.create();
+		result = this.createEditModelAndView(chirp);
 
-		return res;
+		return result;
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final UserForm userForm, final BindingResult binding) {
+	public ModelAndView save(@Valid final Chirp chirp, final BindingResult binding) {
 		ModelAndView res;
-		User user;
+		final User user;
 
 		if (binding.hasErrors())
-			res = this.createEditModelAndView(userForm, "user.params.error");
-		else if (!userForm.getRepeatPassword().equals(userForm.getPassword()))
-			res = this.createEditModelAndView(userForm, "user.commit.errorPassword");
-		else if (userForm.getTermsAndConditions() == false)
-			res = this.createEditModelAndView(userForm, "user.params.errorTerms");
+			res = this.createEditModelAndView(chirp, "user.params.error");
 		else
 			try {
-				user = this.userService.reconstruct(userForm, binding);
-				this.userService.save(user);
+				this.chirpService.save(chirp);
 				res = new ModelAndView("redirect:../");
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(userForm, "user.commit.error");
+				res = this.createEditModelAndView(chirp, "user.commit.error");
 			}
 
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final UserForm userForm) {
+	protected ModelAndView createEditModelAndView(final Chirp chirp) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(userForm, null);
+		result = this.createEditModelAndView(chirp, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final UserForm userForm, final String message) {
+	protected ModelAndView createEditModelAndView(final Chirp chirp, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("user/register");
-		result.addObject("userForm", userForm);
-		result.addObject("message", message);
-
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndViewEdit(final UserForm userForm) {
-		ModelAndView result;
-
-		result = this.createEditModelAndViewEdit(userForm, null);
-
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndViewEdit(final UserForm userForm, final String message) {
-		ModelAndView result;
-
-		result = new ModelAndView("user/edit");
-		result.addObject("userForm", userForm);
+		result = new ModelAndView("/user/chirp/edit");
+		result.addObject("chirp", chirp);
 		result.addObject("message", message);
 
 		return result;
