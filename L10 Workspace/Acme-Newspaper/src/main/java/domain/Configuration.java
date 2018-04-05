@@ -6,6 +6,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -23,7 +24,7 @@ public class Configuration extends DomainEntity {
 	private String	tabooWords;
 
 
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getTabooWords() {
 		return this.tabooWords;
 	}

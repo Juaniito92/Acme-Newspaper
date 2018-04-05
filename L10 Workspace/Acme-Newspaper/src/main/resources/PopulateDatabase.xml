@@ -397,7 +397,8 @@
 		<property name="title" value="Article title 1" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 1" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="body" value="Article body 3" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="true" />
 		<property name="newspaper" ref="newspaper1" />
 		<property name="writer" ref="user1" />
@@ -415,7 +416,8 @@
 		<property name="title" value="Article title 2" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 2" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="body" value="Article body 2" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper2" />
 		<property name="writer" ref="user2" />
@@ -430,7 +432,8 @@
 		<property name="title" value="Article title 3" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 3" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png,https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="body" value="Article body 3" />
+		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper3" />
 		<property name="writer" ref="user3" />
@@ -443,7 +446,7 @@
 	<!-- Chirp -->
 	<!-- chirp 1 -->
 	<bean id="chirp1" class="domain.Chirp">
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="05/12/2016" />
 		<property name="title" value="Chirp 1" />
 		<property name="description" value="Me gusta el Chirp 1" />
 		<property name="user" ref="user2" />
@@ -452,7 +455,7 @@
 
 	<!-- chirp 2 -->
 	<bean id="chirp2" class="domain.Chirp">
-		<property name="publicationMoment" value="05/11/2017" />
+		<property name="publicationMoment" value="05/11/2016" />
 		<property name="title" value="Chirp 2" />
 		<property name="description" value="Me gusta el Chirp 2" />
 		<property name="user" ref="user2" />
@@ -461,7 +464,7 @@
 
 	<!-- chirp 3 -->
 	<bean id="chirp3" class="domain.Chirp">
-		<property name="publicationMoment" value="25/11/2017" />
+		<property name="publicationMoment" value="25/11/2016" />
 		<property name="title" value="Chirp 3" />
 		<property name="description" value="Me gusta el Chirp 2" />
 		<property name="user" ref="user2" />
@@ -484,8 +487,8 @@
 		<property name="title" value="Follow Up 1" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
+		<property name="text" value="Me gusta" />
+		<property name="pictures" value="http://www.google.com" />
 		<property name="article" ref="article1" />
 		<property name="user" ref="user1" />
 
@@ -496,8 +499,8 @@
 		<property name="title" value="Follow Up 2" />
 		<property name="publicationMoment" value="05/08/2017" />
 		<property name="summary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
+		<property name="text" value="Me gusta" />
+		<property name="pictures" value="http://www.google.com" />
 		<property name="article" ref="article1" />
 		<property name="user" ref="user2" />
 
@@ -508,8 +511,8 @@
 		<property name="title" value="Follow Up 3" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta " />
-		<property name="pictures" value="//www.google.com" />
+		<property name="text" value="Me gusta" />
+		<property name="pictures" value="http://www.google.com" />
 		<property name="article" ref="article1" />
 		<property name="user" ref="user3" />
 

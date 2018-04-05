@@ -34,7 +34,7 @@ public class User extends Actor {
 
 	@Valid
 	@NotNull
-	@ManyToMany
+	@ManyToMany(mappedBy = "followed")
 	public Collection<User> getFollowers() {
 		return this.followers;
 	}
