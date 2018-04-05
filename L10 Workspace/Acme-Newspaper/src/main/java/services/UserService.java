@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import repositories.UserRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Article;
+import domain.Chirp;
+import domain.FollowUp;
+import domain.Newspaper;
 import domain.User;
 import forms.UserForm;
 
@@ -46,10 +51,23 @@ public class UserService {
 
 		final UserAccount userAccount = new UserAccount();
 		final Authority authority = new Authority();
+		Collection<User> followers = new ArrayList<User>();
+		Collection<User> followed = new ArrayList<User>();
+		Collection<Chirp> chirps = new ArrayList<Chirp>();
+		Collection<Newspaper> newspapers = new ArrayList<Newspaper>();
+		Collection<Article> articles = new ArrayList<Article>();
+		Collection<FollowUp> followUps = new ArrayList<FollowUp>();
 
 		authority.setAuthority(Authority.USER);
 		userAccount.addAuthority(authority);
 		res.setUserAccount(userAccount);
+		
+		res.setFollowers(followers);
+		res.setFollowed(followed);
+		res.setChirps(chirps);
+		res.setNewspapers(newspapers);
+		res.setArticles(articles);
+		res.setFollowUps(followUps);
 
 		return res;
 	}

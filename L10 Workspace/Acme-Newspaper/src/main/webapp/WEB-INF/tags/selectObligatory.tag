@@ -1,5 +1,5 @@
 <%--
- * checkbox.tag
+ * select.tag
  *
  * Copyright (C) 2017 Universidad de Sevilla
  * 
@@ -21,20 +21,31 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <%-- Attributes --%> 
- 
+
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
+<%@ attribute name="items" required="true" type="java.util.Collection" %>
+<%@ attribute name="itemLabel" required="true" %>
 
-<%@ attribute name="disabled" required="false" %>
+<%@ attribute name="id" required="false" %>
+<%@ attribute name="onchange" required="false" %>
 
-<jstl:if test="${disabled == null}">
-	<jstl:set var="disabled" value="false"/>
+<jstl:if test="${id == null}">
+	<jstl:set var="id" value="${UUID.randomUUID().toString()}" />
+</jstl:if>
+
+<jstl:if test="${onchange == null}">
+	<jstl:set var="onchange" value="javascript: return true;" />
 </jstl:if>
 
 <%-- Definition --%>
 
 <div>
-	<b><form:label path="${path}"><spring:message code="${code}" />:&nbsp;</form:label></b>
-	<form:checkbox path="${path}"/>
-	<form:errors path="${path}" cssClass="error"/>
+	<b><form:label path="${path}"><spring:message code="${code}" />:&nbsp;</form:label></b>	
+	<form:select id="${id}" path="${path}" onchange="${onchange}">
+		<form:options items="${items}" itemValue="id" itemLabel="${itemLabel}" />
+	</form:select>
+	<form:errors path="${path}" cssClass="error" />
 </div>
+
+

@@ -1,6 +1,8 @@
 
 package forms;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -59,6 +61,7 @@ public class UserForm {
 		return this.phone;
 	}
 
+	@Pattern(regexp = "^\\+?\\d+$")
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
