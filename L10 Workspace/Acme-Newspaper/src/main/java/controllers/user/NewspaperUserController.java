@@ -94,7 +94,7 @@ public class NewspaperUserController extends AbstractController {
 
 		ModelAndView result;
 
-		result = new ModelAndView("rendezvous/edit");
+		result = new ModelAndView("newspaper/edit");
 		result.addObject("newspaperForm", newspaperForm);
 		result.addObject("message", messageCode);
 

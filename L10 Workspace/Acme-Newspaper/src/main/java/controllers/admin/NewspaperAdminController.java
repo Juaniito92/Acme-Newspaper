@@ -37,10 +37,10 @@ public class NewspaperAdminController extends AbstractController {
 		Assert.notNull(this.adminService.findByPrincipal());
 		
 		ModelAndView result;
-		final Newspaper rendezvous = this.newspaperService.findOne(newspaperId);
+		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 
 		try{
-			this.newspaperService.delete(rendezvous);
+			this.newspaperService.delete(newspaper);
 		}catch(Throwable oops){
 			result = new ModelAndView("redirect:/welcome/index.do");
 			result.addObject("message", "newspaper.commit.error");
