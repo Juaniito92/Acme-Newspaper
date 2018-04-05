@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<jstl:forEach var="datos" items="${newspapersMoreAverage}">
-				<td><jstl:out value="${datos[0].name}"></jstl:out></td>
+				<td><jstl:out value="${datos.title}"></jstl:out></td>
 			</jstl:forEach>
 		</tr>
 
@@ -102,8 +102,8 @@
 					var="bestHeader" /> <jstl:out value="${bestHeader}"></jstl:out></th>
 		</tr>
 		<tr>
-			<jstl:forEach var="datos" items="${newspapersFewerAverage}">
-				<td><jstl:out value="${datos[0].name}"></jstl:out></td>
+			<jstl:forEach var="datos" items="${newspapersMoreAverage}">
+				<td><jstl:out value="${datos.title}"></jstl:out></td>
 			</jstl:forEach>
 		</tr>
 
@@ -142,7 +142,6 @@
 		</td>
 	</tr>
 </table>
-
 
 
 </security:authorize>
