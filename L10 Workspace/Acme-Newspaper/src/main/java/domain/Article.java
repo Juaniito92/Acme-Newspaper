@@ -90,11 +90,11 @@ public class Article extends DomainEntity {
 		this.pictures = pictures;
 	}
 
-	public boolean isFinal() {
+	public boolean getIsFinal() {
 		return this.isFinal;
 	}
 
-	public void setFinal(final boolean isFinal) {
+	public void setIsFinal(final boolean isFinal) {
 		this.isFinal = isFinal;
 	}
 
