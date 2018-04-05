@@ -17,6 +17,7 @@ import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -41,7 +42,7 @@ public class Article extends DomainEntity {
 
 
 	@NotBlank
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getTitle() {
 		return this.title;
 	}
@@ -62,7 +63,7 @@ public class Article extends DomainEntity {
 	}
 
 	@NotBlank
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getSummary() {
 		return this.summary;
 	}
@@ -72,7 +73,7 @@ public class Article extends DomainEntity {
 	}
 
 	@NotBlank
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getBody() {
 		return this.body;
 	}
@@ -81,7 +82,7 @@ public class Article extends DomainEntity {
 		this.body = body;
 	}
 
-	@SafeHtml
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getPictures() {
 		return this.pictures;
 	}
