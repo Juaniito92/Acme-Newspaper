@@ -29,6 +29,7 @@
 					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
 				</ul>
 			</li>
+			<li><a href="administrator/display.do"><spring:message code="master.page.administrator.information" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
@@ -52,6 +53,7 @@
 				</ul>
 			</li>
 			<li><a class="fNiv" href="terms/list.do"><spring:message code="master.page.termsAndConditions" /></a></li>
+			
 			
 		</security:authorize>
 	</ul>
