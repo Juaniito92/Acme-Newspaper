@@ -29,6 +29,7 @@
 		
 		<value>/views/terms/tiles.xml</value>
 		<value>/views/user/tiles.xml</value>
+		<value>/views/chirp/tiles.xml</value>
 	</util:list>
 
 </beans>
