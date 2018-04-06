@@ -89,4 +89,12 @@ public class ChirpService {
 
 	// Other business methods
 
+	public Collection<Chirp> findChirpsByFollowedFromUser(final User u) {
+		return this.chirpRepository.findChirpsByFollowedFromUserAccountId(u.getUserAccount().getId());
+	}
+
+	public Collection<Chirp> findChirpsByUser(final User u) {
+		return this.chirpRepository.findChirpsByUserAccountId(u.getUserAccount().getId());
+	}
+
 }

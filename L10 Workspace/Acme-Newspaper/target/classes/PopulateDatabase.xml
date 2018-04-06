@@ -128,11 +128,14 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper1" />
+				<ref bean="newspaper4" />
 			</list>
 		</property>
 		<property name="articles">
 			<list>
 				<ref bean="article1" />
+				<ref bean="article4" />
+				<ref bean="article8" />
 			</list>
 		</property>
 		<property name="followUps">
@@ -177,6 +180,9 @@
 		<property name="articles">
 			<list>
 				<ref bean="article2" />
+				<ref bean="article5" />
+				<ref bean="article6" />
+				<ref bean="article9" />
 			</list>
 		</property>
 		<property name="followUps">
@@ -214,16 +220,20 @@
 		<property name="newspapers">
 			<list>
 				<ref bean="newspaper3" />
+				<ref bean="newspaper5" />
+				<ref bean="newspaper6" />
 			</list>
 		</property>
 		<property name="articles">
 			<list>
 				<ref bean="article3" />
+				<ref bean="article7" />
 			</list>
 		</property>
 		<property name="followUps">
 			<list>
 				<ref bean="followUp3" />
+				<ref bean="followUp4" />
 			</list>
 		</property>
 		<property name="followers">
@@ -391,6 +401,66 @@
 		</property>
 	</bean>
 	
+		<!-- Newspaper 4 -->
+	<bean id="newspaper4" class="domain.Newspaper">
+		<property name="title" value="La Gaceta de Acme, num 1" />
+		<property name="publicationDate" value="05/12/2017" />
+		<property name="description" value="En la edición de hoy, cómo cocinar mejillones al vapor, con el archiconocido chef Martín Berasategui. En noticias regionales, un caniche salva a una pareja de morir asfixiada." />
+		<property name="isPrivate" value="false" />
+		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="publisher" ref="user1" />
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article4"/>
+				<ref bean="article5"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Newspaper 5 -->
+	<bean id="newspaper5" class="domain.Newspaper">
+		<property name="title" value="La Gaceta de Acme, num 2" />
+		<property name="publicationDate" value="10/12/2017" />
+		<property name="description" value="En el número de hoy, cómo hacer tortilla francesa, con el archiconocido chef Karlos Arguiñano. En noticias regionales, terremoto inmenso causado por la caída de una grúa del Ayuntamiento." />
+		<property name="isPrivate" value="false" />
+		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="publisher" ref="user3" />
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article6"/>
+				<ref bean="article7"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Newspaper 6 -->
+	<bean id="newspaper6" class="domain.Newspaper">
+		<property name="title" value="La Gaceta de Acme, num 3" />
+		<property name="publicationDate" value="19/12/2017" />
+		<property name="description" value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
+		<property name="isPrivate" value="false" />
+		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="publisher" ref="user3" />
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article8"/>
+				<ref bean="article9"/>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- Article -->
 	<!-- Article 1 -->
 	<bean id="article1" class="domain.Article">
@@ -441,6 +511,107 @@
 			<list>
 			</list>
 		</property>
+	</bean>
+	
+		<!-- Article 4 -->
+	<bean id="article4" class="domain.Article">
+		<property name="title" value="Berasategui" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Martín Berasategui: mejillones al vapor" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user1" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper1"/>
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- Article 5 -->
+	<bean id="article5" class="domain.Article">
+		<property name="title" value="Caniche" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Los caniches son majísimos" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user2" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper1"/>
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- Article 6 -->
+	<bean id="article6" class="domain.Article">
+		<property name="title" value="Arguiñano" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Tortillitas francesas" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user2" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper2"/>
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- Article 7 -->
+	<bean id="article7" class="domain.Article">
+		<property name="title" value="Terremoto" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Movida mazo de chunga" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user3" />
+		<property name="isFinal" value="false" />
+		<property name="newspaper" ref="newspaper2"/>
+		<property name="followUps">
+			<ref bean="followUp4"/>
+		</property>
+		
+	</bean>
+	
+	<!-- Article 8 -->
+	<bean id="article8" class="domain.Article">
+		<property name="title" value="Bebé" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="No podía decir mamá, no" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user1" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper3"/>
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- Article 9 -->
+	<bean id="article9" class="domain.Article">
+		<property name="title" value="Coche" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Elon Musk ahí decepcionando" />
+		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="writer" ref="user2" />
+		<property name="isFinal" value="true" />
+		<property name="newspaper" ref="newspaper3"/>
+		<property name="followUps">
+			<list>
+			</list>
+		</property>
+		
 	</bean>
 
 	<!-- Chirp -->
@@ -514,6 +685,18 @@
 		<property name="text" value="Me gusta" />
 		<property name="pictures" value="http://www.google.com" />
 		<property name="article" ref="article1" />
+		<property name="user" ref="user3" />
+
+	</bean>
+	
+	<!-- FollowUp 4 -->
+	<bean id="followUp4" class="domain.FollowUp">
+		<property name="title" value="Follow Up 4" />
+		<property name="publicationMoment" value="05/12/2017" />
+		<property name="summary" value="Me gusta el follow up 4" />
+		<property name="text" value="El terremoto ha tenido dos réplicas" />
+		<property name="pictures" value="http://www.google.com" />
+		<property name="article" ref="article7" />
 		<property name="user" ref="user3" />
 
 	</bean>
