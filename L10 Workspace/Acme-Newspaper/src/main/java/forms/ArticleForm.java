@@ -1,15 +1,10 @@
 package forms;
 
-import java.util.Date;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
-import org.springframework.format.annotation.DateTimeFormat;
 
 public class ArticleForm {
 	
@@ -21,7 +16,6 @@ public class ArticleForm {
 	// Atributes
 	private int id;
 	private String	title;
-	private Date	publicationMoment;
 	private String	summary;
 	private String	body;
 	private String	pictures;
@@ -45,17 +39,6 @@ public class ArticleForm {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	
-	
-	@Past
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	public Date getPublicationMoment() {
-		return publicationMoment;
-	}
-	public void setPublicationMoment(Date publicationMoment) {
-		this.publicationMoment = publicationMoment;
 	}
 	
 	

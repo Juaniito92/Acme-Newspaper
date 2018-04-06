@@ -17,42 +17,43 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="article" requestURI="${requestURI }" id="row" defaultsort="3" defaultorder="descending">
+<form:form action="${requestURI }" modelAttribute="articleForm">
 
-<security:authorize access="hasRole('ADMIN')">
-	<display:column>
-		<a href="article/admin/delete.do?articleId=${row.id }">
-		<spring:message code="article.delete"/></a>
-	</display:column>
-</security:authorize>
-
-<security:authorize access="hasRole('USER')">
-<display:column>
-		<a href="article/user/edit.do?articleId=${row.id }">
-		<spring:message code="article.edit"/></a>
-	</display:column>
-</security:authorize>
-
-<a href="article/display.do?articleId=${row.id }" >
-<spring:message code="article.title" var="titleHeader" /></a>
-<display:column property="title" title="${titleHeader }" sortable="true"/>
-
-<spring:message code="article.format.date" var="formatDate"/>
-<spring:message code="article.publicationMoment" var="publicationMomentHeader"/>
-<display:column property="publicationMoment" title="${publicationMomenHeader }" sortable="true" format="${formatDate} }"/>
-
-<spring:message code="article.writer" var="writerHeader"/>
-<display:column title="${writerHeader }" value="${row.writer.name }"/>
-
-</display:table>
-
-<security:authorize access="hasRole('USER')">
-	<div>
-	<a href="article/user/create.do">
-		<button>
-			<spring:message code="article.create" />
-		</button>
-	</a>
-	</div>
-</security:authorize>
+	<acme:textbox code="article.title" path="title"/>
+	<br/>
+	
+	<acme:textarea code="article.summary" path="summary"/>
+	<br/>
+	
+	<acme:textarea code="article.body" path="body"/>
+	<br/>
+	
+	<acme:textarea code="article.pictures" path="pictures"/>
+	<br/>
+	
+	<acme:select items="${newspapers }" itemLabel="title" code="article.newspaper" path="newspaperId"/>
+	<br/>
+	
+	<acme:checkbox code="article.isFinal" path="isFinal"/>
+	<br/>	
+	
+	<input type="button" name="cancel" 
+		value="<spring:message code="article.cancel"/>"
+		onclick="javascript: relativeRedir('/');"/>
+	
+	<security:authorize access="hasRole('USER')">
+		<input type="submit" name="save" 
+		value="<spring:message code="article.save"/>"/>&nbsp;
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<jstl:if test="${article.id !=0 }">
+		<input type="submit" name="delete" 
+		value="<spring:message code="article.delete"/>"
+		onclick="return confirm('<spring:message code="article.confirm.delete"/>')" />&nbsp;
+	</jstl:if>
+	</security:authorize>
+	
+	
+	
+</form:form>

@@ -109,7 +109,6 @@ public class ArticleService {
 		
 		res.setId(article.getId());
 		res.setTitle(article.getTitle());
-		res.setPublicationMoment(article.getPublicationMoment());
 		res.setSummary(article.getSummary());
 		res.setBody(article.getBody());
 		res.setPictures(article.getPictures());
@@ -127,7 +126,6 @@ public class ArticleService {
 		
 		res.setId(articleForm.getId());
 		res.setTitle(articleForm.getTitle());
-		res.setPublicationMoment(articleForm.getPublicationMoment());
 		res.setSummary(articleForm.getSummary());
 		res.setBody(articleForm.getBody());
 		res.setPictures(articleForm.getPictures());

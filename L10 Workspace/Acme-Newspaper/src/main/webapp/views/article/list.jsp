@@ -34,8 +34,8 @@
 	</display:column>
 </security:authorize>
 
-<a href="article/display.do?articleId=${row.id }" >
-<spring:message code="article.title" var="titleHeader" /></a>
+<%-- <a href="article/display.do?articleId=${row.id }" >
+ --%><spring:message code="article.title" var="titleHeader" /><!-- </a> -->
 <display:column property="title" title="${titleHeader }" sortable="true"/>
 
 <spring:message code="article.format.date" var="formatDate"/>

@@ -19,10 +19,10 @@
 
 <form:form action="article/display.do" modelAttribute="articleForm">
 
-<jstl:forEach var="picturesHeader" items="${article.pictures }">
+<%-- <jstl:forEach var="picturesHeader" items="${article.pictures }">
 	<img src="<jstl:out value="${article.pictures}"/>"width="450" height="174">
 	<br/>
-</jstl:forEach>
+</jstl:forEach> --%>
 
 <h1><b><jstl:out value="${article.title }"/></b></h1>
 <br/>
