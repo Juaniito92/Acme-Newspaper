@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ChirpService;
 import services.UserService;
 import domain.Chirp;
-import domain.User;
 
 @Controller
 @RequestMapping("/chirp")
@@ -40,7 +39,7 @@ public class ChirpController extends AbstractController {
 	// Listing --------------------------------------------------------------
 
 	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam(required = false) final Integer userId, @RequestParam(required = false) final Integer followingId) {
 		ModelAndView result;
 		Collection<Chirp> chirps;
 
@@ -53,7 +52,7 @@ public class ChirpController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "display", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/display", method = RequestMethod.GET)
 	public ModelAndView listUser(@RequestParam final int chirpId) {
 		ModelAndView result;
 		Chirp chirp;
@@ -69,34 +68,34 @@ public class ChirpController extends AbstractController {
 
 	// Editing ---------------------------------------------------------------
 
-	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
-	public ModelAndView edit(final int chirpId) {
-		ModelAndView result;
-		final Chirp chirp = this.chirpService.findOne(chirpId);
+	//	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
+	//	public ModelAndView edit(final int chirpId) {
+	//		ModelAndView result;
+	//		final Chirp chirp = this.chirpService.findOne(chirpId);
+	//
+	//		result = this.createEditModelAndView(chirp);
+	//
+	//		return result;
+	//	}
+	//
+	//	@RequestMapping(value = "/user/edit", method = RequestMethod.POST, params = "save")
+	//	public ModelAndView editSave(@Valid final Chirp c, final BindingResult binding) {
+	//		ModelAndView res;
+	//		if (binding.hasErrors())
+	//			res = this.createEditModelAndView(c, "user.params.error");
+	//		else
+	//			try {
+	//				this.chirpService.save(c);
+	//				res = new ModelAndView("redirect:/user/chirp/list.do");
+	//			} catch (final Throwable oops) {
+	//				res = this.createEditModelAndView(c, "user.commit.error");
+	//			}
+	//		System.out.println(binding);
+	//
+	//		return res;
+	//	}
 
-		result = this.createEditModelAndView(chirp);					//Cambiar por el de Editar
-
-		return result;
-	}
-
-	@RequestMapping(value = "/user/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView editSave(@Valid final Chirp c, final BindingResult binding) {
-		ModelAndView res;
-		if (binding.hasErrors())
-			res = this.createEditModelAndView(c, "user.params.error");	//Cambiar por el de Editar			
-		else
-			try {
-				this.chirpService.save(c);
-				res = new ModelAndView("redirect:../../");
-			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(c, "user.commit.error");	//Cambiar por el de editar
-			}
-		System.out.println(binding);
-
-		return res;
-	}
-
-	// Registering ----------------------------------------------------------
+	// Creating ----------------------------------------------------------
 
 	@RequestMapping(value = "/user/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -109,10 +108,9 @@ public class ChirpController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+	@RequestMapping(value = "/user/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Chirp chirp, final BindingResult binding) {
 		ModelAndView res;
-		final User user;
 
 		if (binding.hasErrors())
 			res = this.createEditModelAndView(chirp, "user.params.error");
@@ -126,6 +124,24 @@ public class ChirpController extends AbstractController {
 
 		return res;
 	}
+
+	//Deleting ---------------------------------
+
+	@RequestMapping(value = "admin/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Chirp chirp, final BindingResult binding) {
+		ModelAndView result;
+
+		try {
+			this.chirpService.delete(chirp);
+			result = new ModelAndView("redirect:/tag/list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(chirp, "application.commit.error");
+		}
+
+		return result;
+	}
+
+	//Ancillary methods ------------------------
 
 	protected ModelAndView createEditModelAndView(final Chirp chirp) {
 		ModelAndView result;
