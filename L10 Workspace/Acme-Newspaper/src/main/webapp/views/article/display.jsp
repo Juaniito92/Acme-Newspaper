@@ -17,7 +17,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="article/display.do" modelAttribute="articleForm">
+<form:form action="article/display.do" modelAttribute="article">
 
 <%-- <jstl:forEach var="picturesHeader" items="${article.pictures }">
 	<img src="<jstl:out value="${article.pictures}"/>"width="450" height="174">

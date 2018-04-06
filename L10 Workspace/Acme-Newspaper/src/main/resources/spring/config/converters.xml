@@ -22,8 +22,8 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
-		<bean class="converters.ArticleToString" />
-		<bean class="converters.StringToArticle" />
+		<bean class="converters.ArticleToStringConverter" />
+		<bean class="converters.StringToArticleConverter" />
 	</util:list>
 	
 </beans>

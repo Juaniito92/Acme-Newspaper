@@ -13,6 +13,7 @@ import domain.Article;
 
 import repositories.NewspaperRepository;
 import services.ArticleService;
+import services.NewspaperService;
 
 @Controller
 @RequestMapping("/article")
@@ -23,7 +24,7 @@ public class ArticleController extends AbstractController{
 	private ArticleService articleService;
 	
 	@Autowired
-	private NewspaperRepository newspaperRepository;
+	private NewspaperService newspaperService;
 	
 	// Constructors ----------------------------
 	public ArticleController(){
@@ -36,7 +37,7 @@ public class ArticleController extends AbstractController{
 		ModelAndView res;
 		Collection<Article> articles;
 		
-		articles = this.newspaperRepository.findOne(newspaperId).getArticles();
+		articles = this.newspaperService.findOne(newspaperId).getArticles();
 		
 		res = new ModelAndView("article/list");
 		res.addObject("article",articles);

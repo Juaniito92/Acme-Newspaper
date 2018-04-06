@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import repositories.NewspaperRepository;
 import services.ArticleService;
+import services.NewspaperService;
 import controllers.AbstractController;
 
 @Controller
@@ -19,7 +20,7 @@ public class ArticleUserController extends AbstractController{
 	private ArticleService articleService;
 	
 	@Autowired
-	private NewspaperRepository newspaperRepository;
+	private NewspaperService newspaperService;
 	
 	// Constructors ----------------------------
 	public ArticleUserController() {
