@@ -87,6 +87,15 @@ public class ChirpService {
 		return res;
 	}
 
+	public void delete(final Chirp chirp) {
+		final User u = chirp.getUser();
+		final Collection<Chirp> chirps = u.getChirps();
+		chirps.remove(chirp);
+		u.setChirps(chirps);
+
+		this.chirpRepository.delete(chirp);
+	}
+
 	// Other business methods
 
 	public Collection<Chirp> findChirpsByFollowedFromUser(final User u) {
