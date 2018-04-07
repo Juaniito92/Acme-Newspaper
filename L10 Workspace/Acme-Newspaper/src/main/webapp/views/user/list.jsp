@@ -33,18 +33,11 @@
 		</a>
 	</display:column>
 
-	<spring:message code="user.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
+	<spring:message code="chirp.title" var="nameHeader" />
+	<display:column property="title" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="user.email" var="emailHeader" />
-	<display:column property="email" title="${emailHeader}" sortable="true" />
-
-	<spring:message code="user.articles" var="articlesHeader"/>
-	<display:column title="${articlesHeader}">
-		<a href="articles/list.do?userId=${row.id}">
-			<spring:message code="user.articlesWritten"/>
-		</a>
-	</display:column>
+	<spring:message code="chirp.description" var="emailHeader" />
+	<display:column property="description" title="${emailHeader}" sortable="true" />
 	
 	<security:authorize access="ADMIN">
 	<spring:message code="chirp.delChirp" var="deleteHeader"/>
