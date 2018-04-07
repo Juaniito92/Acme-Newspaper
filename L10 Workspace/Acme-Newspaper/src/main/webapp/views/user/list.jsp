@@ -46,7 +46,18 @@
 		</a>
 	</display:column>
 	
+	<security:authorize access="ADMIN">
+	<spring:message code="chirp.delChirp" var="deleteHeader"/>
+		<display:column title="${deleteHeader}">
+			<a href="chirp/delete.do?chirpId=${row.id}">
+				<spring:message code="chirp.delete"/>
+			</a>
+		</display:column>
+	</security:authorize>
+	
 </display:table>
+
+
 
 <a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>
 

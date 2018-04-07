@@ -14,20 +14,12 @@
 <form:form action="user/user/edit.do" modelAttribute="userForm">
 	
 	<form:hidden path="id" />
-	<form:hidden path="repeatPassword" />
-	<form:hidden path="termsAndConditions" />
-	<form:hidden path="password" />
-	<form:hidden path="username" />
+	<form:hidden path="user" />
+	<form:hidden path="publicationMoment" />
 	
-	<acme:textbox code="user.name" path="name"/>
+	<acme:textbox code="chirp.title" path="title"/>
 	<br/>
-	<acme:textbox code="user.surname" path="surname"/>
-	<br/>
-	<acme:textbox code="user.email" path="email"/>
-	<br/>
-	<acme:textbox code="user.phone" path="phone"/>
-	<br/>
-	<acme:textbox code="user.address" path="address"/>
+	<acme:textbox code="chirp.body" path="description"/>
 	<br/>
 	
 	<acme:submit name="save" code="user.save"/>
