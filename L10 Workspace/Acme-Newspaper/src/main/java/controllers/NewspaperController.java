@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,6 +59,7 @@ public class NewspaperController extends AbstractController {
 
 		ModelAndView result = new ModelAndView("newspaper/display");
 		result.addObject("newspaper", newspaper);
+		result.addObject("date", new Date());
 
 		return result;
 
