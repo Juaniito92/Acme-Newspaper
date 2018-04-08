@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import repositories.FollowUpRepository;
 import domain.FollowUp;
+import domain.Newspaper;
 import domain.User;
 import forms.FollowUpForm;
 
@@ -29,6 +30,9 @@ public class FollowUpService {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private Validator validator;
 
 	// Constructors
 	public FollowUpService() {
@@ -90,6 +94,12 @@ public class FollowUpService {
 	}
 
 	// Other busines methods
+
+	public Collection<FollowUp> findFollowUpsByArticle(int articleId) {
+		Collection<FollowUp> res = this.followUpRepository
+				.findFollowUpsByArticle(articleId);
+		return res;
+	}
 
 	public void checkPrincipal(FollowUp followUp) {
 		User principal = userService.findByPrincipal();
