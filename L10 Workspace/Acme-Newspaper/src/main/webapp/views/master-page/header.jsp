@@ -31,8 +31,8 @@
 		<security:authorize access="hasRole('USER')">
 		<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 			<ul>
-				<li><a href="newspapaer/user/create.do"><spring:message code="master.page.user.newspaperCreate" /></a></li>
-				<li><a href="newspapaer/user/list.do"><spring:message code="master.page.user.listNewspapers" /></a></li>
+				<li><a href="newspaper/user/create.do"><spring:message code="master.page.user.newspaperCreate" /></a></li>
+				<li><a href="newspaper/user/list.do"><spring:message code="master.page.user.listNewspapers" /></a></li>
 			</ul>
 			
 		</security:authorize>
