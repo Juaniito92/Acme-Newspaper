@@ -62,10 +62,6 @@
 		<security:intercept-url pattern="/article/**" access="permitAll" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
-		
-		<security:intercept-url pattern="/article/**" access="permitAll" />
-		<security:intercept-url pattern="/article/user/**" access="hasRole('USER')" />
-		<security:intercept-url pattern="/article/admin/**" access="hasRole('ADMIN')" />
 
 		<security:form-login 
 			login-page="/security/login.do"
