@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AdminService;
 import services.NewspaperService;
 import controllers.AbstractController;
 import domain.Newspaper;
@@ -36,13 +37,12 @@ public class NewspaperAdminController extends AbstractController {
 
 		Assert.notNull(this.adminService.findByPrincipal());
 		
-		ModelAndView result;
+		ModelAndView result = new ModelAndView("redirect:/welcome/index.do");
 		final Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 
 		try{
 			this.newspaperService.delete(newspaper);
 		}catch(Throwable oops){
-			result = new ModelAndView("redirect:/welcome/index.do");
 			result.addObject("message", "newspaper.commit.error");
 		}
 		

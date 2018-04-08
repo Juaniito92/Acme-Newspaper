@@ -34,11 +34,13 @@ public class NewspaperController extends AbstractController {
 
 		Collection<Newspaper> newspapers;
 
-		if (keyword != null) {
-			newspapers = newspaperService.findAvalibleNewspapers();
-		} else {
-			newspapers = newspaperService.findPerKeyword(keyword);
-		}
+		// TODO: Implementent function when query is ready
+
+		// if (keyword != null) {
+		// newspapers = newspaperService.findAvalibleNewspapers();
+		// } else {
+		newspapers = newspaperService.findPerKeyword(keyword);
+		// }
 
 		ModelAndView result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);

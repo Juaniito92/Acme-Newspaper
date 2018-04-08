@@ -35,8 +35,8 @@ public class NewspaperService {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private SubscriptionService subscriptionService;
+	// @Autowired
+	// private SubscriptionService subscriptionService;
 
 	@Autowired
 	private Validator validator;
@@ -106,8 +106,8 @@ public class NewspaperService {
 		Assert.isTrue(this.adminService.findByPrincipal() != null);
 
 		newspaper.getPublisher().getNewspapers().remove(newspaper);
-		for (final Subscription subscription : newspaper.getSubscriptions())
-			this.subscriptionService.delete(subscription);
+		// for (final Subscription subscription : newspaper.getSubscriptions())
+		// this.subscriptionService.delete(subscription);
 
 		this.newspaperRepository.delete(newspaper);
 	}
@@ -165,13 +165,15 @@ public class NewspaperService {
 		return newspaper;
 	}
 
-	public Collection<Newspaper> findAvalibleNewspapers() {
+	// TODO: Implementent function when query is ready
 
-		Collection<Newspaper> result = newspaperRepository
-				.findAvalibleNewspapers();
-
-		return result;
-	}
+	// public Collection<Newspaper> findAvalibleNewspapers() {
+	//
+	// Collection<Newspaper> result = newspaperRepository
+	// .findAvalibleNewspapers();
+	//
+	// return result;
+	// }
 
 	public Collection<Newspaper> findPerKeyword(final String keyword) {
 
@@ -179,8 +181,10 @@ public class NewspaperService {
 		newspapers = new ArrayList<Newspaper>();
 		String aux = "Newspaper";
 
-		if (keyword == null)
-			newspapers = this.findAvalibleNewspapers();
+		// TODO: Implementent function when query is ready
+		
+		// if (keyword == null)
+		//		newspapers = this.findAvalibleNewspapers();
 		if (keyword != null) {
 			aux = keyword;
 			newspapers = this.newspaperRepository.findPerKeyword(aux);
