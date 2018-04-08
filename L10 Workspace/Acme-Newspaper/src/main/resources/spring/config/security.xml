@@ -60,6 +60,7 @@
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/register.do" access="permitAll" />
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
+		<security:intercept-url pattern="/followUp/user/list.do" access="hasRole('USER')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
