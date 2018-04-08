@@ -3,6 +3,8 @@ package controllers.user;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,7 +19,6 @@ import services.UserService;
 import controllers.AbstractController;
 import domain.Article;
 import domain.Newspaper;
-import domain.User;
 import forms.ArticleForm;
 
 @Controller
@@ -75,7 +76,7 @@ public class ArticleUserController extends AbstractController{
 	// Save ----------------------------------------
 	
 	@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-	public ModelAndView save(final ArticleForm articleForm, final BindingResult binding){
+	public ModelAndView save(@Valid ArticleForm articleForm, final BindingResult binding){
 		ModelAndView res;
 		
 		if(binding.hasErrors()){
