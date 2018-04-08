@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AdminService;
 import services.ChirpService;
 import services.UserService;
 import domain.Chirp;
@@ -28,6 +29,9 @@ public class ChirpController extends AbstractController {
 	private UserService		userService;
 
 	@Autowired
+	private AdminService	adminService;
+
+	@Autowired
 	private ChirpService	chirpService;
 
 
@@ -39,7 +43,7 @@ public class ChirpController extends AbstractController {
 
 	// Listing --------------------------------------------------------------
 
-	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam(required = false) final Integer userId, @RequestParam(required = false) final Integer followingId) {
 		ModelAndView result;
 		Collection<Chirp> chirps;
@@ -50,6 +54,7 @@ public class ChirpController extends AbstractController {
 		} else if (followingId != null) {
 			Assert.notNull(this.userService.findOne(followingId));
 			chirps = this.chirpService.findChirpsByFollowedFromUser(this.userService.findOne(followingId));
+
 		} else
 			chirps = this.chirpService.findAll();
 
@@ -125,7 +130,7 @@ public class ChirpController extends AbstractController {
 		else
 			try {
 				this.chirpService.save(chirp);
-				res = new ModelAndView("redirect:../");
+				res = new ModelAndView("redirect:/chirp/list.do");
 			} catch (final Throwable oops) {
 				res = this.createEditModelAndView(chirp, "user.commit.error");
 			}
@@ -135,13 +140,25 @@ public class ChirpController extends AbstractController {
 
 	//Deleting ---------------------------------
 
+	@RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
+	public ModelAndView delete(final int chirpId) {
+
+		Assert.notNull(this.adminService.findByPrincipal());
+
+		final Chirp chirp = this.chirpService.findOne(chirpId);
+
+		this.chirpService.delete(chirp);
+
+		return new ModelAndView("redirect:/");
+	}
+
 	@RequestMapping(value = "/admin/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Chirp chirp, final BindingResult binding) {
 		ModelAndView result;
 
 		try {
 			this.chirpService.delete(chirp);
-			result = new ModelAndView("redirect:/chirp/list.do");
+			result = new ModelAndView("redirect:/");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(chirp, "application.commit.error");
 		}
@@ -162,7 +179,7 @@ public class ChirpController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Chirp chirp, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("/user/edit");
+		result = new ModelAndView("chirp/create");
 		result.addObject("chirp", chirp);
 		result.addObject("message", message);
 

@@ -27,8 +27,9 @@
 
 	<!-- Attributes -->
 
-	<display:column title="${articlesHeader}">
-		<a href="user/display.do?userId=${row.id}">
+	<spring:message code="chirp.showUser" var="userHeader" />
+	<display:column title="${userHeader}">
+		<a href="user/display.do?userId=${row.user.id}">
 			<spring:message code="user.display"/>
 		</a>
 	</display:column>
@@ -42,7 +43,7 @@
 	<security:authorize ifAllGranted="ADMIN">
 	<spring:message code="chirp.delChirp" var="deleteHeader"/>
 		<display:column title="${deleteHeader}">
-			<a href="chirp/delete.do?chirpId=${row.id}">
+			<a href="chirp/admin/delete.do?chirpId=${row.id}">
 				<spring:message code="chirp.delete"/>
 			</a>
 		</display:column>
@@ -50,7 +51,7 @@
 	
 </display:table>
 
-
+<p><a href="chirp/user/create.do"><spring:message code="chirp.publish"/></a></p>
 
 <a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>
 

@@ -19,7 +19,7 @@
 	
 	<acme:textbox code="chirp.title" path="title"/>
 	<br/>
-	<acme:textbox code="chirp.body" path="description"/>
+	<acme:textbox code="chirp.description" path="description"/>
 	<br/>
 	
 	<acme:submit name="save" code="user.save"/>
