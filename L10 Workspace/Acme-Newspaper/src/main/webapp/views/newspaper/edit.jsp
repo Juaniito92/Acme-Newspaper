@@ -11,26 +11,27 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="user/user/edit.do" modelAttribute="userForm">
-	
-	<form:hidden path="id" />
-	<form:hidden path="repeatPassword" />
-	<form:hidden path="termsAndConditions" />
-	<form:hidden path="password" />
-	<form:hidden path="username" />
-	
-	<acme:textbox code="user.name" path="name"/>
-	<br/>
-	<acme:textbox code="user.surname" path="surname"/>
-	<br/>
-	<acme:textbox code="user.email" path="email"/>
-	<br/>
-	<acme:textbox code="user.phone" path="phone"/>
-	<br/>
-	<acme:textbox code="user.address" path="address"/>
-	<br/>
-	
-	<acme:submit name="save" code="user.save"/>
-	<acme:submit name="cancel" code="user.cancel"/>
+<form:form action="newspaper/user/edit.do" modelAttribute="newspaperForm">
 
+	<form:hidden path="id"/>
+	
+	<acme:textbox code="newspaper.title" path="title"/>
+	<br/>
+	
+	<acme:textarea code="newspaper.description" path="description"/>
+	<br/>
+	
+	<acme:textbox code="newspaper.publicationDate" path="publicationDate" placeholder="dd/MM/yyyy"/>
+	<br/>
+	
+	<acme:textbox code="newspaper.picture" path="picture"/>
+	<br/>
+	
+	<acme:checkbox code="newspaper.isPrivate" path="isPrivate"/>
+	<br/>
+	
+	<acme:submit name="save" code="newspaper.save"/>
+	&nbsp;
+	<acme:cancel url="newspaper/user/list.do" code="newspaper.back"/>
+	
 </form:form>

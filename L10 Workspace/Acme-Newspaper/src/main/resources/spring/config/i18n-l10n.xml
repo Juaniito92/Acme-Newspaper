@@ -28,6 +28,10 @@
 		<value>/views/profile/messages</value>
 		<value>/views/terms/messages</value>
 		<value>/views/user/messages</value>
+		
+		<value>/views/followUp/messages</value>
+		<value>/views/newspaper/messages</value>
+		<value>/views/article/messages</value>
 		<value>/views/chirp/messages</value>
 	</util:list>
 
