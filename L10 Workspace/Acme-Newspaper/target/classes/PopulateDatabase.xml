@@ -467,7 +467,7 @@
 		<property name="title" value="Article title 1" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 1" />
-		<property name="body" value="Article body 3" />
+		<property name="body" value="Article body 1" />
 		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="true" />
 		<property name="newspaper" ref="newspaper1" />
@@ -522,7 +522,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user1" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper1"/>
+		<property name="newspaper" ref="newspaper4"/>
 		<property name="followUps">
 			<list>
 			</list>
@@ -539,7 +539,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper1"/>
+		<property name="newspaper" ref="newspaper4"/>
 		<property name="followUps">
 			<list>
 			</list>
@@ -556,7 +556,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper2"/>
+		<property name="newspaper" ref="newspaper5"/>
 		<property name="followUps">
 			<list>
 			</list>
@@ -573,7 +573,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user3" />
 		<property name="isFinal" value="false" />
-		<property name="newspaper" ref="newspaper2"/>
+		<property name="newspaper" ref="newspaper5"/>
 		<property name="followUps">
 			<ref bean="followUp4"/>
 		</property>
@@ -589,7 +589,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user1" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper3"/>
+		<property name="newspaper" ref="newspaper6"/>
 		<property name="followUps">
 			<list>
 			</list>
@@ -606,7 +606,7 @@
 		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper3"/>
+		<property name="newspaper" ref="newspaper6"/>
 		<property name="followUps">
 			<list>
 			</list>
