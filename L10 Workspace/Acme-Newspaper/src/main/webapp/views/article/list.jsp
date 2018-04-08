@@ -60,7 +60,7 @@
 
 <spring:message code="article.format.date" var="formatDate"/>
 <spring:message code="article.publicationMoment" var="publicationMomentHeader"/>
-<display:column property="publicationMoment" title="${publicationMomenHeader }" sortable="true" format="${formatDate} }"/>
+<display:column property="publicationMoment" title="${publicationMomentHeader }" sortable="true" format="${formatDate}"/>
 
 <spring:message code="article.writer" var="writerHeader"/>
 <display:column title="${writerHeader }" value="${row.writer.name }${row.writer.surname }"/>

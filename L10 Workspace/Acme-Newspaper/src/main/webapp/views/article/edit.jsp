@@ -17,7 +17,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="${requestURI }" modelAttribute="articleForm">
+<form:form action="article/user/edit.do" modelAttribute="articleForm">
 
 	<acme:textbox code="article.title" path="title"/>
 	<br/>

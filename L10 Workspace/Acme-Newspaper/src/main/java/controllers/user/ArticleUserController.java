@@ -86,7 +86,7 @@ public class ArticleUserController extends AbstractController{
 				this.articleService.save(article);
 				Integer id = article.getNewspaper().getId();
 				
-				res = new ModelAndView("redirect:/article/list.do?newspaperId="+id);
+				res = new ModelAndView("redirect:/newspaper/display.do?newspaperId="+id);
 			
 			}catch (final Throwable oops) {
 				res = this.createEditModelAndView(articleForm, "article.commit.error");
@@ -107,20 +107,18 @@ public class ArticleUserController extends AbstractController{
 		return res;
 	}
 	
-	protected ModelAndView createEditModelAndView(ArticleForm articleForm,
-			String message) {
+	protected ModelAndView createEditModelAndView(final ArticleForm articleForm,
+			final String message) {
 		ModelAndView res;
-		User principal = this.userService.findByPrincipal();
 		res = new ModelAndView("article/edit");
 		int newspaperId = articleForm.getNewspaperId();
 		Newspaper newspaper = this.newspaperService.findOne(newspaperId);
 		Collection<Newspaper> newspapers = new ArrayList<Newspaper>();
-		newspapers = principal.getNewspapers();
+		newspapers.add(newspaper);
 		
 		res.addObject("articleForm",articleForm);
-		res.addObject("newspaper",newspapers);
+		res.addObject("newspapers",newspapers);
 		res.addObject("message",message);
-		res.addObject("requestURI","article/user/edit.do");
 		
 		return res; 
 	}
