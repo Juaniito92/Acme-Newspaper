@@ -25,20 +25,14 @@
 </jstl:forEach> --%>
 
 <h1><b><jstl:out value="${article.title }"/></b></h1>
-<br/>
 
 <jstl:out value="${article.publicationMoment }"/>
-<br/>
 
 <h2><b><jstl:out value="${article.summary }"/></b></h2>
-<br/>
 
 <jstl:out value="${article.body }"/>
 <br/>
-
-<jstl:out value="${article.body }"/>
 <br/>
-
 <b><spring:message code="article.writer"/>:&nbsp;</b>
 <jstl:out value="${article.writer.name }${article.writer.surname }"/>
 <br/>

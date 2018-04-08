@@ -17,6 +17,22 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<script>
+	function searchByKeyword(e){
+		if(e.keyCode==13){
+			var keyword = document.getElementById("keyword").value;
+			window.location.assign("article/list.do?keyword="+keyword);
+			return false;
+		}
+	}
+</script>
+
+<jstl:if test="${requestURI == 'article/list.do' }">
+	<input type="text" id="keyword"
+	placeholder="<spring:message code="article.search"/>"
+	onkeypress="searchByKeyword(event)"/>
+</jstl:if>
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="article" requestURI="${requestURI }" id="row" defaultsort="3" defaultorder="descending">
 
@@ -34,8 +50,12 @@
 	</display:column>
 </security:authorize>
 
-<%-- <a href="article/display.do?articleId=${row.id }" >
- --%><spring:message code="article.title" var="titleHeader" /><!-- </a> -->
+<display:column>
+	<a href="article/display.do?articleId=${row.id }">
+	<spring:message code="article.display"/></a>
+</display:column>
+
+<spring:message code="article.title" var="titleHeader" />
 <display:column property="title" title="${titleHeader }" sortable="true"/>
 
 <spring:message code="article.format.date" var="formatDate"/>
@@ -43,16 +63,16 @@
 <display:column property="publicationMoment" title="${publicationMomenHeader }" sortable="true" format="${formatDate} }"/>
 
 <spring:message code="article.writer" var="writerHeader"/>
-<display:column title="${writerHeader }" value="${row.writer.name }"/>
+<display:column title="${writerHeader }" value="${row.writer.name }${row.writer.surname }"/>
 
 </display:table>
 
-<security:authorize access="hasRole('USER')">
+<%-- <security:authorize access="hasRole('USER')">
 	<div>
-	<a href="article/user/create.do">
+	<a href="article/user/create.do?newspaperId=85">
 		<button>
 			<spring:message code="article.create" />
 		</button>
 	</a>
 	</div>
-</security:authorize>
+</security:authorize> --%>

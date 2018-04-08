@@ -71,10 +71,11 @@ public class ArticleForm {
 	}
 	
 	
-	public boolean isFinal() {
-		return isFinal;
+	public boolean getIsFinal() {
+		return this.isFinal;
 	}
-	public void setFinal(boolean isFinal) {
+
+	public void setIsFinal(final boolean isFinal) {
 		this.isFinal = isFinal;
 	}
 	

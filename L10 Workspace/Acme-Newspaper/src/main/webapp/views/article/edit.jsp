@@ -31,11 +31,12 @@
 	<acme:textarea code="article.pictures" path="pictures"/>
 	<br/>
 	
-	<acme:select items="${newspapers }" itemLabel="title" code="article.newspaper" path="newspaperId"/>
+	<acme:selectObligatory items="${newspapers }" itemLabel="title" code="article.newspaper" path="newspaperId"/>
 	<br/>
 	
-	<acme:checkbox code="article.isFinal" path="isFinal"/>
-	<br/>	
+	<%-- <jstl:if test="${articleForm.isFinal == false }"> --%>
+		<acme:checkbox code="article.isFinal" path="isFinal"/>
+	<%-- </jstl:if> --%>
 	
 	<input type="button" name="cancel" 
 		value="<spring:message code="article.cancel"/>"
