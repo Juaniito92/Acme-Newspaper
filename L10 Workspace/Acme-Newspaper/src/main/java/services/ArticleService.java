@@ -165,6 +165,18 @@ public class ArticleService {
 		
 		return res;
 	}
+
+	public Collection<Article> findPerKeyword(String keyword) {
+		Collection<Article> articles = null;
+		articles = new ArrayList<Article>();
+		String aux = "Article";
+		
+		if(keyword!=null){
+			aux = keyword;
+			articles = this.articleRepository.findPerKeyword(aux);
+		}
+		return articles;
+	}
 	
  
 }

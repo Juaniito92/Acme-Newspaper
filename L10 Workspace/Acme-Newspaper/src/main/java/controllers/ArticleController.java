@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ArticleService;
 import services.NewspaperService;
+import services.UserService;
 import domain.Article;
 
 @Controller
@@ -26,6 +27,9 @@ public class ArticleController extends AbstractController{
 	@Autowired
 	private NewspaperService newspaperService;
 	
+	@Autowired
+	private UserService userService;
+	
 	// Constructors ----------------------------
 	public ArticleController(){
 		super();
@@ -33,39 +37,21 @@ public class ArticleController extends AbstractController{
 	
 	// Listing ----------------------------------
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(@RequestParam(required=false) Integer newspaperId, 
-							@RequestParam(required=false) String keyword){
+	public ModelAndView list(@RequestParam(required=false) String keyword,
+							@RequestParam(required=false) Integer userId){
 		ModelAndView res;
-		Date actual = new Date(System.currentTimeMillis()-1); 
-		Collection<Article> articles;
-		Collection<Article> articlesToShow = new ArrayList<Article>();
+		Collection<Article> articles = new ArrayList<Article>();
 		
-		if(newspaperId!=null){
-			articles = this.newspaperService.findOne(newspaperId).getArticles();
-			for(Article a : articles){
-				// Muestra los articulos finales y cuya fecha sea anterior o igual al momento actual
-				if(a.getIsFinal() && 
-						(a.getPublicationMoment().before(actual) || a.getPublicationMoment().equals(actual))){
-					articlesToShow.add(a);
-				}
-				
-			}
-		}
 		if(keyword!=null){
-			articles = this.articleService.findAll();
-			for(Article a : articles){
-				if(a.getIsFinal() && 
-						(a.getPublicationMoment().before(actual) || a.getPublicationMoment().equals(actual))){
-					// Muestra los articulos que contienen la cadena de texto en el titulo, resumen o cuerpo
-					if(a.getTitle().contains(keyword)||a.getSummary().contains(keyword)||a.getBody().contains(keyword)){
-						articlesToShow.add(a);
-					}
-				}
-			}
+			articles = this.articleService.findPerKeyword(keyword);
+		}
+		
+		if(userId!=null){
+			articles = this.userService.findOne(userId).getArticles();
 		}
 		
 		res = new ModelAndView("article/list");
-		res.addObject("article",articlesToShow);
+		res.addObject("article",articles);
 		res.addObject("requestURI", "article/list.do");
 		
 		return res;
