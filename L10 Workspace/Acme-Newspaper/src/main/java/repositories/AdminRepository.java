@@ -41,6 +41,6 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	Double ratioUserCreatedNewspaper();
 
 	// C-7
-	@Query("select count(u1)/((select count(u2) from User u2)+0.0) from User u1 where cast((select count(a) from Article a where a.writer=u1) as int)=1")
+	@Query("select count(u1)/((select count(u2) from User u2)+0.0) from User u1 where (select count(a) from Article a where a.writer=u1)>0")
 	Double ratioUserWrittenArticle();
 }

@@ -102,7 +102,7 @@
 					var="bestHeader" /> <jstl:out value="${bestHeader}"></jstl:out></th>
 		</tr>
 		<tr>
-			<jstl:forEach var="datos" items="${newspapersMoreAverage}">
+			<jstl:forEach var="datos" items="${newspapersFewerAverage}">
 				<td><jstl:out value="${datos.title}"></jstl:out></td>
 			</jstl:forEach>
 		</tr>
