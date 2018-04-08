@@ -467,7 +467,7 @@
 		<property name="title" value="Article title 1" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 1" />
-		<property name="body" value="Article body 3" />
+		<property name="body" value="Article body 1" />
 		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="true" />
 		<property name="newspaper" ref="newspaper1" />
