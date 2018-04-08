@@ -209,5 +209,13 @@ public class NewspaperService {
 
 		return newspapers;
 	}
+	
+	public Collection<Newspaper> findNonPublished() {
+
+		Collection<Newspaper> newspapers = newspaperRepository
+				.findNonPublished();
+
+		return newspapers;
+	}
 
 }

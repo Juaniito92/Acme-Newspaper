@@ -63,10 +63,10 @@
 	
 </display:table>
 
-<security:authorize access="hasRole('USER')">
+<jstl:if test="${newspaper.publicationDate gt date}">
 	<a href="article/user/create.do?newspaperId=${newspaper.id}"><spring:message
 			code="newspaper.createArticle" /></a>
 	<br />
-</security:authorize>
+</jstl:if>
 
 <acme:cancel url="newspaper/list.do" code="newspaper.back" />

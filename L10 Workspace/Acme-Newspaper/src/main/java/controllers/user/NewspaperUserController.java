@@ -46,6 +46,20 @@ public class NewspaperUserController extends AbstractController {
 
 		return result;
 	}
+	
+	@RequestMapping(value = "/list-nonPublished", method = RequestMethod.GET)
+	public ModelAndView listNonPublished() {
+
+		Collection<Newspaper> newspapers;
+
+		newspapers = newspaperService.findNonPublished();
+
+		ModelAndView result = new ModelAndView("newspaper/list");
+		result.addObject("newspapers", newspapers);
+		result.addObject("requestURI", "newspaper/user/list-nonPublished.do");
+
+		return result;
+	}
 
 	// Create ---------------------------------------------------------
 
