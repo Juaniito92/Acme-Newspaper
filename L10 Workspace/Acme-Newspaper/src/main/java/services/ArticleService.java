@@ -108,8 +108,6 @@ public class ArticleService {
 		Assert.notNull(article);
 		Assert.isTrue(article.getId()!=0);
 		
-		
-		article.getNewspaper().getArticles().remove(article);
 		article.getWriter().getArticles().remove(article);
 		for (FollowUp followUp : article.getFollowUps()){
 			this.followUpService.delete(followUp);

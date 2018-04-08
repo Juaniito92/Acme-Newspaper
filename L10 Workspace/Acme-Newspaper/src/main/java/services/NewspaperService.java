@@ -34,9 +34,12 @@ public class NewspaperService {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ArticleService articleService;
 
-	// @Autowired
-	// private SubscriptionService subscriptionService;
+	 @Autowired
+	 private SubscriptionService subscriptionService;
 
 	@Autowired
 	private Validator validator;
@@ -106,8 +109,11 @@ public class NewspaperService {
 		Assert.isTrue(this.adminService.findByPrincipal() != null);
 
 		newspaper.getPublisher().getNewspapers().remove(newspaper);
-		// for (final Subscription subscription : newspaper.getSubscriptions())
-		// this.subscriptionService.delete(subscription);
+		for(Article article : newspaper.getArticles()){
+			articleService.delete(article);
+		}
+		for (final Subscription subscription : newspaper.getSubscriptions())
+			 this.subscriptionService.delete(subscription);
 
 		this.newspaperRepository.delete(newspaper);
 	}
