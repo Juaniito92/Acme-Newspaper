@@ -16,12 +16,12 @@
        
 <tiles-definitions>
 
-	<definition name="chirp/user/create" extends="master.page">	
+	<definition name="chirp/create" extends="master.page">	
 		<put-attribute name="title" value="Create a chirp" />
-		<put-attribute name="body" value="/views/chirp/register.jsp" />
+		<put-attribute name="body" value="/views/chirp/edit.jsp" />
 	</definition>
 	
-	<definition name="chirp/user/list" extends="master.page">	
+	<definition name="chirp/list" extends="master.page">	
 		<put-attribute name="title" value="List chirps" />
 		<put-attribute name="body" value="/views/chirp/list.jsp" />
 	</definition>

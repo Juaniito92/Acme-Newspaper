@@ -23,7 +23,7 @@
 <!-- displaying grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="user" requestURI="${requestURI }" id="row">
+	name="chirps" requestURI="${requestURI }" id="row">
 
 	<!-- Attributes -->
 
@@ -33,20 +33,24 @@
 		</a>
 	</display:column>
 
-	<spring:message code="user.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
+	<spring:message code="chirp.title" var="nameHeader" />
+	<display:column property="title" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="user.email" var="emailHeader" />
-	<display:column property="email" title="${emailHeader}" sortable="true" />
-
-	<spring:message code="user.articles" var="articlesHeader"/>
-	<display:column title="${articlesHeader}">
-		<a href="articles/list.do?userId=${row.id}">
-			<spring:message code="user.articlesWritten"/>
-		</a>
-	</display:column>
+	<spring:message code="chirp.description" var="emailHeader" />
+	<display:column property="description" title="${emailHeader}" sortable="true" />
+	
+	<security:authorize ifAllGranted="ADMIN">
+	<spring:message code="chirp.delChirp" var="deleteHeader"/>
+		<display:column title="${deleteHeader}">
+			<a href="chirp/delete.do?chirpId=${row.id}">
+				<spring:message code="chirp.delete"/>
+			</a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
+
+
 
 <a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>
 

@@ -11,7 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="user/user/edit.do" modelAttribute="userForm">
+<form:form action="chirp/user/create.do" modelAttribute="chirp">
 	
 	<form:hidden path="id" />
 	<form:hidden path="user" />

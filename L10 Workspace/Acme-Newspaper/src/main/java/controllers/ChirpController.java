@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,14 @@ public class ChirpController extends AbstractController {
 		ModelAndView result;
 		Collection<Chirp> chirps;
 
-		chirps = this.chirpService.findAll();
+		if (userId != null) {
+			Assert.notNull(this.userService.findOne(userId));
+			chirps = this.chirpService.findChirpsByUser(this.userService.findOne(userId));
+		} else if (followingId != null) {
+			Assert.notNull(this.userService.findOne(followingId));
+			chirps = this.chirpService.findChirpsByFollowedFromUser(this.userService.findOne(followingId));
+		} else
+			chirps = this.chirpService.findAll();
 
 		result = new ModelAndView("chirp/list");
 		result.addObject("chirps", chirps);
@@ -59,7 +67,7 @@ public class ChirpController extends AbstractController {
 
 		chirp = this.chirpService.findOne(chirpId);
 
-		result = new ModelAndView("user/display");
+		result = new ModelAndView("chirp/display");
 		result.addObject("chirp", chirp);
 		result.addObject("requestURI", "chirp/display.do");
 
@@ -127,13 +135,13 @@ public class ChirpController extends AbstractController {
 
 	//Deleting ---------------------------------
 
-	@RequestMapping(value = "admin/edit", method = RequestMethod.POST, params = "delete")
+	@RequestMapping(value = "/admin/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Chirp chirp, final BindingResult binding) {
 		ModelAndView result;
 
 		try {
 			this.chirpService.delete(chirp);
-			result = new ModelAndView("redirect:/tag/list.do");
+			result = new ModelAndView("redirect:/chirp/list.do");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(chirp, "application.commit.error");
 		}
@@ -154,7 +162,7 @@ public class ChirpController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Chirp chirp, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("/user/chirp/edit");
+		result = new ModelAndView("/user/edit");
 		result.addObject("chirp", chirp);
 		result.addObject("message", message);
 

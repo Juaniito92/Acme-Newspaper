@@ -60,9 +60,8 @@
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/register.do" access="permitAll" />
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
-		<security:intercept-url pattern="/user/chirp/list.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/user/chirp/create.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/user/chirp/display.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/chirp/user/list.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/chirp/user/create.do" access="hasRole('USER')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

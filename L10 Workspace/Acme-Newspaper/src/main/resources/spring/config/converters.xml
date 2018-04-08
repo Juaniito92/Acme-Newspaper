@@ -36,7 +36,7 @@
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.StringToAdminConverter" />
 		<bean class="converters.StringToArticleConverter" />
-		<bean class="converters.StringToChripConverter" />
+		<bean class="converters.StringToChirpConverter" />
 		<bean class="converters.StringToConfigurationConverter" />
 		<bean class="converters.StringToCreditCardConverter" />
 		<bean class="converters.StringToCustomerConverter" />
