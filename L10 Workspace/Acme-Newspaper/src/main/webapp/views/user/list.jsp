@@ -41,7 +41,7 @@
 
 	<spring:message code="user.articles" var="articlesHeader"/>
 	<display:column title="${articlesHeader}">
-		<a href="articles/list.do?userId=${row.id}">
+		<a href="article/list.do?userId=${row.id}">
 			<spring:message code="user.articlesWritten"/>
 		</a>
 	</display:column>
