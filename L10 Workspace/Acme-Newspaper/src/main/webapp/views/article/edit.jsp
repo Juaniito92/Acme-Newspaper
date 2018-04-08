@@ -29,6 +29,7 @@
 	<br/>
 	
 	<acme:textarea code="article.pictures" path="pictures"/>
+	<spring:message code="article.eachPicture"/>
 	<br/>
 	
 	<acme:selectObligatory items="${newspapers }" itemLabel="title" code="article.newspaper" path="newspaperId"/>
