@@ -19,7 +19,7 @@
 	<acme:textbox code="followUp.title" path="title" />
 	<br />
 
-	<acme:textarea code="followUp.summary" path="description" />
+	<acme:textarea code="followUp.summary" path="summary" />
 	<br />
 
 	<%-- <acme:textbox code="followUp.publicationMoment"
@@ -39,6 +39,6 @@
 
 	<acme:submit name="save" code="followUp.save" />
 	&nbsp;
-	<acme:cancel url="followUp/user/list.do" code="followUp.back" />
+	<acme:cancel url="followUp/user/list.do?articleId=${row.id}" code="followUp.back" />
 </security:authorize>
 </form:form>

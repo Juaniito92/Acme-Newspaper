@@ -64,10 +64,10 @@ public class FollowUpUserController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 		public ModelAndView create(final int articleId) {
 		ModelAndView res;
-		FollowUp followUp;
-		FollowUpForm followUpForm;
+		FollowUp followUp= new FollowUp();
+		FollowUpForm followUpForm= new FollowUpForm();
 		
-		followUp = this.followUpService.create(articleId);
+		followUpForm.setArticleId(articleId);
 		followUpForm = this.followUpService.construct(followUp);
 		
 		res = this.createEditModelAndView(followUpForm);
@@ -118,7 +118,7 @@ public class FollowUpUserController extends AbstractController {
 		int artilceId = followUpForm.getArticleId();
 		Article article= this.articleService.findOne(artilceId);
 		Collection<Article> articles = new ArrayList<Article>();
-		articles= principal.getArticles();
+		articles.add(article);
 		
 		result.addObject("followUpForm", followUpForm);
 		result.addObject("article",articles);
