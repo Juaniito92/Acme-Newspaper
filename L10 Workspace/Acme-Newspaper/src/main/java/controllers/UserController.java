@@ -37,13 +37,20 @@ public class UserController extends AbstractController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
+		
 		ModelAndView result;
 		Collection<User> users;
+		User principal;
 
 		users = userService.findAll();
+		principal = userService.findByPrincipal();
+		if(principal != null){
+			users.remove(principal);
+		}
 
 		result = new ModelAndView("user/list");
-		result.addObject("user", users);
+		result.addObject("users", users);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "user/list.do");
 
 		return result;
@@ -61,40 +68,6 @@ public class UserController extends AbstractController {
 		result.addObject("requestURI", "user/display.do");
 
 		return result;
-	}
-
-	// Editing ---------------------------------------------------------------
-
-	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
-	public ModelAndView edit() {
-		ModelAndView result;
-		User user;
-		UserForm editUserForm;
-
-		user = this.userService.findByPrincipal();
-		editUserForm = this.userService.construct(user);
-		
-		result = this.createEditModelAndViewEdit(editUserForm);
-
-		return result;
-	}
-
-	@RequestMapping(value = "/user/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView editSave(@Valid final UserForm userForm, final BindingResult binding) {
-		ModelAndView res;
-		if (binding.hasErrors())
-			res = this.createEditModelAndViewEdit(userForm, "user.params.error");
-		else
-			try {
-				User user = this.userService.reconstruct(userForm, binding);
-				this.userService.save(user);
-				res = new ModelAndView("redirect:../../");
-			} catch (final Throwable oops) {
-				res = this.createEditModelAndViewEdit(userForm, "user.commit.error");
-			}
-		System.out.println(binding);
-
-		return res;
 	}
 
 	// Registering ----------------------------------------------------------
@@ -133,8 +106,8 @@ public class UserController extends AbstractController {
 		return res;
 	}
 
-
-
+	// Ancillary methods ---------------------------------------------------------------
+	
 	protected ModelAndView createEditModelAndView(final UserForm userForm) {
 		ModelAndView result;
 
@@ -152,22 +125,5 @@ public class UserController extends AbstractController {
 
 		return result;
 	}
-	
-	protected ModelAndView createEditModelAndViewEdit(final UserForm userForm) {
-		ModelAndView result;
 
-		result = this.createEditModelAndViewEdit(userForm, null);
-
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndViewEdit(final UserForm userForm, final String message) {
-		ModelAndView result;
-
-		result = new ModelAndView("user/edit");
-		result.addObject("userForm", userForm);
-		result.addObject("message", message);
-
-		return result;
-	}
 }
