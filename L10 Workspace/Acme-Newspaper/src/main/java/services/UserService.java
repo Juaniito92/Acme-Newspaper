@@ -1,4 +1,3 @@
-
 package services;
 
 import java.util.ArrayList;
@@ -29,13 +28,12 @@ public class UserService {
 	// Managed repository
 
 	@Autowired
-	private UserRepository	userRepository;
+	private UserRepository userRepository;
 
 	// Supporting services
 
 	@Autowired
-	private Validator		validator;
-
+	private Validator validator;
 
 	// Constructors
 
@@ -59,7 +57,7 @@ public class UserService {
 		authority.setAuthority(Authority.USER);
 		userAccount.addAuthority(authority);
 		res.setUserAccount(userAccount);
-		
+
 		res.setFollowers(followers);
 		res.setFollowed(followed);
 		res.setChirps(chirps);
@@ -100,14 +98,61 @@ public class UserService {
 		return res;
 	}
 
-	// public void delete(User user) {
-	// Assert.notNull(user);
-	// Assert.isTrue(user.getId() != 0);
-	// Assert.isTrue(this.userRepository.exists(user.getId()));
-	// this.actorRepository.delete(user);
-	// }
-
 	// Other business methods
+
+	public void follow(int userId) {
+
+		User user = findOne(userId);
+		User principal = findByPrincipal();
+
+		Assert.isTrue(!principal.getFollowed().contains(user));
+		Assert.isTrue(user.getId() != principal.getId());
+
+		principal.getFollowed().add(user);
+		user.getFollowers().add(principal);
+	}
+
+	public void unfollow(int userId) {
+
+		User user = findOne(userId);
+		User principal = findByPrincipal();
+
+		Assert.isTrue(principal.getFollowed().contains(user));
+		Assert.isTrue(user.getId() != principal.getId());
+
+		principal.getFollowed().remove(user);
+		user.getFollowers().remove(principal);
+	}
+
+	public Collection<User> findFollowedUsersByUserAccountId(int userAccountId) {
+
+		Collection<User> result = userRepository
+				.findFollowedUsersByUserAccountId(userAccountId);
+		return result;
+	}
+
+	public Collection<User> findFollowedUsersByPrincipal() {
+
+		User principal = findByPrincipal();
+		Collection<User> result = userRepository
+				.findFollowedUsersByUserAccountId(principal.getUserAccount().getId());
+		return result;
+	}
+	
+	public Collection<User> findFollowersByUserAccountId(int userAccountId) {
+
+		Collection<User> result = userRepository
+				.findFollowersByUserAccountId(userAccountId);
+		return result;
+	}
+
+	public Collection<User> findFollowersByPrincipal() {
+
+		User principal = findByPrincipal();
+		Collection<User> result = userRepository
+				.findFollowersByUserAccountId(principal.getUserAccount().getId());
+		return result;
+	}
 
 	public User findByPrincipal() {
 		User res;
@@ -116,7 +161,8 @@ public class UserService {
 		if (userAccount == null)
 			res = null;
 		else
-			res = this.userRepository.findUserByUserAccountId(userAccount.getId());
+			res = this.userRepository.findUserByUserAccountId(userAccount
+					.getId());
 		return res;
 	}
 
@@ -138,7 +184,6 @@ public class UserService {
 	public void flush() {
 		this.userRepository.flush();
 	}
-
 
 	public User reconstruct(final UserForm userForm, final BindingResult binding) {
 
