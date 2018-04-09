@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,6 +66,7 @@ public class ArticleController extends AbstractController{
 		res = new ModelAndView("article/display");
 		res.addObject("article",article);
 		res.addObject("pictures", pictures);
+		res.addObject("date", new Date());
 		
 		return res;
 	}

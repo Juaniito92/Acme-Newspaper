@@ -1,4 +1,5 @@
 #./src/main/resources/Entities.map
+<<<<<<< Updated upstream
 #Mon Apr 09 19:56:54 CEST 2018
 newspaper6=108
 newspaper5=105
@@ -40,3 +41,43 @@ user2=92
 userAccount1=83
 user1=91
 configuration=119
+=======
+#Mon Apr 09 20:51:52 CEST 2018
+newspaper6=105
+newspaper5=102
+newspaper4=99
+newspaper3=97
+newspaper2=95
+newspaper1=93
+customer2=92
+chirp4=111
+customer1=91
+chirp3=110
+chirp2=109
+chirp1=108
+subscription3=116
+subscription2=115
+subscription1=114
+article9=107
+article8=106
+article7=104
+article6=103
+administrator1=87
+article5=101
+article4=100
+article3=98
+article2=96
+article1=94
+userAccount7=86
+userAccount6=85
+followUp2=113
+userAccount5=84
+followUp1=112
+userAccount4=83
+userAccount3=82
+user3=90
+userAccount2=81
+user2=89
+userAccount1=80
+user1=88
+>>>>>>> Stashed changes

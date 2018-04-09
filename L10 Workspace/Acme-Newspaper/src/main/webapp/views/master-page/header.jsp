@@ -36,6 +36,7 @@
 				<li><a href="newspaper/user/list.do"><spring:message code="master.page.user.listNewspapers" /></a></li>
 				<li><a href="newspaper/user/list-nonPublished.do"><spring:message code="master.page.user.listNewspapersNonPublished" /></a></li>
 				<li><a href="article/user/list.do"><spring:message code="master.page.user.listArticles" /></a></li>
+				<li><a href="followUp/user/list.do"><spring:message code="master.page.user.listFollowUps" /></a></li>
 			</ul>
 			
 		</security:authorize>

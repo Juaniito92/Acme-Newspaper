@@ -54,7 +54,6 @@
 
 		<!-- FollowUp -->
 		<security:intercept-url pattern="/followUp/user/**" access="hasRole('USER')" />
-		<security:intercept-url pattern="/followUp/**" access="permitAll" />
 		
 		<!-- Newspaper -->
 		<security:intercept-url pattern="/newspaper/admin/**" access="hasRole('ADMIN')" />
