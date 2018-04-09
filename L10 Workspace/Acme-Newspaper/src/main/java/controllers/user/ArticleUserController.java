@@ -40,6 +40,20 @@ public class ArticleUserController extends AbstractController{
 		super();
 	}
 	
+	// List -----------------------------------------
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public ModelAndView list(@RequestParam final int userId){
+		ModelAndView res;
+		Collection<Article> articles = new ArrayList<Article>();
+		
+		articles = this.articleService.findByPrincipal();
+		
+		res = new ModelAndView("article/list");
+		res.addObject("article",articles);
+		res.addObject("requestURI", "article/user/list.do");
+		return res;
+	}
+	
 	// Create ----------------------------------------
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
