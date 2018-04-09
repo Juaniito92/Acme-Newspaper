@@ -64,6 +64,10 @@
 		<!-- User -->
 		<security:intercept-url pattern="/user/user/edit.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/user/**" access="permitAll" />
+		
+		<!-- Configuration -->
+		<security:intercept-url pattern="/configuration/admin/**" access="hasRole('ADMIN')" />
+		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

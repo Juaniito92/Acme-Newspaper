@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.ArticleRepository;
 import domain.Article;
+import domain.Configuration;
 import domain.FollowUp;
 import domain.Newspaper;
 import domain.User;
@@ -42,6 +43,9 @@ public class ArticleService {
 
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private ConfigurationService configurationService;
 	
 	
 
@@ -184,6 +188,29 @@ public class ArticleService {
 		Collection<Article> articles = findByWriterId(principal.getId());
 		
 		return articles;
+	}
+	
+	public Collection<Article> articleContainTabooWord(){
+		Collection<Article> res = new ArrayList<>();
+		Configuration configuration;
+		Integer idMaxConfiguration;
+		Collection<String> tabooWords = new ArrayList<>();
+		Collection<Article> allArticles = new ArrayList<>();
+		
+		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
+		configuration = this.configurationService.findOne(idMaxConfiguration);
+		tabooWords = configuration.getTabooWords();
+		allArticles = this.findAll();
+		
+		for(Article article: allArticles){
+			for(String tabooWord: tabooWords){
+				String lowTabooWord = tabooWord.toLowerCase();
+				if(article.getTitle().toLowerCase().contains(lowTabooWord) || article.getSummary().toLowerCase().contains(lowTabooWord) || article.getBody().toLowerCase().contains(lowTabooWord)){
+					res.add(article);
+				}
+			}
+		}
+		return res;
 	}
 	
  

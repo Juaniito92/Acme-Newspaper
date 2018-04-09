@@ -26,6 +26,7 @@
 			<ul>
 				<li><a href="administrator/display.do"><spring:message code="master.page.administrator.information" /></a></li>
 			</ul>
+			<li><a href="configuration/admin/list.do"><spring:message	code="master.page.configuration" /></a>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('USER')">

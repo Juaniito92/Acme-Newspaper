@@ -343,7 +343,7 @@
 	<!-- Newspaper -->
 	<!-- Newspaper 1 -->
 	<bean id="newspaper1" class="domain.Newspaper">
-		<property name="title" value="Newspaper title 1" />
+		<property name="title" value="Newspaper title 1 viagra" />
 		<property name="description" value="Newspaper description 1" />
 		<property name="publicationDate" value="01/04/2018" />
 		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
@@ -464,7 +464,7 @@
 	<!-- Article -->
 	<!-- Article 1 -->
 	<bean id="article1" class="domain.Article">
-		<property name="title" value="Article title 1" />
+		<property name="title" value="Article title 1 Sex" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 1" />
 		<property name="body" value="Article body 1" />
@@ -619,7 +619,7 @@
 	<bean id="chirp1" class="domain.Chirp">
 		<property name="publicationMoment" value="05/12/2016" />
 		<property name="title" value="Chirp 1" />
-		<property name="description" value="Me gusta el Chirp 1" />
+		<property name="description" value="Me gusta el Chirp 1 cialis" />
 		<property name="user" ref="user2" />
 
 	</bean>
@@ -701,6 +701,18 @@
 
 	</bean>
 
+	<!-- Configuration -->
+	<bean id="configuration" class="domain.Configuration">
+		<property name="tabooWords">
+		<list>
+			<value>sex</value>
+			<value>sexo</value>
+			<value>viagra</value>
+			<value>cialis</value>
+		</list>
+	</property>
+
+	</bean>
 
 
 
