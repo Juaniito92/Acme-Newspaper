@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -77,7 +79,7 @@ public class FollowUpUserController extends AbstractController {
 	// Save ----------------------------------------
 	
 		@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-		public ModelAndView save(final FollowUpForm followUpForm, final BindingResult binding){
+		public ModelAndView save(@Valid final FollowUpForm followUpForm, final BindingResult binding){
 			ModelAndView res;
 			
 			if(binding.hasErrors()){

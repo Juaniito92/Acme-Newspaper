@@ -140,7 +140,6 @@ public class FollowUpService {
 		else	
 			res = this.create(article.getId());
 		
-		res.setId(followUpForm.getArticleId());
 		res.setTitle(followUpForm.getTitle());
 		res.setText(followUpForm.getText());
 		res.setPictures(followUpForm.getPictures());
