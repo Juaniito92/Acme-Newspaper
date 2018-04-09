@@ -16,4 +16,10 @@
 		<put-attribute name="body" value="/views/followUp/list.jsp" />
 	</definition>
 
+	<definition name="followUp/edit" extends="master.page">
+		<put-attribute name="title" value="Edit seguimiento" />
+		<put-attribute name="body" value="/views/followUp/edit.jsp" />
+	</definition>
+
+
 </tiles-definitions>

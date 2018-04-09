@@ -48,13 +48,14 @@
 		sortable="true" /> 
 
 
-	<%-- 
-	<spring:message code="followUp.article" var="article"/>
-	<display:column title="${article}">
-		<a href="rendezvous/list-rspv.do?userId=${row.id }">
-			<spring:message code="user.rendezvouses.link"/>
-	</display:column>
 	
+	<%-- <spring:message code="followUp.article" var="article"/>
+	<display:column title="${article}">
+		<a href="followUp/user/edit.do?userId=${row.id }">
+			<spring:message code="followUp.create"/>
+	</display:column> --%>
+	
+	<%-- 
 	<spring:message code="followUp.user" var="user"/>
 	<display:column title="${user}">
 		<a href="rendezvous/list-rspv.do?userId=${row.id }">
@@ -63,7 +64,16 @@
 	
 	 --%>
 	 
-	 
 </display:table>
+
+	 <security:authorize access="hasRole('USER')">
+	<div>
+	<a href="followUp/user/edit.do?articleId=${row.id}">
+		<button>
+			<spring:message code="followUp.create" />
+		</button>
+	</a>
+	</div>
+</security:authorize>
 
 <a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>

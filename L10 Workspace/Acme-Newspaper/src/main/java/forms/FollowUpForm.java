@@ -1,6 +1,5 @@
 package forms;
 
-
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
@@ -14,11 +13,21 @@ public class FollowUpForm {
 	}
 
 	// Attributes
-
+	private int id;
 	private String title;
 	private String summary;
 	private String text;
 	private String pictures;
+
+	private int articleId;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -57,5 +66,13 @@ public class FollowUpForm {
 
 	public void setPictures(final String pictures) {
 		this.pictures = pictures;
+	}
+
+	public int getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(int newspaperId) {
+		this.articleId = newspaperId;
 	}
 }

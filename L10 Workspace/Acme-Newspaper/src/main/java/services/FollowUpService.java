@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
+import org.springframework.web.servlet.ModelAndView;
 
 import repositories.FollowUpRepository;
+import domain.Article;
 import domain.FollowUp;
-import domain.Newspaper;
 import domain.User;
+import forms.ArticleForm;
 import forms.FollowUpForm;
 
 @Service
@@ -32,6 +34,9 @@ public class FollowUpService {
 	private UserService userService;
 
 	@Autowired
+	private ArticleService articleService;
+
+	@Autowired
 	private Validator validator;
 
 	// Constructors
@@ -41,13 +46,14 @@ public class FollowUpService {
 
 	// Simple CRUD methods
 
-	public FollowUp create(final User user) {
+	public FollowUp create(final int articleId) {
 		FollowUp res = new FollowUp();
 
-		Date moment = new Date(System.currentTimeMillis() - 1);
+		Article article = this.articleService.findOne(articleId);
+		Date publicationMoment = article.getPublicationMoment();
 
-		res.setUser(user);
-		res.setPublicationMoment(moment);
+		res.setPublicationMoment(publicationMoment);
+		res.setArticle(article);
 
 		return res;
 
@@ -113,10 +119,12 @@ public class FollowUpService {
 	public FollowUpForm construct(FollowUp followUp) {
 		FollowUpForm res = new FollowUpForm();
 
+		res.setId(followUp.getId());
 		res.setTitle(followUp.getTitle());
 		res.setText(followUp.getText());
 		res.setPictures(followUp.getPictures());
 		res.setSummary(followUp.getSummary());
+		res.setArticleId(followUp.getArticle().getId());
 
 		return res;
 	}
@@ -124,14 +132,20 @@ public class FollowUpService {
 	public FollowUp reconstruct(FollowUpForm followUpForm, BindingResult binding) {
 		Assert.notNull(followUpForm);
 		FollowUp res = new FollowUp();
+		Article article = this.articleService.findOne(followUpForm.getArticleId());
 
-		Date moment = new Date(System.currentTimeMillis() - 1);
 
+		if(followUpForm.getId()!=0)
+			res = this.findOne(followUpForm.getId());
+		else	
+			res = this.create(article.getId());
+		
+		res.setId(followUpForm.getArticleId());
 		res.setTitle(followUpForm.getTitle());
-		res.setPublicationMoment(moment);
 		res.setText(followUpForm.getText());
 		res.setPictures(followUpForm.getPictures());
 		res.setSummary(followUpForm.getSummary());
+		res.setArticle(article);
 
 		if (binding != null)
 			validator.validate(res, binding);

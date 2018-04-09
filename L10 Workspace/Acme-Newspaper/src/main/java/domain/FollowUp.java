@@ -1,4 +1,3 @@
-
 package domain;
 
 import java.util.Date;
@@ -28,15 +27,13 @@ public class FollowUp extends DomainEntity {
 		super();
 	}
 
-
 	// Attributes
 
-	private String	title;
-	private Date	publicationMoment;
-	private String	summary;
-	private String	text;
-	private String	pictures;
-
+	private String title;
+	private Date publicationMoment;
+	private String summary;
+	private String text;
+	private String pictures;
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -88,12 +85,10 @@ public class FollowUp extends DomainEntity {
 		this.pictures = pictures;
 	}
 
-
 	// Relationships
 
-	private Article	article;
-	private User	user;
-
+	private Article article;
+	private User user;
 
 	@Valid
 	@NotNull
