@@ -19,14 +19,17 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="user/display.do" modelAttribute="userForm">
+<h3>
+	<b><spring:message code="user.name" />:&nbsp;</b>
+	<jstl:out value="${user.name}" />
+</h3>
 
-<b><spring:message code="user.name"/>:&nbsp;</b><jstl:out value="${user.name}"/>
-<br/>
-
-<b><spring:message code="user.surname"/>:&nbsp;</b><jstl:out value="${user.surname}"/>
-<br/>
+<h3>
+	<b><spring:message code="user.surname" />:&nbsp;</b>
+	<jstl:out value="${user.surname}" />
+</h3>
 
 <b><spring:message code="user.email"/>:&nbsp;</b><jstl:out value="${user.email}"/>
 <br/>
@@ -37,5 +40,19 @@
 <b><spring:message code="user.address"/>:&nbsp;</b><jstl:out value="${user.address}"/>
 <br/>
 
-</form:form>
+<display:table name="${user.articles}" id="row"
+	requestURI="user/display.do" pagesize="5" class="displaytag">
+
+	<spring:message var="titleHeader" code="user.title" />
+	<display:column title="${titleHeader}">
+		<a href="article/display.do?articleId=${row.id}"><jstl:out
+				value="${row.title}" /></a>
+	</display:column>
+
+	<spring:message var="summaryHeader" code="user.summary" />
+	<display:column property="summary" title="${summaryHeader}" />
+
+</display:table>
+
+<acme:cancel code="user.back" url="user/list.do"/>
 
