@@ -38,13 +38,6 @@
 
 	<spring:message code="user.email" var="emailHeader" />
 	<display:column property="email" title="${emailHeader}" sortable="true" />
-
-	<spring:message code="user.articles" var="articlesHeader"/>
-	<display:column title="${articlesHeader}">
-		<a href="article/list.do?userId=${row.id}">
-			<spring:message code="user.articlesWritten"/>
-		</a>
-	</display:column>
 	
 </display:table>
 

@@ -1,8 +1,8 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArticleService;
-import services.NewspaperService;
 import services.UserService;
 import domain.Article;
 
@@ -23,9 +22,6 @@ public class ArticleController extends AbstractController{
 	// Services --------------------------------
 	@Autowired
 	private ArticleService articleService;
-	
-	@Autowired
-	private NewspaperService newspaperService;
 	
 	@Autowired
 	private UserService userService;
@@ -64,10 +60,11 @@ public class ArticleController extends AbstractController{
 		Article article;
 		
 		article = this.articleService.findOne(articleId);
+		Collection<String> pictures = Arrays.asList(article.getPictures().split("\r\n"));
 		
 		res = new ModelAndView("article/display");
 		res.addObject("article",article);
-		res.addObject("requestURI","article/display.do");
+		res.addObject("pictures", pictures);
 		
 		return res;
 	}

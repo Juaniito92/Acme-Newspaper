@@ -44,28 +44,29 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		 
 		<security:intercept-url pattern="/terms/**" access="permitAll" />
-
-		<security:intercept-url pattern="/user/user/edit.do" access="permitAll" />
-		<security:intercept-url pattern="/user/list.do" access="permitAll" />
-		<security:intercept-url pattern="/user/register.do" access="permitAll" />
-		<security:intercept-url pattern="/user/display.do" access="permitAll" />
-		
-		<security:intercept-url pattern="/followUp/user/list.do" access="hasRole('USER')" />
 		
 		<security:intercept-url pattern="/administrator/display.do" access="hasRole('ADMIN')" />
+		
+		<!-- Article -->
+		<security:intercept-url pattern="/article/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/article/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/article/**" access="permitAll" />
+
+		<!-- FollowUp -->
+		<security:intercept-url pattern="/followUp/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/followUp/**" access="permitAll" />
 		
 		<!-- Newspaper -->
 		<security:intercept-url pattern="/newspaper/admin/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/newspaper/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/newspaper/**" access="permitAll" />
 		
-		<!-- Article -->
-		<security:intercept-url pattern="/article/admin/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/article/user/**" access="hasRole('USER')" />
-		<security:intercept-url pattern="/article/**" access="permitAll" />
-		<security:intercept-url pattern="/chirp/admin/delete.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/chirp/list.do" access="hasAnyRole('USER','ADMIN')" />
+		<!-- User -->
+		<security:intercept-url pattern="/user/user/edit.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/user/**" access="permitAll" />
 		<security:intercept-url pattern="/chirp/user/create.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/chirp/admin/delete.do" access="hasRole('ADMIN')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
