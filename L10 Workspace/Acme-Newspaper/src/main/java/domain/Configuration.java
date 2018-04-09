@@ -7,10 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -28,7 +25,7 @@ public class Configuration extends DomainEntity {
 	private Collection<String>	tabooWords;
 
 
-	@NotEmpty
+	@NotNull
 	@ElementCollection
 	public Collection<String> getTabooWords() {
 		return this.tabooWords;
