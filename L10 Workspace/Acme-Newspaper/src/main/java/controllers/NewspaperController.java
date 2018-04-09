@@ -36,9 +36,9 @@ public class NewspaperController extends AbstractController {
 		Collection<Newspaper> newspapers;
 
 		if (keyword != null) {
-			 newspapers = newspaperService.findAvalibleNewspapers();
-		} else {
 			newspapers = newspaperService.findPerKeyword(keyword);
+		} else {
+			newspapers = newspaperService.findAvalibleNewspapers();
 		}
 
 		ModelAndView result = new ModelAndView("newspaper/list");
