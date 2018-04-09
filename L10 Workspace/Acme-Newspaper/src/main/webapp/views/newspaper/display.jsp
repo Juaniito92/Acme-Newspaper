@@ -57,16 +57,18 @@
 		<a href="user/display.do?userId=${row.writer.id}"><jstl:out
 				value="${row.writer.name} ${row.writer.surname}" /></a>
 	</display:column>
-	
+
 	<spring:message var="summaryHeader" code="newspaper.summary" />
-	<display:column property="summary" title="${summaryHeader}"/>
-	
+	<display:column property="summary" title="${summaryHeader}" />
+
 </display:table>
 
-<jstl:if test="${newspaper.publicationDate gt date}">
-	<a href="article/user/create.do?newspaperId=${newspaper.id}"><spring:message
-			code="newspaper.createArticle" /></a>
-	<br />
-</jstl:if>
+<security:authorize access="hasRole('USER')">
+	<jstl:if test="${newspaper.publicationDate gt date}">
+		<a href="article/user/create.do?newspaperId=${newspaper.id}"><spring:message
+				code="newspaper.createArticle" /></a>
+		<br />
+	</jstl:if>
+</security:authorize>
 
 <acme:cancel url="newspaper/list.do" code="newspaper.back" />
