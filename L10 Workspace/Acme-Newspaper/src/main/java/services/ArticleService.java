@@ -145,7 +145,6 @@ public class ArticleService {
 		else	
 			res = this.create(newspaper.getId());
 		
-		res.setId(articleForm.getId());
 		res.setTitle(articleForm.getTitle());
 		res.setSummary(articleForm.getSummary());
 		res.setBody(articleForm.getBody());

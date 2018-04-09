@@ -19,6 +19,8 @@
 
 <form:form action="article/user/edit.do" modelAttribute="articleForm">
 
+	<form:hidden path="id"/>
+
 	<acme:textbox code="article.title" path="title"/>
 	<br/>
 	
