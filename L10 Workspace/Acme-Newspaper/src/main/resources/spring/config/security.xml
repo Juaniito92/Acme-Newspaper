@@ -61,6 +61,7 @@
 		<security:intercept-url pattern="/newspaper/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/newspaper/**" access="permitAll" />
 		
+		<security:intercept-url pattern="/chirp/list.do" access="hasAnyRole('USER','ADMIN')" />
 		<!-- User -->
 		<security:intercept-url pattern="/user/user/edit.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/user/**" access="permitAll" />
@@ -68,6 +69,8 @@
 		<!-- Configuration -->
 		<security:intercept-url pattern="/configuration/admin/**" access="hasRole('ADMIN')" />
 		
+		<security:intercept-url pattern="/chirp/user/create.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/chirp/admin/delete.do" access="hasRole('ADMIN')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
