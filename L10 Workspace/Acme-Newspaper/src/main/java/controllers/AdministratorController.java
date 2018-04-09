@@ -26,8 +26,9 @@ import domain.Newspaper;
 public class AdministratorController extends AbstractController {
 
 	@Autowired
-	private AdminService adminService;
-	
+	private AdminService	adminService;
+
+
 	// Constructors -----------------------------------------------------------
 
 	public AdministratorController() {
@@ -55,42 +56,40 @@ public class AdministratorController extends AbstractController {
 
 		return result;
 	}
-	
+
 	// display
-		// --------------------------------------------------------------
+	// --------------------------------------------------------------
 
-		@RequestMapping(value = "/display", method = RequestMethod.GET)
-		public ModelAndView list() {
-			ModelAndView result;
-			result = new ModelAndView("administrator/display");
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		result = new ModelAndView("administrator/display");
 
-			Object avgSqtrUser[];
-			Object avgSqtrArticlesByWriter[];
-			Object avgSqtrArticlesByNewspaper[];
-			Collection<Newspaper> newspapersMoreAverage;
-			Collection<Newspaper> newspapersFewerAverage;
-			Double ratioUserCreatedNewspaper;
-			Double ratioUserWrittenArticle;
-			
+		Object avgSqtrUser[];
+		Object avgSqtrArticlesByWriter[];
+		Object avgSqtrArticlesByNewspaper[];
+		Collection<Newspaper> newspapersMoreAverage;
+		Collection<Newspaper> newspapersFewerAverage;
+		Double ratioUserCreatedNewspaper;
+		Double ratioUserWrittenArticle;
 
-			avgSqtrUser = this.adminService.avgSqtrUser();
-			avgSqtrArticlesByWriter= this.adminService.avgSqtrArticlesByWriter();
-			avgSqtrArticlesByNewspaper = this.adminService.avgSqtrArticlesByNewspaper();
-			newspapersMoreAverage = this.adminService.newspapersMoreAverage();
-			newspapersFewerAverage = this.adminService.newspapersFewerAverage();
-			ratioUserCreatedNewspaper = this.adminService.ratioUserCreatedNewspaper();
-			ratioUserWrittenArticle = this.adminService.ratioUserWrittenArticle();
+		avgSqtrUser = this.adminService.avgSqtrUser();
+		avgSqtrArticlesByWriter = this.adminService.avgSqtrArticlesByWriter();
+		avgSqtrArticlesByNewspaper = this.adminService.avgSqtrArticlesByNewspaper();
+		newspapersMoreAverage = this.adminService.newspapersMoreAverage();
+		newspapersFewerAverage = this.adminService.newspapersFewerAverage();
+		ratioUserCreatedNewspaper = this.adminService.ratioUserCreatedNewspaper();
+		ratioUserWrittenArticle = this.adminService.ratioUserWrittenArticle();
 
-			result.addObject("avgSqtrUser", avgSqtrUser);
-			result.addObject("avgSqtrArticlesByWriter", avgSqtrArticlesByWriter);
-			result.addObject("avgSqtrArticlesByNewspaper", avgSqtrArticlesByNewspaper);
-			result.addObject("newspapersMoreAverage", newspapersMoreAverage);
-			result.addObject("newspapersMoreAverage", newspapersFewerAverage);
-			result.addObject("ratioUserCreatedNewspaper", ratioUserCreatedNewspaper);
-			result.addObject("ratioUserWrittenArticle", ratioUserWrittenArticle);
+		result.addObject("avgSqtrUser", avgSqtrUser);
+		result.addObject("avgSqtrArticlesByWriter", avgSqtrArticlesByWriter);
+		result.addObject("avgSqtrArticlesByNewspaper", avgSqtrArticlesByNewspaper);
+		result.addObject("newspapersMoreAverage", newspapersMoreAverage);
+		result.addObject("newspapersFewerAverage", newspapersFewerAverage);
+		result.addObject("ratioUserCreatedNewspaper", ratioUserCreatedNewspaper);
+		result.addObject("ratioUserWrittenArticle", ratioUserWrittenArticle);
 
-
-			return result;
-		}
+		return result;
+	}
 
 }

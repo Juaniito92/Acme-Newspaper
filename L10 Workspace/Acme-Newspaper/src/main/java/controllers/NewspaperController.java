@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,13 +35,11 @@ public class NewspaperController extends AbstractController {
 
 		Collection<Newspaper> newspapers;
 
-		// TODO: Implementent function when query is ready
-
-		// if (keyword != null) {
-		// newspapers = newspaperService.findAvalibleNewspapers();
-		// } else {
-		newspapers = newspaperService.findPerKeyword(keyword);
-		// }
+		if (keyword != null) {
+			 newspapers = newspaperService.findAvalibleNewspapers();
+		} else {
+			newspapers = newspaperService.findPerKeyword(keyword);
+		}
 
 		ModelAndView result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);
@@ -58,6 +57,7 @@ public class NewspaperController extends AbstractController {
 
 		ModelAndView result = new ModelAndView("newspaper/display");
 		result.addObject("newspaper", newspaper);
+		result.addObject("date", new Date());
 
 		return result;
 

@@ -35,8 +35,11 @@ public class NewspaperService {
 	@Autowired
 	private UserService userService;
 
-	// @Autowired
-	// private SubscriptionService subscriptionService;
+	@Autowired
+	private ArticleService articleService;
+
+	@Autowired
+	private SubscriptionService subscriptionService;
 
 	@Autowired
 	private Validator validator;
@@ -106,8 +109,11 @@ public class NewspaperService {
 		Assert.isTrue(this.adminService.findByPrincipal() != null);
 
 		newspaper.getPublisher().getNewspapers().remove(newspaper);
-		// for (final Subscription subscription : newspaper.getSubscriptions())
-		// this.subscriptionService.delete(subscription);
+		for (Article article : newspaper.getArticles()) {
+			articleService.delete(article);
+		}
+		for (final Subscription subscription : newspaper.getSubscriptions())
+			this.subscriptionService.delete(subscription);
 
 		this.newspaperRepository.delete(newspaper);
 	}
@@ -165,15 +171,17 @@ public class NewspaperService {
 		return newspaper;
 	}
 
-	// TODO: Implementent function when query is ready
+	public Collection<Newspaper> findAvalibleNewspapers() {
 
-	// public Collection<Newspaper> findAvalibleNewspapers() {
-	//
-	// Collection<Newspaper> result = newspaperRepository
-	// .findAvalibleNewspapers();
-	//
-	// return result;
-	// }
+		Collection<Newspaper> newspapers1 = newspaperRepository
+				.findPastNewspapers();
+		Collection<Newspaper> newspapers2 = newspaperRepository
+				.findPastNewspapersWithNonFinalArticle();
+
+		newspapers1.removeAll(newspapers2);
+
+		return newspapers1;
+	}
 
 	public Collection<Newspaper> findPerKeyword(final String keyword) {
 
@@ -181,11 +189,9 @@ public class NewspaperService {
 		newspapers = new ArrayList<Newspaper>();
 		String aux = "Newspaper";
 
-		// TODO: Implementent function when query is ready
-		
-		// if (keyword == null)
-		//		newspapers = this.findAvalibleNewspapers();
-		if (keyword != null) {
+		if (keyword == null) {
+			newspapers = this.findAvalibleNewspapers();
+		} else {
 			aux = keyword;
 			newspapers = this.newspaperRepository.findPerKeyword(aux);
 		}
@@ -206,6 +212,14 @@ public class NewspaperService {
 		User principal = this.userService.findByPrincipal();
 		Collection<Newspaper> newspapers = newspaperRepository
 				.findByPublisherId(principal.getId());
+
+		return newspapers;
+	}
+
+	public Collection<Newspaper> findNonPublished() {
+
+		Collection<Newspaper> newspapers = newspaperRepository
+				.findNonPublished();
 
 		return newspapers;
 	}
