@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -10,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ChirpRepository;
+import domain.Article;
 import domain.Chirp;
+import domain.Configuration;
 import domain.User;
 
 @Service
@@ -26,6 +29,9 @@ public class ChirpService {
 
 	@Autowired
 	private UserService		userService;
+	
+	@Autowired
+	private ConfigurationService configurationService;
 
 
 	// Constructors
@@ -104,6 +110,29 @@ public class ChirpService {
 
 	public Collection<Chirp> findChirpsByUser(final User u) {
 		return this.chirpRepository.findChirpsByUserId(u.getId());
+	}
+	
+	public Collection<Chirp> chirpContainTabooWord(){
+		Collection<Chirp> res = new ArrayList<>();
+		Configuration configuration;
+		Integer idMaxConfiguration;
+		Collection<String> tabooWords = new ArrayList<>();
+		Collection<Chirp> allChirp = new ArrayList<>();
+		
+		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
+		configuration = this.configurationService.findOne(idMaxConfiguration);
+		tabooWords = configuration.getTabooWords();
+		allChirp = this.findAll();
+		
+		for(Chirp chirp: allChirp){
+			for(String tabooWord: tabooWords){
+				String lowTabooWord = tabooWord.toLowerCase();
+				if(chirp.getTitle().toLowerCase().contains(lowTabooWord) || chirp.getDescription().toLowerCase().contains(lowTabooWord)){
+					res.add(chirp);
+				}
+			}
+		}
+		return res;
 	}
 
 }

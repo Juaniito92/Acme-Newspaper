@@ -58,7 +58,10 @@
 <br />
 
 <security:authorize access="hasRole('USER')">
-	<a href="followUp/user/list.do?articleId=${article.id}"> <spring:message
-			code="article.followUps" /></a>
+	<security:authentication property="principal" var="loggedactor"/>
+	<jstl:if test="${article.isFinal == true and article.newspaper.publicationDate lt date and article.writer.userAccount.id eq loggedactor.id}">
+		<a href="followUp/user/create.do?articleId=${article.id}"> <spring:message
+				code="article.createFollowUp" /></a>
+	</jstl:if>
 </security:authorize>
 

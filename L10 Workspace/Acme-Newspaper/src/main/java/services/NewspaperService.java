@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import repositories.NewspaperRepository;
 import domain.Article;
+import domain.Configuration;
 import domain.Newspaper;
 import domain.Subscription;
 import domain.User;
@@ -43,6 +44,9 @@ public class NewspaperService {
 
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private ConfigurationService configurationService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -222,6 +226,29 @@ public class NewspaperService {
 				.findNonPublished();
 
 		return newspapers;
+	}
+	
+	public Collection<Newspaper> newspaperContainTabooWord(){
+		Collection<Newspaper> res = new ArrayList<>();
+		Configuration configuration;
+		Integer idMaxConfiguration;
+		Collection<String> tabooWords = new ArrayList<>();
+		Collection<Newspaper> allNewspaper = new ArrayList<>();
+		
+		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
+		configuration = this.configurationService.findOne(idMaxConfiguration);
+		tabooWords = configuration.getTabooWords();
+		allNewspaper = this.findAll();
+		
+		for(Newspaper newspaper: allNewspaper){
+			for(String tabooWord: tabooWords){
+				String lowTabooWord = tabooWord.toLowerCase();
+				if(newspaper.getTitle().toLowerCase().contains(lowTabooWord) || newspaper.getDescription().toLowerCase().contains(lowTabooWord)){
+					res.add(newspaper);
+				}
+			}
+		}
+		return res;
 	}
 
 }

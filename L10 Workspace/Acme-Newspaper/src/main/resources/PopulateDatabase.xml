@@ -138,11 +138,6 @@
 				<ref bean="article8" />
 			</list>
 		</property>
-		<property name="followUps">
-			<list>
-				<ref bean="followUp1" />
-			</list>
-		</property>
 		<property name="followers">
 			<list>
 				<ref bean="user2" />
@@ -185,11 +180,6 @@
 				<ref bean="article9" />
 			</list>
 		</property>
-		<property name="followUps">
-			<list>
-				<ref bean="followUp2" />
-			</list>
-		</property>
 		<property name="followers">
 			<list>
 				<ref bean="user1" />
@@ -228,12 +218,6 @@
 			<list>
 				<ref bean="article3" />
 				<ref bean="article7" />
-			</list>
-		</property>
-		<property name="followUps">
-			<list>
-				<ref bean="followUp3" />
-				<ref bean="followUp4" />
 			</list>
 		</property>
 		<property name="followers">
@@ -343,71 +327,76 @@
 	<!-- Newspaper -->
 	<!-- Newspaper 1 -->
 	<bean id="newspaper1" class="domain.Newspaper">
-		<property name="title" value="Newspaper title 1" />
+		<property name="title" value="Newspaper title 1 viagra" />
 		<property name="description" value="Newspaper description 1" />
 		<property name="publicationDate" value="01/04/2018" />
-		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="picture"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="false" />
 		<property name="publisher" ref="user1" />
 		<property name="articles">
 			<list>
-				<ref bean="article1"/>
+				<ref bean="article1" />
 			</list>
 		</property>
 		<property name="subscriptions">
 			<list>
-				<ref bean="subscription1"/>
+				<ref bean="subscription1" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Newspaper 2 -->
 	<bean id="newspaper2" class="domain.Newspaper">
 		<property name="title" value="Newspaper title 2" />
 		<property name="description" value="Newspaper description 2" />
 		<property name="publicationDate" value="01/04/2018" />
-		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="picture"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="true" />
 		<property name="publisher" ref="user2" />
 		<property name="articles">
 			<list>
-				<ref bean="article2"/>
+				<ref bean="article2" />
 			</list>
 		</property>
 		<property name="subscriptions">
 			<list>
-				<ref bean="subscription2"/>
+				<ref bean="subscription2" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Newspaper 3 -->
 	<bean id="newspaper3" class="domain.Newspaper">
 		<property name="title" value="Newspaper title 3" />
 		<property name="description" value="Newspaper description 3" />
 		<property name="publicationDate" value="01/10/2018" />
-		<property name="picture" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="picture"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="false" />
 		<property name="publisher" ref="user3" />
 		<property name="articles">
 			<list>
-				<ref bean="article3"/>
+				<ref bean="article3" />
 			</list>
 		</property>
 		<property name="subscriptions">
 			<list>
-				<ref bean="subscription3"/>
+				<ref bean="subscription3" />
 			</list>
 		</property>
 	</bean>
-	
-		<!-- Newspaper 4 -->
+
+	<!-- Newspaper 4 -->
 	<bean id="newspaper4" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 1" />
 		<property name="publicationDate" value="05/12/2017" />
-		<property name="description" value="En la edición de hoy, cómo cocinar mejillones al vapor, con el archiconocido chef Martín Berasategui. En noticias regionales, un caniche salva a una pareja de morir asfixiada." />
+		<property name="description"
+			value="En la edición de hoy, cómo cocinar mejillones al vapor, con el archiconocido chef Martín Berasategui. En noticias regionales, un caniche salva a una pareja de morir asfixiada." />
 		<property name="isPrivate" value="false" />
-		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="picture"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="publisher" ref="user1" />
 		<property name="subscriptions">
 			<list>
@@ -415,19 +404,21 @@
 		</property>
 		<property name="articles">
 			<list>
-				<ref bean="article4"/>
-				<ref bean="article5"/>
+				<ref bean="article4" />
+				<ref bean="article5" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Newspaper 5 -->
 	<bean id="newspaper5" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 2" />
 		<property name="publicationDate" value="10/12/2017" />
-		<property name="description" value="En el número de hoy, cómo hacer tortilla francesa, con el archiconocido chef Karlos Arguiñano. En noticias regionales, terremoto inmenso causado por la caída de una grúa del Ayuntamiento." />
+		<property name="description"
+			value="En el número de hoy, cómo hacer tortilla francesa, con el archiconocido chef Karlos Arguiñano. En noticias regionales, terremoto inmenso causado por la caída de una grúa del Ayuntamiento." />
 		<property name="isPrivate" value="false" />
-		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="picture"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="publisher" ref="user3" />
 		<property name="subscriptions">
 			<list>
@@ -435,19 +426,21 @@
 		</property>
 		<property name="articles">
 			<list>
-				<ref bean="article6"/>
-				<ref bean="article7"/>
+				<ref bean="article6" />
+				<ref bean="article7" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Newspaper 6 -->
 	<bean id="newspaper6" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 3" />
 		<property name="publicationDate" value="19/12/2017" />
-		<property name="description" value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
+		<property name="description"
+			value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
 		<property name="isPrivate" value="false" />
-		<property name="picture" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="picture"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="publisher" ref="user3" />
 		<property name="subscriptions">
 			<list>
@@ -455,39 +448,40 @@
 		</property>
 		<property name="articles">
 			<list>
-				<ref bean="article8"/>
-				<ref bean="article9"/>
+				<ref bean="article8" />
+				<ref bean="article9" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Article -->
 	<!-- Article 1 -->
 	<bean id="article1" class="domain.Article">
-		<property name="title" value="Article title 1" />
+		<property name="title" value="Article title 1 Sex" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 1" />
 		<property name="body" value="Article body 1" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="pictures"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="true" />
 		<property name="newspaper" ref="newspaper1" />
 		<property name="writer" ref="user1" />
 		<property name="followUps">
 			<list>
-				<ref bean="followUp1"/>
-				<ref bean="followUp2"/>
-				<ref bean="followUp3"/>
+				<ref bean="followUp1" />
+				<ref bean="followUp2" />
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Article 2 -->
 	<bean id="article2" class="domain.Article">
 		<property name="title" value="Article title 2" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 2" />
 		<property name="body" value="Article body 2" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="pictures"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper2" />
 		<property name="writer" ref="user2" />
@@ -496,14 +490,15 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Article 3 -->
 	<bean id="article3" class="domain.Article">
 		<property name="title" value="Article title 3" />
 		<property name="publicationMoment" value="01/03/2018" />
 		<property name="summary" value="Article summary 3" />
 		<property name="body" value="Article body 3" />
-		<property name="pictures" value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
+		<property name="pictures"
+			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isFinal" value="false" />
 		<property name="newspaper" ref="newspaper3" />
 		<property name="writer" ref="user3" />
@@ -512,106 +507,119 @@
 			</list>
 		</property>
 	</bean>
-	
-		<!-- Article 4 -->
+
+	<!-- Article 4 -->
 	<bean id="article4" class="domain.Article">
 		<property name="title" value="Berasategui" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Martín Berasategui: mejillones al vapor" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user1" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper4"/>
+		<property name="newspaper" ref="newspaper4" />
 		<property name="followUps">
 			<list>
 			</list>
 		</property>
-		
+
 	</bean>
-	
+
 	<!-- Article 5 -->
 	<bean id="article5" class="domain.Article">
 		<property name="title" value="Caniche" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Los caniches son majísimos" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper4"/>
+		<property name="newspaper" ref="newspaper4" />
 		<property name="followUps">
 			<list>
 			</list>
 		</property>
-		
+
 	</bean>
-	
+
 	<!-- Article 6 -->
 	<bean id="article6" class="domain.Article">
 		<property name="title" value="Arguiñano" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Tortillitas francesas" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper5"/>
+		<property name="newspaper" ref="newspaper5" />
 		<property name="followUps">
 			<list>
 			</list>
 		</property>
-		
+
 	</bean>
-	
+
 	<!-- Article 7 -->
 	<bean id="article7" class="domain.Article">
 		<property name="title" value="Terremoto" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Movida mazo de chunga" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user3" />
 		<property name="isFinal" value="false" />
-		<property name="newspaper" ref="newspaper5"/>
+		<property name="newspaper" ref="newspaper5" />
 		<property name="followUps">
-			<ref bean="followUp4"/>
+			<list>
+			</list>
 		</property>
-		
+
 	</bean>
-	
+
 	<!-- Article 8 -->
 	<bean id="article8" class="domain.Article">
 		<property name="title" value="Bebé" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="No podía decir mamá, no" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user1" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper6"/>
+		<property name="newspaper" ref="newspaper6" />
 		<property name="followUps">
 			<list>
 			</list>
 		</property>
-		
+
 	</bean>
-	
+
 	<!-- Article 9 -->
 	<bean id="article9" class="domain.Article">
 		<property name="title" value="Coche" />
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Elon Musk ahí decepcionando" />
-		<property name="body" value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
-		<property name="pictures" value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="body"
+			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
+		<property name="pictures"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
 		<property name="writer" ref="user2" />
 		<property name="isFinal" value="true" />
-		<property name="newspaper" ref="newspaper6"/>
+		<property name="newspaper" ref="newspaper6" />
 		<property name="followUps">
 			<list>
 			</list>
 		</property>
-		
+
 	</bean>
 
 	<!-- Chirp -->
@@ -619,7 +627,7 @@
 	<bean id="chirp1" class="domain.Chirp">
 		<property name="publicationMoment" value="05/12/2016" />
 		<property name="title" value="Chirp 1" />
-		<property name="description" value="Me gusta el Chirp 1" />
+		<property name="description" value="Me gusta el Chirp 1 cialis" />
 		<property name="user" ref="user2" />
 
 	</bean>
@@ -659,49 +667,33 @@
 		<property name="publicationMoment" value="05/12/2017" />
 		<property name="summary" value="Me gusta el sumary 1" />
 		<property name="text" value="Me gusta" />
-		<property name="pictures" value="http://www.google.com" />
+		<property name="pictures"
+			value="https://dugrp0jfcvjuv.cloudfront.net/wp-content/uploads/2016/04/What-to-Include-in-Handwritten-Sales-Follow-up-Letters.png" />
 		<property name="article" ref="article1" />
-		<property name="user" ref="user1" />
-
 	</bean>
 
 	<!-- FollowUp 2 -->
 	<bean id="followUp2" class="domain.FollowUp">
 		<property name="title" value="Follow Up 2" />
 		<property name="publicationMoment" value="05/08/2017" />
-		<property name="summary" value="Me gusta el sumary 1" />
+		<property name="summary" value="Me gusta el sumary 2" />
 		<property name="text" value="Me gusta" />
-		<property name="pictures" value="http://www.google.com" />
+		<property name="pictures"
+			value="https://dugrp0jfcvjuv.cloudfront.net/wp-content/uploads/2016/04/What-to-Include-in-Handwritten-Sales-Follow-up-Letters.png" />
 		<property name="article" ref="article1" />
-		<property name="user" ref="user2" />
-
 	</bean>
 
-	<!-- FollowUp 3 -->
-	<bean id="followUp3" class="domain.FollowUp">
-		<property name="title" value="Follow Up 3" />
-		<property name="publicationMoment" value="05/12/2017" />
-		<property name="summary" value="Me gusta el sumary 1" />
-		<property name="text" value="Me gusta" />
-		<property name="pictures" value="http://www.google.com" />
-		<property name="article" ref="article1" />
-		<property name="user" ref="user3" />
+	<!-- Configuration -->
+	<bean id="configuration" class="domain.Configuration">
+		<property name="tabooWords">
+		<list>
+			<value>sex</value>
+			<value>sexo</value>
+			<value>viagra</value>
+			<value>cialis</value>
+		</list>
+	</property>
 
 	</bean>
-	
-	<!-- FollowUp 4 -->
-	<bean id="followUp4" class="domain.FollowUp">
-		<property name="title" value="Follow Up 4" />
-		<property name="publicationMoment" value="05/12/2017" />
-		<property name="summary" value="Me gusta el follow up 4" />
-		<property name="text" value="El terremoto ha tenido dos réplicas" />
-		<property name="pictures" value="http://www.google.com" />
-		<property name="article" ref="article7" />
-		<property name="user" ref="user3" />
-
-	</bean>
-
-
-
 
 </beans>

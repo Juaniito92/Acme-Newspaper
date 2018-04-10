@@ -23,13 +23,28 @@
 <!-- displaying grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="user" requestURI="${requestURI }" id="row">
+	name="users" requestURI="${requestURI }" id="row">
+
+	<security:authorize access="hasRole('USER')">
+		<jstl:if test="${requestURI != 'user/user/list-followers.do'}">
+			<display:column>
+				<jstl:choose>
+					<jstl:when test="${principal.followed.contains(row)}">
+						<a href="user/user/unfollow.do?userId=${row.id}"><spring:message code="user.unfollow"/></a>
+					</jstl:when>
+					<jstl:otherwise>
+						<a href="user/user/follow.do?userId=${row.id}"><spring:message code="user.follow"/></a>
+					</jstl:otherwise>
+				</jstl:choose>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
 
 	<!-- Attributes -->
 
 	<display:column title="${articlesHeader}">
-		<a href="user/display.do?userId=${row.id}">
-			<spring:message code="user.display"/>
+		<a href="user/display.do?userId=${row.id}"> <spring:message
+				code="user.display" />
 		</a>
 	</display:column>
 
@@ -38,10 +53,12 @@
 
 	<spring:message code="user.email" var="emailHeader" />
 	<display:column property="email" title="${emailHeader}" sortable="true" />
-	
+
 </display:table>
 
-<a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>
+<spring:message var="backValue" code="newspaper.back" />
+<input type="button" name="back" value="${backValue}"
+	onclick="javascript: relativeRedir('welcome/index.do');" />
 
 
 

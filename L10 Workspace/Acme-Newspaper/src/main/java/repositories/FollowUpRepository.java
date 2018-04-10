@@ -13,5 +13,8 @@ public interface FollowUpRepository extends JpaRepository<FollowUp, Integer> {
 
 	@Query("select f from FollowUp f where f.article.id=?1")
 	Collection<FollowUp> findFollowUpsByArticle(int articleId);
+	
+	@Query("select f from FollowUp f where f.article.writer.id = ?1")
+	Collection<FollowUp> findFollowUpsByUserId(int userId);
 
 }

@@ -1,4 +1,3 @@
-
 package domain;
 
 import java.util.Collection;
@@ -21,16 +20,13 @@ public class User extends Actor {
 		super();
 	}
 
-
 	// Relationships
 
-	private Collection<User>		followers;
-	private Collection<User>		followed;
-	private Collection<Chirp>		chirps;
-	private Collection<Newspaper>	newspapers;
-	private Collection<Article>		articles;
-	private Collection<FollowUp>	followUps;
-
+	private Collection<User> followers;
+	private Collection<User> followed;
+	private Collection<Chirp> chirps;
+	private Collection<Newspaper> newspapers;
+	private Collection<Article> articles;
 
 	@Valid
 	@NotNull
@@ -85,17 +81,6 @@ public class User extends Actor {
 
 	public void setArticles(final Collection<Article> articles) {
 		this.articles = articles;
-	}
-
-	@Valid
-	@NotNull
-	@OneToMany(mappedBy = "user")
-	public Collection<FollowUp> getFollowUps() {
-		return this.followUps;
-	}
-
-	public void setFollowUps(final Collection<FollowUp> followUps) {
-		this.followUps = followUps;
 	}
 
 }

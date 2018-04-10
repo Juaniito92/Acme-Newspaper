@@ -12,8 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.FollowUpRepository;
+import domain.Article;
 import domain.FollowUp;
-import domain.Newspaper;
 import domain.User;
 import forms.FollowUpForm;
 
@@ -24,6 +24,9 @@ public class FollowUpService {
 	// Managed repository
 	@Autowired
 	private FollowUpRepository followUpRepository;
+
+	@Autowired
+	private ArticleService articleService;
 
 	@Autowired
 	private AdminService adminService;
@@ -41,13 +44,20 @@ public class FollowUpService {
 
 	// Simple CRUD methods
 
-	public FollowUp create(final User user) {
+	public FollowUp create(int articleId) {
+
+		Article article = articleService.findOne(articleId);
+
+		Assert.isTrue(article.getWriter().equals(userService.findByPrincipal()));
+		Assert.isTrue(article.getIsFinal() == true);
+		Assert.isTrue(article.getNewspaper().getPublicationDate().before(new Date()));
+
 		FollowUp res = new FollowUp();
 
-		Date moment = new Date(System.currentTimeMillis() - 1);
+		Date moment = new Date(System.currentTimeMillis() - 1000);
 
-		res.setUser(user);
 		res.setPublicationMoment(moment);
+		res.setArticle(article);
 
 		return res;
 
@@ -71,12 +81,19 @@ public class FollowUpService {
 	}
 
 	public FollowUp save(FollowUp followUp) {
+
 		Assert.notNull(followUp);
-		this.checkPrincipal(followUp);
+		Assert.isTrue(followUp.getArticle().getWriter().equals(userService.findByPrincipal()));
+		Assert.isTrue(followUp.getArticle().getIsFinal() == true);
+		Assert.isTrue(followUp.getArticle().getNewspaper().getPublicationDate().before(new Date()));
+
+		followUp.setPublicationMoment(new Date(
+				System.currentTimeMillis() - 1000));
 
 		FollowUp res;
-
 		res = this.followUpRepository.save(followUp);
+		
+		res.getArticle().getFollowUps().add(res);
 
 		Assert.notNull(res);
 		return res;
@@ -84,8 +101,8 @@ public class FollowUpService {
 	}
 
 	public void delete(FollowUp followUp) {
-		this.adminService.checkAuthority();
 
+		this.adminService.checkAuthority();
 		Assert.notNull(followUp);
 		Assert.isTrue(followUp.getId() != 0);
 		Assert.isTrue(this.followUpRepository.exists(followUp.getId()));
@@ -96,46 +113,72 @@ public class FollowUpService {
 	// Other busines methods
 
 	public Collection<FollowUp> findFollowUpsByArticle(int articleId) {
+		
 		Collection<FollowUp> res = this.followUpRepository
 				.findFollowUpsByArticle(articleId);
 		return res;
 	}
-
-	public void checkPrincipal(FollowUp followUp) {
+	
+	public Collection<FollowUp> findFollowUpsByUserId(int userId) {
+		
+		Collection<FollowUp> res = this.followUpRepository
+				.findFollowUpsByUserId(userId);
+		return res;
+	}
+	
+	public Collection<FollowUp> findByPrincipal() {
+	
 		User principal = userService.findByPrincipal();
-		Assert.isTrue(principal.equals(followUp.getUser()));
+		Collection<FollowUp> res = this.followUpRepository
+				.findFollowUpsByUserId(principal.getId());
+		return res;
 	}
 
 	public void flush() {
 		this.followUpRepository.flush();
 	}
 
-	public FollowUpForm construct(FollowUp followUp) {
-		FollowUpForm res = new FollowUpForm();
+	public FollowUpForm construct(final FollowUp followUp) {
 
-		res.setTitle(followUp.getTitle());
-		res.setText(followUp.getText());
-		res.setPictures(followUp.getPictures());
-		res.setSummary(followUp.getSummary());
+		Assert.notNull(followUp);
 
-		return res;
+		FollowUpForm followUpForm;
+
+		followUpForm = new FollowUpForm();
+
+		followUpForm.setId(followUp.getId());
+		followUpForm.setArticleId(followUp.getArticle().getId());
+		followUpForm.setTitle(followUp.getTitle());
+		followUpForm.setPublicationMoment(followUp.getPublicationMoment());
+		followUpForm.setSummary(followUp.getSummary());
+		followUpForm.setText(followUp.getText());
+		followUpForm.setPictures(followUp.getPictures());
+
+		return followUpForm;
 	}
 
-	public FollowUp reconstruct(FollowUpForm followUpForm, BindingResult binding) {
+	public FollowUp reconstruct(final FollowUpForm followUpForm,
+			final BindingResult binding) {
+
 		Assert.notNull(followUpForm);
-		FollowUp res = new FollowUp();
 
-		Date moment = new Date(System.currentTimeMillis() - 1);
+		FollowUp followUp;
 
-		res.setTitle(followUpForm.getTitle());
-		res.setPublicationMoment(moment);
-		res.setText(followUpForm.getText());
-		res.setPictures(followUpForm.getPictures());
-		res.setSummary(followUpForm.getSummary());
+		if (followUpForm.getId() != 0)
+			followUp = this.findOne(followUpForm.getId());
+		else
+			followUp = this.create(followUpForm.getArticleId());
+
+		followUp.setTitle(followUpForm.getTitle());
+		followUp.setPublicationMoment(followUpForm.getPublicationMoment());
+		followUp.setSummary(followUpForm.getSummary());
+		followUp.setText(followUpForm.getText());
+		followUp.setPictures(followUpForm.getPictures());
 
 		if (binding != null)
-			validator.validate(res, binding);
+			this.validator.validate(followUp, binding);
 
-		return res;
+		return followUp;
 	}
+
 }
