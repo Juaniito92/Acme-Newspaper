@@ -1,6 +1,8 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.transaction.Transactional;
 
@@ -151,11 +153,50 @@ public class AdminService {
 		return res;
 	}
 
-	// C-6
+	// C-7
 	public Double ratioUserWrittenArticle() {
 		Double res;
 		res = this.adminRepository.ratioUserWrittenArticle();
 		return res;
 	}
+
+	// B-1
+	public Double avgFollowupsPerArticle() {
+		Double res;
+		res = this.adminRepository.avgFollowupsPerArticle();
+		return res;
+	}
+
+	// B-2
+	public Double avgNumberOfFollowUpsPerArticleAfter1Week() {
+		Double res;
+		long oneWeek = TimeUnit.DAYS.toMillis(7);
+		Date f = new Date(System.currentTimeMillis() - oneWeek);
+		res = this.adminRepository.avgNumberOfFollowUpsPerArticleAfter1Week(f);
+		return res;
+	}
+
+	// B-3
+	public Double avgNumberOfFollowUpsPerArticleAfter2Week() {
+		Double res;
+		long twoWeeks = TimeUnit.DAYS.toMillis(7);
+		Date f = new Date(System.currentTimeMillis() - twoWeeks);
+		res = this.adminRepository.avgNumberOfFollowUpsPerArticleAfter2Week(f);
+		return res;
+	}
+
+	// B-4
+	public Object[] avgStddevNumberOfChirpPerUser() {
+		Object[] res;
+		res = this.adminRepository.avgStddevNumberOfChirpPerUser();
+		return res;
+	}
+	
+	//B-5
+		public Double ratioUsersMorePostedChirpsOfAveragePerUser() {
+			Double res;
+			res = this.adminRepository.ratioUsersMorePostedChirpsOfAveragePerUser();
+			return res;
+		}
 
 }
