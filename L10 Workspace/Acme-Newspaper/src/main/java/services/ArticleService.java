@@ -56,9 +56,18 @@ public class ArticleService {
 
 	// Simple CRUD methods
 	public Article create(final int newspaperId) {
+		
+		Assert.notNull(userService.findByPrincipal());
+		
 		Article res = new Article();
 		Newspaper newspaper = this.newspaperService.findOne(newspaperId);
+		
+		Assert.notNull(newspaper);
+		
 		Date actual = new Date(System.currentTimeMillis()-1);
+		
+		Assert.isTrue(newspaper.getPublicationDate().after(actual));
+		
 		Collection<FollowUp> followUps = new ArrayList<FollowUp>();
 		User user = this.userService.findByPrincipal();
 		
@@ -71,7 +80,12 @@ public class ArticleService {
 	}
 
 	public Article save(final Article article) {
+		
 		Assert.notNull(article);
+		if(article.getId() != 0){
+			Assert.isTrue(article.getIsFinal() == false);
+		}
+		
 		this.checkPrincipal(article);
 		Article res;
 
@@ -80,8 +94,6 @@ public class ArticleService {
 		Assert.notNull(res);
 		return res;
 	}
-
-	
 
 	public Collection<Article> findAll() {
 		Collection<Article> res = new ArrayList<Article>();
@@ -97,8 +109,22 @@ public class ArticleService {
 		Article res;
 
 		res = this.articleRepository.findOne(articleId);
-
+		
 		Assert.notNull(res);
+		
+		return res;
+	}
+	
+	public Article findOneToEdit(final int articleId) {
+		Assert.isTrue(articleId != 0);
+		Article res;
+
+		res = this.articleRepository.findOne(articleId);
+
+		checkPrincipal(res);
+		Assert.isTrue(res.getIsFinal() == false);
+		Assert.notNull(res);
+		
 		return res;
 	}
 
@@ -117,6 +143,10 @@ public class ArticleService {
 	}
 	
 	// Other busines methods
+	
+	public void flush() {
+		this.articleRepository.flush();
+	}
 	
 	private void checkPrincipal(Article article) {
 		User principal = this.userService.findByPrincipal();

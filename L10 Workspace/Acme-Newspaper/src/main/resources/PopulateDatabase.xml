@@ -129,6 +129,7 @@
 			<list>
 				<ref bean="newspaper1" />
 				<ref bean="newspaper4" />
+				<ref bean="newspaper7" />
 			</list>
 		</property>
 		<property name="articles">
@@ -450,6 +451,26 @@
 			<list>
 				<ref bean="article8" />
 				<ref bean="article9" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Newspaper 7 -->
+	<bean id="newspaper7" class="domain.Newspaper">
+		<property name="title" value="La Gaceta de Acme, num 3" />
+		<property name="publicationDate" value="19/12/2018" />
+		<property name="description"
+			value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
+		<property name="isPrivate" value="false" />
+		<property name="picture"
+			value="https://www.elconfidencialdigital.com/Periodicos_ECDIMA20161216_0006_21.jpg" />
+		<property name="publisher" ref="user1" />
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
 			</list>
 		</property>
 	</bean>
