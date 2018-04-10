@@ -1,6 +1,8 @@
 
 package controllers.user;
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,20 @@ public class ChirpUserController extends AbstractController {
 
 		chirp = this.chirpService.create();
 		result = this.createEditModelAndView(chirp);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/list-timeline", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Chirp> chirps;
+
+		chirps = this.chirpService.findChirpsByFollowedFromUser(this.userService.findByPrincipal());
+
+		result = new ModelAndView("chirp/list");
+		result.addObject("chirps", chirps);
+		result.addObject("requestURI", "chirp/list.do");
 
 		return result;
 	}
