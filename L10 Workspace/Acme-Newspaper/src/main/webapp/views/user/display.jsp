@@ -54,5 +54,16 @@
 
 </display:table>
 
+<display:table name="${user.chirps}" id="row"
+	requestURI="user/display.do" pagesize="5" class="displaytag">
+
+	<spring:message var="titleHeader" code="chirp.title" />
+	<display:column property="description" title="${titleHeader}" />
+
+	<spring:message var="summaryHeader" code="chirp.description" />
+	<display:column property="description" title="${summaryHeader}" />
+
+</display:table>
+
 <acme:cancel code="user.back" url="user/list.do"/>
 
