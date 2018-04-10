@@ -13,5 +13,8 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
 	@Query("select a from Article a where(a.title LIKE %?1% or a.summary LIKE %?1% or a.body LIKE %?1%) and a.publicationMoment <= current_date")
 	Collection<Article> findPerKeyword(String aux);
+	
+	@Query("select a from Article a where a.writer.id = ?1")
+	Collection<Article> findByWriterId(int writerId);
 
 }

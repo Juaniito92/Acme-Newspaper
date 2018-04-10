@@ -12,10 +12,10 @@ import domain.Chirp;
 @Repository
 public interface ChirpRepository extends JpaRepository<Chirp, Integer> {
 
-	@Query("select c from User u join u.followed v join v.chirps c where u.userAccount.id=?1")
-	Collection<Chirp> findChirpsByFollowedFromUserAccountId(int uacId);
+	@Query("select c from User u join u.followed v join v.chirps c where u.id=?1")
+	Collection<Chirp> findChirpsByFollowedFromUserId(int uacId);
 
 	@Query("select c from Chirp c where c.user.id=?1")
-	Collection<Chirp> findChirpsByUserAccountId(int uacId);
+	Collection<Chirp> findChirpsByUserId(int uacId);
 
 }

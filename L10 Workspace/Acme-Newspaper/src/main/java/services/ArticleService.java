@@ -12,11 +12,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
-import repositories.AdminRepository;
 import repositories.ArticleRepository;
-import repositories.FollowUpRepository;
-import repositories.NewspaperRepository;
-import repositories.UserRepository;
 import domain.Article;
 import domain.FollowUp;
 import domain.Newspaper;
@@ -149,7 +145,6 @@ public class ArticleService {
 		else	
 			res = this.create(newspaper.getId());
 		
-		res.setId(articleForm.getId());
 		res.setTitle(articleForm.getTitle());
 		res.setSummary(articleForm.getSummary());
 		res.setBody(articleForm.getBody());
@@ -172,6 +167,21 @@ public class ArticleService {
 			aux = keyword;
 			articles = this.articleRepository.findPerKeyword(aux);
 		}
+		return articles;
+	}
+	
+	public Collection<Article> findByWriterId(int writerId) {
+		
+		Collection<Article> articles = articleRepository.findByWriterId(writerId);
+		
+		return articles;
+	}
+	
+	public Collection<Article> findByPrincipal(){
+		
+		User principal = userService.findByPrincipal();
+		Collection<Article> articles = findByWriterId(principal.getId());
+		
 		return articles;
 	}
 	
