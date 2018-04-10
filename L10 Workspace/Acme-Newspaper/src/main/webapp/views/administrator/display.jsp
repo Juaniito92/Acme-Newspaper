@@ -143,5 +143,92 @@
 	</tr>
 </table>
 
+<spring:message code="administrator.avgFollowupsPerArticleLabel" />
+<jstl:out value="${avgFollowupsPerArticleLabel}"></jstl:out>
+<table class="displaytag"  name="avgFollowupsPerArticle">
+	<tr>
+		<th>
+			<spring:message code="administrator.average" var="averageHeader" />
+			<jstl:out value="${averageHeader}"></jstl:out>
+		</th>
+	</tr>
+	<tr>
+	
+		<td>
+			<jstl:out value="${avgFollowupsPerArticle}"></jstl:out>
+		</td>
+	</tr>
+</table>
+
+<spring:message code="administrator.avgNumberOfFollowUpsPerArticleAfter1WeekLabel" />
+<jstl:out value="${avgNumberOfFollowUpsPerArticleAfter1WeekLabel}"></jstl:out>
+<table class="displaytag"  name="avgNumberOfFollowUpsPerArticleAfter1Week">
+	<tr>
+		<th>
+			<spring:message code="administrator.average" var="averageHeader" />
+			<jstl:out value="${averageHeader}"></jstl:out>
+		</th>
+	</tr>
+	<tr>
+	
+		<td>
+			<jstl:out value="${avgNumberOfFollowUpsPerArticleAfter1Week}"></jstl:out>
+		</td>
+	</tr>
+</table>
+
+<spring:message code="administrator.avgNumberOfFollowUpsPerArticleAfter2WeekLabel" />
+<jstl:out value="${avgNumberOfFollowUpsPerArticleAfter2WeekLabel}"></jstl:out>
+<table class="displaytag"  name="avgNumberOfFollowUpsPerArticleAfter2Week">
+	<tr>
+		<th>
+			<spring:message code="administrator.average" var="averageHeader" />
+			<jstl:out value="${averageHeader}"></jstl:out>
+		</th>
+	</tr>
+	<tr>
+	
+		<td>
+			<jstl:out value="${avgNumberOfFollowUpsPerArticleAfter2Week}"></jstl:out>
+		</td>
+	</tr>
+</table>
+
+<spring:message code="administrator.avgStddevNumberOfChirpPerUserLabel" />
+	<jstl:out value="${avgStddevNumberOfChirpPerUserLabel}"></jstl:out>
+	<table class="displaytag" name="avgStddevNumberOfChirpPerUser">
+		<tr>
+			<th><spring:message code="administrator.average"
+					var="averageHeader" /> <jstl:out value="${averageHeader}"></jstl:out>
+			</th>
+
+			<th><spring:message code="administrator.standardDeviation"
+					var="standardDeviationHeader" /> <jstl:out
+					value="${standardDeviationHeader}"></jstl:out></th>
+		</tr>
+		<tr>
+			<jstl:forEach var="datos" items="${avgStddevNumberOfChirpPerUser}">
+				<td><jstl:out value="${datos}"></jstl:out></td>
+			</jstl:forEach>
+		</tr>
+	</table>
+	
+	<spring:message code="administrator.ratioUsersMorePostedChirpsOfAveragePerUserLabel" />
+<jstl:out value="${ratioUsersMorePostedChirpsOfAveragePerUserLabel}"></jstl:out>
+<table class="displaytag"  name="ratioUsersMorePostedChirpsOfAveragePerUser">
+	<tr>
+		<th>
+			<spring:message code="administrator.ratio" var="ratioHeader" />
+			<jstl:out value="${ratioHeader}"></jstl:out>
+		</th>
+	</tr>
+	<tr>
+	
+		<td>
+			<jstl:out value="${ratioUsersMorePostedChirpsOfAveragePerUser}"></jstl:out>
+		</td>
+	</tr>
+</table>
+	
 
 </security:authorize>

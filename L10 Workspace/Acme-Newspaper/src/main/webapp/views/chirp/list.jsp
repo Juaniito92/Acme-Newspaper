@@ -53,7 +53,7 @@
 
 <p><a href="chirp/user/create.do"><spring:message code="chirp.publish"/></a></p>
 
-<a href="javascript:window.history.back();">&laquo; <spring:message code="terms.back"/></a>
+<a href="welcome/index.do">&laquo; <spring:message code="terms.back"/></a>
 
 
 

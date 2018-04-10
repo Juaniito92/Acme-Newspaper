@@ -61,7 +61,9 @@
 		<security:intercept-url pattern="/newspaper/**" access="permitAll" />
 		
 		<!-- Chirp -->
-		<security:intercept-url pattern="/chirp/**" access="hasAnyRole('USER','ADMIN')" />
+		<security:intercept-url pattern="/chirp/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/chirp/admin/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/chirp/**" access="hasAnyRole('USER', 'ADMIN')" />
 		
 		<!-- User -->
 		<security:intercept-url pattern="/user/user/**" access="hasRole('USER')" />

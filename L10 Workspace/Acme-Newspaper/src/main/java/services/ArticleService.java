@@ -205,7 +205,9 @@ public class ArticleService {
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
 				if(article.getTitle().toLowerCase().contains(lowTabooWord) || article.getSummary().toLowerCase().contains(lowTabooWord) || article.getBody().toLowerCase().contains(lowTabooWord)){
-					res.add(article);
+					if(!res.contains(article)){
+						res.add(article);
+					}
 				}
 			}
 		}

@@ -25,6 +25,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 			<ul>
 				<li><a href="administrator/display.do"><spring:message code="master.page.administrator.information" /></a></li>
+				<li><a href="chirp/list.do"><spring:message code="master.page.chirp.list" /></a></li>
 			</ul>
 			<li><a href="configuration/admin/list.do"><spring:message	code="master.page.configuration" /></a>
 		</security:authorize>
@@ -39,6 +40,8 @@
 				<li><a href="followUp/user/list.do"><spring:message code="master.page.user.listFollowUps" /></a></li>
 				<li><a href="user/user/list-followers.do"><spring:message code="master.page.user.listFollowers" /></a></li>
 				<li><a href="user/user/list-followed.do"><spring:message code="master.page.user.listFollowed" /></a></li>
+				<li><a href="chirp/user/create.do"><spring:message code="master.page.chirp.publish" /></a></li>
+				<li><a href="chirp/user/list-timeline.do"><spring:message code="master.page.chirp.timeline" /></a></li>
 				
 			</ul>
 			
