@@ -128,7 +128,9 @@ public class ChirpService {
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
 				if(chirp.getTitle().toLowerCase().contains(lowTabooWord) || chirp.getDescription().toLowerCase().contains(lowTabooWord)){
-					res.add(chirp);
+					if(!res.contains(chirp)){
+						res.add(chirp);
+					}
 				}
 			}
 		}

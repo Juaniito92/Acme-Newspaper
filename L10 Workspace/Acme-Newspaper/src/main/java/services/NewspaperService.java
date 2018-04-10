@@ -244,7 +244,9 @@ public class NewspaperService {
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
 				if(newspaper.getTitle().toLowerCase().contains(lowTabooWord) || newspaper.getDescription().toLowerCase().contains(lowTabooWord)){
-					res.add(newspaper);
+					if(!res.contains(newspaper)){
+						res.add(newspaper);
+					}
 				}
 			}
 		}
