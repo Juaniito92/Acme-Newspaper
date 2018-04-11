@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArticleService;
-import services.UserService;
+import services.NewspaperService;
 import domain.Article;
+import domain.Newspaper;
 
 @Controller
 @RequestMapping("/article")
@@ -25,7 +26,7 @@ public class ArticleController extends AbstractController{
 	private ArticleService articleService;
 	
 	@Autowired
-	private UserService userService;
+	private NewspaperService newspaperService;
 	
 	// Constructors ----------------------------
 	public ArticleController(){
@@ -33,26 +34,24 @@ public class ArticleController extends AbstractController{
 	}
 	
 	// Listing ----------------------------------
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(@RequestParam(required=false) String keyword,
-							@RequestParam(required=false) Integer userId){
-		ModelAndView res;
-		Collection<Article> articles = new ArrayList<Article>();
-		
-		if(keyword!=null){
-			articles = this.articleService.findPerKeyword(keyword);
-		}
-		
-		if(userId!=null){
-			articles = this.userService.findOne(userId).getArticles();
-		}
-		
-		res = new ModelAndView("article/list");
-		res.addObject("article",articles);
-		res.addObject("requestURI", "article/list.do");
-		
-		return res;
-	}
+//	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public ModelAndView list(@RequestParam(required = false) String keyword,
+//			@RequestParam int newspaperId) {
+//		Collection<Article> articles = new ArrayList<Article>();
+//		Newspaper newspaper = newspaperService.findOne(newspaperId);
+//
+//		if (keyword != null) {
+//			articles = this.articleService.findPerKeyword(keyword);
+//		} else {
+//			articles = newspaper.getArticles();
+//		}
+//
+//		ModelAndView result = new ModelAndView(
+//				"redirect:../newspaper/display.do?newspaperId=" + newspaperId);
+//		result.addObject("articles", articles);
+//
+//		return result;
+//	}
 	
 	// Display ----------------------------------
 	@RequestMapping(value="/display", method=RequestMethod.GET)

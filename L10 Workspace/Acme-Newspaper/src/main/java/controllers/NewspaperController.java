@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ArticleService;
 import services.NewspaperService;
+import domain.Article;
 import domain.Newspaper;
 
 @Controller
@@ -21,6 +23,9 @@ public class NewspaperController extends AbstractController {
 
 	@Autowired
 	private NewspaperService newspaperService;
+	
+	@Autowired
+	private ArticleService articleService;
 
 	// Constructors --------------------------------------------------
 
@@ -51,12 +56,20 @@ public class NewspaperController extends AbstractController {
 	// Display -------------------------------------------------------
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam int newspaperId) {
+	public ModelAndView display(@RequestParam int newspaperId, @RequestParam (required = false) String keyword) {
 
 		Newspaper newspaper = newspaperService.findOne(newspaperId);
+		Collection<Article> articles;
+		
+		if(keyword!=null){
+			articles = this.articleService.findPerKeyword(keyword, newspaperId);
+		}else{
+			articles = newspaper.getArticles();
+		}
 
 		ModelAndView result = new ModelAndView("newspaper/display");
 		result.addObject("newspaper", newspaper);
+		result.addObject("articles", articles);
 		result.addObject("date", new Date());
 
 		return result;
