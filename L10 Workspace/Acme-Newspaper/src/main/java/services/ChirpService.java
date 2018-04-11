@@ -43,6 +43,9 @@ public class ChirpService {
 	// Simple CRUD methods
 
 	public Chirp create() {
+		
+		Assert.notNull(userService.findByPrincipal());
+		
 		final Chirp res = new Chirp();
 
 		final Date publicationMoment;
@@ -135,6 +138,10 @@ public class ChirpService {
 			}
 		}
 		return res;
+	}
+
+	public void flush() {
+		this.chirpRepository.flush();
 	}
 
 }
