@@ -196,6 +196,9 @@ public class ArticleService {
 	}
 
 	public Collection<Article> findPerKeyword(String keyword, int newspaperId) {
+		
+		Assert.notNull(keyword);
+		
 		Collection<Article> articles = null;
 		articles = new ArrayList<Article>();
 		String aux = "Article";
