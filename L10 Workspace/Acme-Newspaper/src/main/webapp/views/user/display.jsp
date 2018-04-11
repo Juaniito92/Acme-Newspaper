@@ -31,17 +31,27 @@
 	<jstl:out value="${user.surname}" />
 </h3>
 
-<b><spring:message code="user.email"/>:&nbsp;</b><jstl:out value="${user.email}"/>
-<br/>
+<b><spring:message code="user.email" />:&nbsp;</b>
+<jstl:out value="${user.email}" />
+<br />
 
-<b><spring:message code="user.phone"/>:&nbsp;</b><jstl:out value="${user.phone}"/>
-<br/>
+<b><spring:message code="user.phone" />:&nbsp;</b>
+<jstl:out value="${user.phone}" />
+<br />
 
-<b><spring:message code="user.address"/>:&nbsp;</b><jstl:out value="${user.address}"/>
-<br/>
+<b><spring:message code="user.address" />:&nbsp;</b>
+<jstl:out value="${user.address}" />
+<br />
 
 <display:table name="${user.articles}" id="row"
 	requestURI="user/display.do" pagesize="5" class="displaytag">
+
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="article/admin/delete.do?articleId=${row.id}"><spring:message
+					code="user.delete" /></a>
+		</display:column>
+	</security:authorize>
 
 	<spring:message var="titleHeader" code="user.title" />
 	<display:column title="${titleHeader}">
@@ -65,5 +75,5 @@
 
 </display:table>
 
-<acme:cancel code="user.back" url="user/list.do"/>
+<acme:cancel code="user.back" url="user/list.do" />
 

@@ -58,6 +58,13 @@
 		onkeypress="searchByKeyword(event,${newspaper.id})" />
 <display:table name="${articles}" id="row"
 	requestURI="newspaper/display.do" pagesize="5" class="displaytag">
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="article/admin/delete.do?articleId=${row.id}"><spring:message
+					code="newspaper.delete" /></a>
+		</display:column>
+	</security:authorize>
 
 	<spring:message var="titleHeader" code="newspaper.title" />
 	<display:column title="${titleHeader}">
