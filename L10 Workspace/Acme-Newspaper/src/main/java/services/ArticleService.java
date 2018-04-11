@@ -64,16 +64,16 @@ public class ArticleService {
 		
 		Assert.notNull(newspaper);
 		
-		Date actual = new Date(System.currentTimeMillis()-1);
+		Date date = new Date();
 		
-		Assert.isTrue(newspaper.getPublicationDate().after(actual));
+		Assert.isTrue(newspaper.getPublicationDate().after(date));
 		
 		Collection<FollowUp> followUps = new ArrayList<FollowUp>();
 		User user = this.userService.findByPrincipal();
 		
 		res.setWriter(user);
 		res.setFollowUps(followUps);
-		res.setPublicationMoment(actual);
+		res.setPublicationMoment(date);
 		res.setNewspaper(newspaper);
 
 		return res;
@@ -84,14 +84,19 @@ public class ArticleService {
 		Assert.notNull(article);
 		if(article.getId() != 0){
 			Assert.isTrue(article.getIsFinal() == false);
+		}else{
+			article.setPublicationMoment(new Date(System.currentTimeMillis()-1000));
 		}
 		
 		this.checkPrincipal(article);
 		Article res;
 
+		
 		res = this.articleRepository.save(article);
-
-		Assert.notNull(res);
+		if(article.getId() == 0){
+			res.getWriter().getArticles().add(res);
+		}
+		
 		return res;
 	}
 
@@ -150,7 +155,7 @@ public class ArticleService {
 	
 	private void checkPrincipal(Article article) {
 		User principal = this.userService.findByPrincipal();
-		Assert.isTrue(principal.equals(article.getNewspaper().getPublisher()));
+		Assert.isTrue(principal.equals(article.getWriter()));
 		
 	}
 	

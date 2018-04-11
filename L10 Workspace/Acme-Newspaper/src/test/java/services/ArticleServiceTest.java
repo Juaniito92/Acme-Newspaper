@@ -35,7 +35,7 @@ public class ArticleServiceTest extends AbstractTest {
 				{ "user2", "newspaper7", false, null },
 				// Casos negativos
 				{ null, "newspaper3", false, IllegalArgumentException.class },		// Un anonimo no puede crear un articulo
-				{ "user1", "newspaper3", false, IllegalArgumentException.class },	// No se puede crear un artículo para un periódico pasado
+				{ "user1", "newspaper1", false, IllegalArgumentException.class },	// No se puede crear un artículo para un periódico pasado
 				{ "user2", "newspaperTest", false, NumberFormatException.class },	// No se puede crear un artículo para un pediódico que no existe
 				{ "user3", "newspaper3", true, IllegalArgumentException.class },	// No se puede editar un artículo final
 				{ "admin", "newspaper7", false, IllegalArgumentException.class },	// Un admin no puede crear un artículo				
