@@ -64,11 +64,10 @@ public class LoginService implements UserDetailsService {
 		context = SecurityContextHolder.getContext();
 		Assert.notNull(context);
 		authentication = context.getAuthentication();
-		Assert.notNull(authentication);
-		principal = authentication.getPrincipal();
-		if (principal == "anonymousUser")
+		if (authentication == null)
 			result = null;
 		else {
+			principal = authentication.getPrincipal();
 			Assert.isTrue(principal instanceof UserAccount);
 			result = (UserAccount) principal;
 			Assert.notNull(result);
