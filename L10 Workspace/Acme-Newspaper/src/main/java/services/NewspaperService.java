@@ -253,5 +253,9 @@ public class NewspaperService {
 		}
 		return res;
 	}
+	
+	public void flush() {
+		this.newspaperRepository.flush();
+	}
 
 }

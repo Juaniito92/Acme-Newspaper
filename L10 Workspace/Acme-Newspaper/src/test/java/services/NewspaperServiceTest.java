@@ -1,6 +1,9 @@
 package services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -25,7 +28,7 @@ public class NewspaperServiceTest extends AbstractTest {
 	
 	@Autowired
 	private ArticleService articleService;
-
+	
 	// Tests ------------------------------------------------------------------
 
 	/*
@@ -67,5 +70,63 @@ public class NewspaperServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 	}
+	
+	//6.1 Create a newspaper
+	@Test
+	public void driverCreateAndSaveNewspaper() {
+		final Object testingEditData[][] = {
+
+				// Casos positivos
+				{ "user1", "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, null },
+				// Casos negativos
+				//Se intenta crear un newspaper sin registrar
+				{ null, "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, NullPointerException.class },
+				//Se intenta crear un newspaper con admin
+				{ "admin", "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, NullPointerException.class }, };
+
+		for (int i = 0; i < testingEditData.length; i++)
+			this.templateCreateAndSaveNewspaper((String) testingEditData[i][0],
+					(String) testingEditData[i][1],
+					(String) testingEditData[i][2],
+					(String) testingEditData[i][3],
+					(String) testingEditData[i][4],
+					(boolean) testingEditData[i][5],
+					(Class<?>) testingEditData[i][6]);
+	}
+	
+	
+	private void templateCreateAndSaveNewspaper(String userName, String title, String description, String publicationDate, String picture, boolean isPrivate, Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+		Newspaper newspaper;
+		
+		Date date = new Date();
+		
+		SimpleDateFormat pattern = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			date = pattern.parse(publicationDate);
+		}catch(ParseException e){
+			e.getClass();
+		}
+		
+		try{
+			super.authenticate(userName);
+			newspaper = this.newspaperService.create();
+			newspaper.setTitle(title);
+			newspaper.setDescription(description);
+			newspaper.setPublicationDate(date);
+			newspaper.setPicture(picture);
+			newspaper.setIsPrivate(isPrivate);
+			this.newspaperService.save(newspaper);
+			this.newspaperService.flush();
+			this.unauthenticate();
+		}catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+		
+	}
+	
 
 }
