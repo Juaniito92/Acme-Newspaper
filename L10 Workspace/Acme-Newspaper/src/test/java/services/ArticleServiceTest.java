@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -7,9 +9,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Article;
+import domain.Newspaper;
 
 @ContextConfiguration(locations = { "classpath:spring/junit.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,13 +24,23 @@ public class ArticleServiceTest extends AbstractTest {
 
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private NewspaperService newspaperService;
 
 	// Tests ------------------------------------------------------------------
 
+	/*
+	 * Caso de uso 6.3: Write an article and attach it to any newspaper that has
+	 * not been published, yet. Note that articles may be saved in draft mode,
+	 * which allows to modify them later, or final model, which freezes them
+	 * forever.
+	 */
+
 	@Test
-	public void driver() {
+	public void driverCreateAndEdit() {
 		final Object testingCreateAndEditData[][] = {
-				
+
 				// Casos positivos
 				{ "user1", "newspaper3", false, null },
 				{ "user2", "newspaper3", false, null },
@@ -34,11 +48,59 @@ public class ArticleServiceTest extends AbstractTest {
 				{ "user1", "newspaper7", false, null },
 				{ "user2", "newspaper7", false, null },
 				// Casos negativos
-				{ null, "newspaper3", false, IllegalArgumentException.class },		// Un anonimo no puede crear un articulo
-				{ "user1", "newspaper1", false, IllegalArgumentException.class },	// No se puede crear un artículo para un periódico pasado
-				{ "user2", "newspaperTest", false, NumberFormatException.class },	// No se puede crear un artículo para un pediódico que no existe
-				{ "user3", "newspaper3", true, IllegalArgumentException.class },	// No se puede editar un artículo final
-				{ "admin", "newspaper7", false, IllegalArgumentException.class },	// Un admin no puede crear un artículo				
+				{ null, "newspaper3", false, IllegalArgumentException.class }, /*
+																				 * Un
+																				 * anonimo
+																				 * no
+																				 * puede
+																				 * crear
+																				 * un
+																				 * articulo
+																				 */
+				{ "user1", "newspaper1", false, IllegalArgumentException.class }, /*
+																				 * No
+																				 * se
+																				 * puede
+																				 * crear
+																				 * un
+																				 * artículo
+																				 * para
+																				 * un
+																				 * periódico
+																				 * pasado
+																				 */
+				{ "user2", "newspaperTest", false, NumberFormatException.class }, /*
+																				 * No
+																				 * se
+																				 * puede
+																				 * crear
+																				 * un
+																				 * artículo
+																				 * para
+																				 * un
+																				 * pediódico
+																				 * que
+																				 * no
+																				 * existe
+																				 */
+				{ "user3", "newspaper3", true, IllegalArgumentException.class }, /*
+																				 * No
+																				 * se
+																				 * puede
+																				 * editar
+																				 * un
+																				 * artículo
+																				 * final
+																				 */
+				{ "admin", "newspaper7", false, IllegalArgumentException.class }, /*
+																				 * Un
+																				 * admin
+																				 * no
+																				 * puede
+																				 * crear
+																				 * un
+																				 * artículo
+																				 */
 		};
 
 		for (int i = 0; i < testingCreateAndEditData.length; i++)
@@ -49,9 +111,8 @@ public class ArticleServiceTest extends AbstractTest {
 
 	}
 
-	// Ancillary methods ------------------------------------------------------
-
-	protected void templateCreateAndEdit(String authenticate, String newspaperBeanName, boolean isFalse, Class<?> expected) {
+	protected void templateCreateAndEdit(String authenticate,
+			String newspaperBeanName, boolean isFalse, Class<?> expected) {
 
 		Class<?> caught;
 		caught = null;
@@ -78,5 +139,52 @@ public class ArticleServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 	}
-	
+
+	/*
+	 * Caso de uso 4.4: Search for a published article using a single key word
+	 * that must appear somewhere in its title, summary, or body.
+	 */
+
+	@Test
+	public void driverSearch() {
+		final Object testingSearchData[][] = {
+
+		// Casos positivos
+		{ null, "newspaper6", "Coche", null },
+		{ null, "newspaper6", "", null }};
+
+		for (int i = 0; i < testingSearchData.length; i++)
+			this.templateSearch((String) testingSearchData[i][0],
+					(String) testingSearchData[i][1],
+					(String) testingSearchData[i][2],
+					(Class<?>) testingSearchData[i][3]);
+
+	}
+
+	protected void templateSearch(String authenticate, String newspaperBean, String keyword, Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+
+		try {
+			int newspaperId = super.getEntityId(newspaperBean);
+			super.authenticate(authenticate);
+			Newspaper newspaper = newspaperService.findOne(newspaperId);
+			Collection<Article> articles = articleService.findPerKeyword(keyword, newspaperId);
+			if(!keyword.equals("")){
+				for(Article article:articles){
+					Assert.isTrue(article.getTitle().contains(keyword) || article.getSummary().contains(keyword) || article.getBody().contains(keyword));
+				}
+			}else{
+				Assert.isTrue(articles.size() == newspaper.getArticles().size());
+			}
+			
+			super.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.checkExceptions(expected, caught);
+	}
+
 }
