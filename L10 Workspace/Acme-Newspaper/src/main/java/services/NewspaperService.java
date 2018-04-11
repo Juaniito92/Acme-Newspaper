@@ -193,7 +193,7 @@ public class NewspaperService {
 		newspapers = new ArrayList<Newspaper>();
 		String aux = "Newspaper";
 
-		if (keyword == null) {
+		if (keyword.equals("")) {
 			newspapers = this.findAvalibleNewspapers();
 		} else {
 			aux = keyword;
