@@ -45,7 +45,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				// Casos positivos
 				{ "admin", "body", null },
 				// Casos negativos
-				{ null, "body", IllegalArgumentException.class }, 
+				{ null, "body", NullPointerException.class }, 
 				{ "user1", "body", IllegalArgumentException.class }, 
 		};
 
@@ -86,7 +86,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				// Casos positivos
 				{ "admin", null },
 				// Casos negativos
-				{ null, IllegalArgumentException.class }, 
+				{ null, NullPointerException.class }, 
 				{ "user1", IllegalArgumentException.class }, 
 		};
 
@@ -123,7 +123,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				// Casos positivos
 				{ "admin", null },
 				// Casos negativos
-				{ null, IllegalArgumentException.class }, 
+				{ null, NullPointerException.class }, 
 				{ "user1", IllegalArgumentException.class }, 
 		};
 
@@ -158,7 +158,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				// Casos positivos
 				{ "admin", null },
 				// Casos negativos
-				{ null, IllegalArgumentException.class }, 
+				{ null, NullPointerException.class }, 
 				{ "user1", IllegalArgumentException.class }, 
 		};
 
@@ -193,7 +193,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				// Casos positivos
 				{ "admin", null },
 				// Casos negativos
-				{ null, IllegalArgumentException.class }, 
+				{ null, NullPointerException.class }, 
 				{ "user1", IllegalArgumentException.class }, 
 		};
 
