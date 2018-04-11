@@ -229,6 +229,7 @@ public class ArticleService {
 	}
 	
 	public Collection<Article> articleContainTabooWord(){
+		Assert.notNull(adminService.findByPrincipal());
 		Collection<Article> res = new ArrayList<>();
 		Configuration configuration;
 		Integer idMaxConfiguration;

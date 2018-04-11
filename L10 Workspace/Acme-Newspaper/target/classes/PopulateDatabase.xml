@@ -98,6 +98,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	<!-- Other domain beans come here -->
 
@@ -235,6 +247,36 @@
 		</property>
 	</bean>
 
+	<!-- User 4 -->
+	<bean id="user4" class="domain.User">
+		<property name="name" value="Maria" />
+		<property name="surname" value="Sánchez" />
+		<property name="email" value="mari@gmail.com" />
+		<property name="phone" value="607834578" />
+		<property name="address" value="C/Margarita nº4" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="followed">
+			<list>
+			</list>
+		</property>
+	</bean>
+
 	<!-- Customers -->
 	<!-- Customer 1 -->
 	<bean id="customer1" class="domain.Customer">
@@ -330,7 +372,7 @@
 	<bean id="newspaper1" class="domain.Newspaper">
 		<property name="title" value="Newspaper title 1 viagra" />
 		<property name="description" value="Newspaper description 1" />
-		<property name="publicationDate" value="01/04/2018" />
+		<property name="publicationDate" value="2018/04/01" />
 		<property name="picture"
 			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="false" />
@@ -351,7 +393,7 @@
 	<bean id="newspaper2" class="domain.Newspaper">
 		<property name="title" value="Newspaper title 2" />
 		<property name="description" value="Newspaper description 2" />
-		<property name="publicationDate" value="01/04/2018" />
+		<property name="publicationDate" value="2018/04/01" />
 		<property name="picture"
 			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="true" />
@@ -372,7 +414,7 @@
 	<bean id="newspaper3" class="domain.Newspaper">
 		<property name="title" value="Newspaper title 3" />
 		<property name="description" value="Newspaper description 3" />
-		<property name="publicationDate" value="01/10/2018" />
+		<property name="publicationDate" value="2018/10/15" />
 		<property name="picture"
 			value="https://cdn4.iconfinder.com/data/icons/academic-disciplines-color-sticker/64/current-events-256.png" />
 		<property name="isPrivate" value="false" />
@@ -392,7 +434,7 @@
 	<!-- Newspaper 4 -->
 	<bean id="newspaper4" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 1" />
-		<property name="publicationDate" value="05/12/2017" />
+		<property name="publicationDate" value="2017/12/05" />
 		<property name="description"
 			value="En la edición de hoy, cómo cocinar mejillones al vapor, con el archiconocido chef Martín Berasategui. En noticias regionales, un caniche salva a una pareja de morir asfixiada." />
 		<property name="isPrivate" value="false" />
@@ -414,7 +456,7 @@
 	<!-- Newspaper 5 -->
 	<bean id="newspaper5" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 2" />
-		<property name="publicationDate" value="10/12/2017" />
+		<property name="publicationDate" value="2017/12/10" />
 		<property name="description"
 			value="En el número de hoy, cómo hacer tortilla francesa, con el archiconocido chef Karlos Arguiñano. En noticias regionales, terremoto inmenso causado por la caída de una grúa del Ayuntamiento." />
 		<property name="isPrivate" value="false" />
@@ -436,7 +478,7 @@
 	<!-- Newspaper 6 -->
 	<bean id="newspaper6" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 3" />
-		<property name="publicationDate" value="19/12/2017" />
+		<property name="publicationDate" value="2017/12/19" />
 		<property name="description"
 			value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
 		<property name="isPrivate" value="false" />
@@ -454,11 +496,11 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Newspaper 7 -->
 	<bean id="newspaper7" class="domain.Newspaper">
 		<property name="title" value="La Gaceta de Acme, num 3" />
-		<property name="publicationDate" value="19/12/2018" />
+		<property name="publicationDate" value="2018/12/19" />
 		<property name="description"
 			value="En el periódico de hoy, un bebé dice sus primeras palabras y emociona a todo el mundo cuando estas son una cita de Abraham Lincoln. También, el coche más antiguo de la ciudad gasta menos gasolina que un Tesla." />
 		<property name="isPrivate" value="false" />
@@ -479,7 +521,7 @@
 	<!-- Article 1 -->
 	<bean id="article1" class="domain.Article">
 		<property name="title" value="Article title 1 Sex" />
-		<property name="publicationMoment" value="01/03/2018" />
+		<property name="publicationMoment" value="2018/03/01" />
 		<property name="summary" value="Article summary 1" />
 		<property name="body" value="Article body 1" />
 		<property name="pictures"
@@ -498,7 +540,7 @@
 	<!-- Article 2 -->
 	<bean id="article2" class="domain.Article">
 		<property name="title" value="Article title 2" />
-		<property name="publicationMoment" value="01/03/2018" />
+		<property name="publicationMoment" value="2018/03/01" />
 		<property name="summary" value="Article summary 2" />
 		<property name="body" value="Article body 2" />
 		<property name="pictures"
@@ -515,7 +557,7 @@
 	<!-- Article 3 -->
 	<bean id="article3" class="domain.Article">
 		<property name="title" value="Article title 3" />
-		<property name="publicationMoment" value="01/03/2018" />
+		<property name="publicationMoment" value="2018/03/01" />
 		<property name="summary" value="Article summary 3" />
 		<property name="body" value="Article body 3" />
 		<property name="pictures"
@@ -532,7 +574,7 @@
 	<!-- Article 4 -->
 	<bean id="article4" class="domain.Article">
 		<property name="title" value="Berasategui" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Martín Berasategui: mejillones al vapor" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -551,7 +593,7 @@
 	<!-- Article 5 -->
 	<bean id="article5" class="domain.Article">
 		<property name="title" value="Caniche" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Los caniches son majísimos" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -570,7 +612,7 @@
 	<!-- Article 6 -->
 	<bean id="article6" class="domain.Article">
 		<property name="title" value="Arguiñano" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Tortillitas francesas" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -589,7 +631,7 @@
 	<!-- Article 7 -->
 	<bean id="article7" class="domain.Article">
 		<property name="title" value="Terremoto" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Movida mazo de chunga" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -608,7 +650,7 @@
 	<!-- Article 8 -->
 	<bean id="article8" class="domain.Article">
 		<property name="title" value="Bebé" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="No podía decir mamá, no" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -627,7 +669,7 @@
 	<!-- Article 9 -->
 	<bean id="article9" class="domain.Article">
 		<property name="title" value="Coche" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Elon Musk ahí decepcionando" />
 		<property name="body"
 			value="According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway..." />
@@ -646,7 +688,7 @@
 	<!-- Chirp -->
 	<!-- chirp 1 -->
 	<bean id="chirp1" class="domain.Chirp">
-		<property name="publicationMoment" value="05/12/2016" />
+		<property name="publicationMoment" value="2016/12/05" />
 		<property name="title" value="Chirp 1" />
 		<property name="description" value="Me gusta el Chirp 1 cialis" />
 		<property name="user" ref="user2" />
@@ -655,7 +697,7 @@
 
 	<!-- chirp 2 -->
 	<bean id="chirp2" class="domain.Chirp">
-		<property name="publicationMoment" value="05/11/2016" />
+		<property name="publicationMoment" value="2016/11/05" />
 		<property name="title" value="Chirp 2" />
 		<property name="description" value="Me gusta el Chirp 2" />
 		<property name="user" ref="user2" />
@@ -664,7 +706,7 @@
 
 	<!-- chirp 3 -->
 	<bean id="chirp3" class="domain.Chirp">
-		<property name="publicationMoment" value="25/11/2016" />
+		<property name="publicationMoment" value="2016/11/25" />
 		<property name="title" value="Chirp 3" />
 		<property name="description" value="Me gusta el Chirp 2" />
 		<property name="user" ref="user2" />
@@ -673,7 +715,7 @@
 
 	<!-- chirp 4 -->
 	<bean id="chirp4" class="domain.Chirp">
-		<property name="publicationMoment" value="05/01/2017" />
+		<property name="publicationMoment" value="2017/01/05" />
 		<property name="title" value="Chirp 4" />
 		<property name="description" value="Me gusta el Chirp 2" />
 		<property name="user" ref="user3" />
@@ -685,7 +727,7 @@
 	<!-- FollowUp 1 -->
 	<bean id="followUp1" class="domain.FollowUp">
 		<property name="title" value="Follow Up 1" />
-		<property name="publicationMoment" value="05/12/2017" />
+		<property name="publicationMoment" value="2017/12/05" />
 		<property name="summary" value="Me gusta el sumary 1" />
 		<property name="text" value="Me gusta" />
 		<property name="pictures"
@@ -696,7 +738,7 @@
 	<!-- FollowUp 2 -->
 	<bean id="followUp2" class="domain.FollowUp">
 		<property name="title" value="Follow Up 2" />
-		<property name="publicationMoment" value="05/08/2017" />
+		<property name="publicationMoment" value="2017/08/05" />
 		<property name="summary" value="Me gusta el sumary 2" />
 		<property name="text" value="Me gusta" />
 		<property name="pictures"
@@ -707,13 +749,13 @@
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
 		<property name="tabooWords">
-		<list>
-			<value>sex</value>
-			<value>sexo</value>
-			<value>viagra</value>
-			<value>cialis</value>
-		</list>
-	</property>
+			<list>
+				<value>sex</value>
+				<value>sexo</value>
+				<value>viagra</value>
+				<value>cialis</value>
+			</list>
+		</property>
 
 	</bean>
 

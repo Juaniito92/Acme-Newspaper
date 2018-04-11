@@ -86,7 +86,6 @@ public class UserService {
 		Assert.isTrue(userId != 0);
 		User res;
 		res = this.userRepository.findOne(userId);
-		Assert.notNull(res);
 		return res;
 	}
 
@@ -109,7 +108,8 @@ public class UserService {
 	// Other business methods
 
 	public void follow(int userId) {
-
+		Assert.notNull(this.findOne(userId));
+		
 		User user = findOne(userId);
 		User principal = findByPrincipal();
 
@@ -122,6 +122,8 @@ public class UserService {
 
 	public void unfollow(int userId) {
 
+		Assert.notNull(this.findOne(userId));
+		
 		User user = findOne(userId);
 		User principal = findByPrincipal();
 
