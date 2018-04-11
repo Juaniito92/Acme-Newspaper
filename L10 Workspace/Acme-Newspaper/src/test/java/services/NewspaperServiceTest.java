@@ -12,9 +12,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Article;
 import domain.Newspaper;
+import forms.ArticleForm;
 
 @ContextConfiguration(locations = { "classpath:spring/junit.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,10 +28,13 @@ public class NewspaperServiceTest extends AbstractTest {
 
 	@Autowired
 	private NewspaperService newspaperService;
-	
+
 	@Autowired
 	private ArticleService articleService;
-	
+
+	@Autowired
+	private SubscriptionService subscriptionService;
+
 	// Tests ------------------------------------------------------------------
 
 	/*
@@ -56,11 +62,14 @@ public class NewspaperServiceTest extends AbstractTest {
 
 		try {
 			super.authenticate(authenticate);
-			Collection<Newspaper> newspapers = newspaperService.findAvalibleNewspapers();
-			if(!newspapers.isEmpty()){
-				Newspaper newspaper = newspaperService.findOne(newspapers.iterator().next().getId());
-				if(!newspaper.getArticles().isEmpty()){
-					articleService.findOne(newspaper.getArticles().iterator().next().getId());
+			Collection<Newspaper> newspapers = newspaperService
+					.findAvalibleNewspapers();
+			if (!newspapers.isEmpty()) {
+				Newspaper newspaper = newspaperService.findOne(newspapers
+						.iterator().next().getId());
+				if (!newspaper.getArticles().isEmpty()) {
+					articleService.findOne(newspaper.getArticles().iterator()
+							.next().getId());
 				}
 			}
 			super.unauthenticate();
@@ -70,19 +79,75 @@ public class NewspaperServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 	}
-	
-	//6.1 Create a newspaper
+
+	/*
+	 * Caso de uso 4.5: Search for a published newspaper using a single keyword
+	 * that must appear somewhere in its title or its description.
+	 */
+
+	@Test
+	public void driverSearch() {
+		final Object testingSearchData[][] = {
+
+				// Casos positivos
+				{ null, "Newspaper", null }, { null, "", null } };
+
+		for (int i = 0; i < testingSearchData.length; i++)
+			this.templateSearch((String) testingSearchData[i][0],
+					(String) testingSearchData[i][1],
+					(Class<?>) testingSearchData[i][2]);
+
+	}
+
+	protected void templateSearch(String authenticate, String keyword,
+			Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+
+		try {
+			super.authenticate(authenticate);
+			Collection<Newspaper> newspapers = newspaperService
+					.findPerKeyword(keyword);
+			if (!keyword.equals("")) {
+				for (Newspaper newspaper : newspapers) {
+					Assert.isTrue(newspaper.getTitle().contains(keyword)
+							|| newspaper.getDescription().contains(keyword));
+				}
+			} else {
+				Assert.isTrue(newspapers.size() == newspaperService
+						.findAvalibleNewspapers().size());
+			}
+
+			super.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.checkExceptions(expected, caught);
+	}
+
+	/*
+	 * Caso de uso 6.1: Create a newspaper. A user who has created a newspaper
+	 * is commonly referred to as a publisher.
+	 */
+
 	@Test
 	public void driverCreateAndSaveNewspaper() {
 		final Object testingEditData[][] = {
 
 				// Casos positivos
-				{ "user1", "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, null },
+				{ "user1", "titulo", "descripción", "18/10/2019",
+						"https://iconfinder.com/data.png", false, null },
 				// Casos negativos
-				//Se intenta crear un newspaper sin registrar
-				{ null, "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, NullPointerException.class },
-				//Se intenta crear un newspaper con admin
-				{ "admin", "titulo", "descripción", "18/10/2019", "https://iconfinder.com/data.png", false, NullPointerException.class }, };
+				// Se intenta crear un newspaper sin registrar
+				{ null, "titulo", "descripción", "18/10/2019",
+						"https://iconfinder.com/data.png", false,
+						NullPointerException.class },
+				// Se intenta crear un newspaper con admin
+				{ "admin", "titulo", "descripción", "18/10/2019",
+						"https://iconfinder.com/data.png", false,
+						NullPointerException.class }, };
 
 		for (int i = 0; i < testingEditData.length; i++)
 			this.templateCreateAndSaveNewspaper((String) testingEditData[i][0],
@@ -93,24 +158,25 @@ public class NewspaperServiceTest extends AbstractTest {
 					(boolean) testingEditData[i][5],
 					(Class<?>) testingEditData[i][6]);
 	}
-	
-	
-	private void templateCreateAndSaveNewspaper(String userName, String title, String description, String publicationDate, String picture, boolean isPrivate, Class<?> expected) {
+
+	private void templateCreateAndSaveNewspaper(String userName, String title,
+			String description, String publicationDate, String picture,
+			boolean isPrivate, Class<?> expected) {
 
 		Class<?> caught;
 		caught = null;
 		Newspaper newspaper;
-		
+
 		Date date = new Date();
-		
+
 		SimpleDateFormat pattern = new SimpleDateFormat("dd/MM/yyyy");
-		try{
+		try {
 			date = pattern.parse(publicationDate);
-		}catch(ParseException e){
+		} catch (ParseException e) {
 			e.getClass();
 		}
-		
-		try{
+
+		try {
 			super.authenticate(userName);
 			newspaper = this.newspaperService.create();
 			newspaper.setTitle(title);
@@ -121,12 +187,138 @@ public class NewspaperServiceTest extends AbstractTest {
 			this.newspaperService.save(newspaper);
 			this.newspaperService.flush();
 			this.unauthenticate();
-		}catch (final Throwable oops) {
+		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
 		this.checkExceptions(expected, caught);
-		
+
 	}
-	
+
+	/*
+	 * Caso de uso 6.2: Publish a newspaper that he or she's created. Note that
+	 * no newspaper can be published until each of the articles of which it is
+	 * composed is saved in final mode.
+	 * 
+	 * NOTA: Entendimos que los periódicos se publicaban automáticamente cuando
+	 * su fecha de publicación es pasado y cuando todos artículos eran salvados
+	 * en como finales. Si la fecha de publicación es pasada y quedan articulos
+	 * no finales, este periódico no formará parte del conjunto de periódicos
+	 * disponibles hasta que el escritos del artículo salve este como final. Le
+	 * comentamos nuestro planteamiento al profesor Carlos Muller y le parecio
+	 * bien esta implementación.
+	 */
+
+	@Test
+	public void driverPublish() {
+		final Object testingPublishData[][] = {
+
+				// Casos positivos
+				{ "user2", "article2", null }, { "user3", "article7", null } };
+
+		for (int i = 0; i < testingPublishData.length; i++)
+			this.templatePublish((String) testingPublishData[i][0],
+					(String) testingPublishData[i][1],
+					(Class<?>) testingPublishData[i][2]);
+	}
+
+	private void templatePublish(String userName, String articleBean,
+			Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+
+		try {
+			int articleId = super.getEntityId(articleBean);
+			Collection<Newspaper> newspapers = newspaperService
+					.findAvalibleNewspapers();
+			super.authenticate(userName);
+			Article article = this.articleService.findOneToEdit(articleId);
+			Assert.isTrue(!newspapers.contains(article.getNewspaper()));
+			ArticleForm articleForm = articleService.construct(article);
+			articleForm.setIsFinal(true);
+			Article article2 = articleService.reconstruct(articleForm, null);
+			articleService.save(article2);
+			articleService.flush();
+			Collection<Newspaper> newspapers2 = newspaperService
+					.findAvalibleNewspapers();
+			Assert.isTrue(newspapers2.contains(article2.getNewspaper()));
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			articleService.flush();
+		}
+		this.checkExceptions(expected, caught);
+
+	}
+
+	/*
+	 * Caso de uso 7.2: Remove a newspaper that he or she thinks is
+	 * inappropriate. Removing a newspaper implies removing all of the articles
+	 * of which it is composed.
+	 */
+
+	@Test
+	public void driverDelete() {
+		final Object testingDeleteData[][] = {
+
+				// Casos positivos
+				{ "admin", "newspaper1", null },
+
+				// Cassos negativos
+				{ "user1", "newspaper1", IllegalArgumentException.class }, /*
+																			 * Solamente
+																			 * el
+																			 * admin
+																			 * puede
+																			 * borrar
+																			 * los
+																			 * periódicos
+																			 */
+				{ "admin", "newspaperTest", NumberFormatException.class },/*
+																		 * No se
+																		 * puede
+																		 * eliminar
+																		 * un
+																		 * periódico
+																		 * que
+																		 * no
+																		 * existe
+																		 */
+		};
+
+		for (int i = 0; i < testingDeleteData.length; i++)
+			this.templateDelete((String) testingDeleteData[i][0],
+					(String) testingDeleteData[i][1],
+					(Class<?>) testingDeleteData[i][2]);
+
+	}
+
+	protected void templateDelete(String authenticate, String newspaperBean,
+			Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+
+		try {
+			int newspaperId = super.getEntityId(newspaperBean);
+			super.authenticate(authenticate);
+			Newspaper newspaper = newspaperService.findOne(newspaperId);
+			newspaperService.delete(newspaper);
+			newspaperService.flush();
+			Assert.isTrue(!articleService.findAll().containsAll(
+					newspaper.getArticles()));
+			Assert.isTrue(!newspaper.getPublisher().getNewspapers()
+					.contains(newspaper));
+			Assert.isTrue(!subscriptionService.findAll().containsAll(
+					newspaper.getSubscriptions()));
+			Assert.isTrue(!newspaperService.findAll().contains(newspaper));
+			super.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			articleService.flush();
+		}
+
+		this.checkExceptions(expected, caught);
+	}
 
 }

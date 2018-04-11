@@ -82,9 +82,7 @@ public class ArticleService {
 	public Article save(final Article article) {
 		
 		Assert.notNull(article);
-		if(article.getId() != 0){
-			Assert.isTrue(article.getIsFinal() == false);
-		}else{
+		if(article.getId() == 0){
 			article.setPublicationMoment(new Date(System.currentTimeMillis()-1000));
 		}
 		
@@ -126,7 +124,6 @@ public class ArticleService {
 
 		checkPrincipal(res);
 		Assert.isTrue(res.getIsFinal() == false);
-		Assert.notNull(res);
 		
 		return res;
 	}

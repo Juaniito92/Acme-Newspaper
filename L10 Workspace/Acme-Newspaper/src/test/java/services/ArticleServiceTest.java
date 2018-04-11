@@ -24,7 +24,10 @@ public class ArticleServiceTest extends AbstractTest {
 
 	@Autowired
 	private ArticleService articleService;
-	
+
+	@Autowired
+	private FollowUpService followUpService;
+
 	@Autowired
 	private NewspaperService newspaperService;
 
@@ -149,9 +152,9 @@ public class ArticleServiceTest extends AbstractTest {
 	public void driverSearch() {
 		final Object testingSearchData[][] = {
 
-		// Casos positivos
-		{ null, "newspaper6", "Coche", null },
-		{ null, "newspaper6", "", null }};
+				// Casos positivos
+				{ null, "newspaper6", "Coche", null },
+				{ null, "newspaper6", "", null } };
 
 		for (int i = 0; i < testingSearchData.length; i++)
 			this.templateSearch((String) testingSearchData[i][0],
@@ -161,7 +164,8 @@ public class ArticleServiceTest extends AbstractTest {
 
 	}
 
-	protected void templateSearch(String authenticate, String newspaperBean, String keyword, Class<?> expected) {
+	protected void templateSearch(String authenticate, String newspaperBean,
+			String keyword, Class<?> expected) {
 
 		Class<?> caught;
 		caught = null;
@@ -170,18 +174,89 @@ public class ArticleServiceTest extends AbstractTest {
 			int newspaperId = super.getEntityId(newspaperBean);
 			super.authenticate(authenticate);
 			Newspaper newspaper = newspaperService.findOne(newspaperId);
-			Collection<Article> articles = articleService.findPerKeyword(keyword, newspaperId);
-			if(!keyword.equals("")){
-				for(Article article:articles){
-					Assert.isTrue(article.getTitle().contains(keyword) || article.getSummary().contains(keyword) || article.getBody().contains(keyword));
+			Collection<Article> articles = articleService.findPerKeyword(
+					keyword, newspaperId);
+			if (!keyword.equals("")) {
+				for (Article article : articles) {
+					Assert.isTrue(article.getTitle().contains(keyword)
+							|| article.getSummary().contains(keyword)
+							|| article.getBody().contains(keyword));
 				}
-			}else{
+			} else {
 				Assert.isTrue(articles.size() == newspaper.getArticles().size());
 			}
-			
+
 			super.unauthenticate();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
+		}
+
+		this.checkExceptions(expected, caught);
+	}
+
+	/*
+	 * Caso de uso 7.1: Remove an article that he or she thinks is
+	 * inappropriate.
+	 */
+
+	@Test
+	public void driverDelete() {
+		final Object testingDeleteData[][] = {
+
+				// Casos positivos
+				{ "admin", "article1", null },
+
+				// Cassos negativos
+				{ "user1", "article1", IllegalArgumentException.class }, /*
+																		 * Solamente
+																		 * el
+																		 * admin
+																		 * puede
+																		 * borrar
+																		 * los
+																		 * artículos
+																		 */
+				{ "admin", "articleTest", NumberFormatException.class },/*
+																		 * No se
+																		 * puede
+																		 * eliminar
+																		 * un
+																		 * articulo
+																		 * que
+																		 * no
+																		 * existe
+																		 */
+		};
+
+		for (int i = 0; i < testingDeleteData.length; i++)
+			this.templateDelete((String) testingDeleteData[i][0],
+					(String) testingDeleteData[i][1],
+					(Class<?>) testingDeleteData[i][2]);
+
+	}
+
+	protected void templateDelete(String authenticate, String articleBean,
+			Class<?> expected) {
+
+		Class<?> caught;
+		caught = null;
+
+		try {
+			int articleId = super.getEntityId(articleBean);
+			super.authenticate(authenticate);
+			Article article = articleService.findOne(articleId);
+			articleService.delete(article);
+			articleService.flush();
+			Assert.isTrue(!article.getNewspaper().getArticles()
+					.contains(article));
+			Assert.isTrue(!article.getWriter().getArticles().contains(article));
+			Assert.isTrue(!followUpService.findAll().containsAll(
+					article.getFollowUps()));
+			Assert.isTrue(!articleService.findAll().contains(article));
+			super.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			articleService.flush();
 		}
 
 		this.checkExceptions(expected, caught);

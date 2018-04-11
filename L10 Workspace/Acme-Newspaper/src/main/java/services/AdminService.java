@@ -113,6 +113,9 @@ public class AdminService {
 
 	// C-1
 	public Object[] avgSqtrUser() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Object[] res;
 		res = this.adminRepository.avgSqtrUser();
 		return res;
@@ -120,6 +123,9 @@ public class AdminService {
 
 	// C-2
 	public Object[] avgSqtrArticlesByWriter() {
+		
+		Assert.isTrue(checkAuthority());
+
 		Object[] res;
 		res = this.adminRepository.avgSqtrArticlesByWriter();
 		return res;
@@ -127,6 +133,9 @@ public class AdminService {
 
 	// C-3
 	public Object[] avgSqtrArticlesByNewspaper() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Object[] res;
 		res = this.adminRepository.avgSqtrArticlesByNewspaper();
 		return res;
@@ -134,6 +143,9 @@ public class AdminService {
 
 	// C-4
 	public Collection<Newspaper> newspapersMoreAverage() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Collection<Newspaper> res = this.adminRepository
 				.newspapersMoreAverage();
 		return res;
@@ -141,6 +153,9 @@ public class AdminService {
 
 	// C-5
 	public Collection<Newspaper> newspapersFewerAverage() {
+		
+		Assert.isTrue(checkAuthority());
+
 		Collection<Newspaper> res = this.adminRepository
 				.newspapersFewerAverage();
 		return res;
@@ -148,6 +163,9 @@ public class AdminService {
 
 	// C-6
 	public Double ratioUserCreatedNewspaper() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Double res;
 		res = this.adminRepository.ratioUserCreatedNewspaper();
 		return res;
@@ -155,6 +173,9 @@ public class AdminService {
 
 	// C-7
 	public Double ratioUserWrittenArticle() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Double res;
 		res = this.adminRepository.ratioUserWrittenArticle();
 		return res;
@@ -162,6 +183,9 @@ public class AdminService {
 
 	// B-1
 	public Double avgFollowupsPerArticle() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Double res;
 		res = this.adminRepository.avgFollowupsPerArticle();
 		return res;
@@ -169,6 +193,9 @@ public class AdminService {
 
 	// B-2
 	public Double avgNumberOfFollowUpsPerArticleAfter1Week() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Double res;
 		long oneWeek = TimeUnit.DAYS.toMillis(7);
 		Date f = new Date(System.currentTimeMillis() - oneWeek);
@@ -178,6 +205,9 @@ public class AdminService {
 
 	// B-3
 	public Double avgNumberOfFollowUpsPerArticleAfter2Week() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Double res;
 		long twoWeeks = TimeUnit.DAYS.toMillis(7);
 		Date f = new Date(System.currentTimeMillis() - twoWeeks);
@@ -187,6 +217,9 @@ public class AdminService {
 
 	// B-4
 	public Object[] avgStddevNumberOfChirpPerUser() {
+		
+		Assert.isTrue(checkAuthority());
+		
 		Object[] res;
 		res = this.adminRepository.avgStddevNumberOfChirpPerUser();
 		return res;
@@ -194,6 +227,9 @@ public class AdminService {
 	
 	//B-5
 		public Double ratioUsersMorePostedChirpsOfAveragePerUser() {
+			
+			Assert.isTrue(checkAuthority());
+			
 			Double res;
 			res = this.adminRepository.ratioUsersMorePostedChirpsOfAveragePerUser();
 			return res;

@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +27,26 @@ public class SubscriptionService {
 	private Validator validator;
 
 	// Constructors -----------------------------------------------------------
-	
+
 	public SubscriptionService() {
 		super();
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	
-	public void delete(Subscription subscription){
-		
+
+	public Collection<Subscription> findAll() {
+
+		Collection<Subscription> result = subscriptionRepository.findAll();
+		return result;
+	}
+
+	public void delete(Subscription subscription) {
+
 		Assert.notNull(subscription);
 		Assert.isTrue(subscription.getId() != 0);
-		
+
 		subscription.getCustomer().getSubscriptions().remove(subscription);
 		subscriptionRepository.delete(subscription);
-		
+
 	}
 }
