@@ -115,8 +115,6 @@ public class ArticleService {
 
 		res = this.articleRepository.findOne(articleId);
 		
-		Assert.notNull(res);
-		
 		return res;
 	}
 	
@@ -197,14 +195,17 @@ public class ArticleService {
 		return res;
 	}
 
-	public Collection<Article> findPerKeyword(String keyword) {
+	public Collection<Article> findPerKeyword(String keyword, int newspaperId) {
 		Collection<Article> articles = null;
 		articles = new ArrayList<Article>();
 		String aux = "Article";
 		
-		if(keyword!=null){
+		if(keyword.equals("")){
+			Newspaper newspaper = newspaperService.findOne(newspaperId);
+			articles = newspaper.getArticles();
+		} else {
 			aux = keyword;
-			articles = this.articleRepository.findPerKeyword(aux);
+			articles = this.articleRepository.findPerKeyword(aux, newspaperId);
 		}
 		return articles;
 	}
@@ -225,6 +226,7 @@ public class ArticleService {
 	}
 	
 	public Collection<Article> articleContainTabooWord(){
+		Assert.notNull(adminService.findByPrincipal());
 		Collection<Article> res = new ArrayList<>();
 		Configuration configuration;
 		Integer idMaxConfiguration;

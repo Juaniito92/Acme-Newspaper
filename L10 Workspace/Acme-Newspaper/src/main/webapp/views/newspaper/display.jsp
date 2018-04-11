@@ -13,6 +13,16 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<script>
+	function searchByKeyword(e, newspaperId) {
+		if (e.keyCode == 13) {
+			var keyword = document.getElementById("keyword").value;
+			window.location.assign("newspaper/display.do?newspaperId=" + newspaperId + "&keyword=" + keyword);
+			return false;
+		}
+	}
+</script>
+
 <h3>
 	<b><spring:message code="newspaper.title" />:&nbsp;</b>
 	<jstl:out value="${newspaper.title}" />
@@ -43,7 +53,10 @@
 	</h3>
 </jstl:if>
 
-<display:table name="${newspaper.articles}" id="row"
+<input type="text" id="keyword"
+		placeholder="<spring:message code="newspaper.search"/>"
+		onkeypress="searchByKeyword(event,${newspaper.id})" />
+<display:table name="${articles}" id="row"
 	requestURI="newspaper/display.do" pagesize="5" class="displaytag">
 
 	<spring:message var="titleHeader" code="newspaper.title" />
