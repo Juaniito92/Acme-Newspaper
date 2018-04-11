@@ -15,6 +15,7 @@ import repositories.UserRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Actor;
 import domain.Article;
 import domain.Chirp;
 import domain.Newspaper;
@@ -31,6 +32,9 @@ public class UserService {
 	private UserRepository userRepository;
 
 	// Supporting services
+	
+	@Autowired
+	private ActorService actorService;
 
 	@Autowired
 	private Validator validator;
@@ -44,6 +48,10 @@ public class UserService {
 	// Simple CRUD methods
 
 	public User create() {
+		
+		Actor principal = actorService.findByPrincipal();
+		Assert.isTrue(principal == null);
+		
 		final User res = new User();
 
 		final UserAccount userAccount = new UserAccount();
@@ -188,6 +196,7 @@ public class UserService {
 	public User reconstruct(final UserForm userForm, final BindingResult binding) {
 
 		Assert.notNull(userForm);
+		Assert.isTrue(userForm.getTermsAndConditions() == true);
 
 		User res = new User();
 
