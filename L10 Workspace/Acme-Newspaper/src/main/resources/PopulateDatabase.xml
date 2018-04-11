@@ -98,6 +98,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	<!-- Other domain beans come here -->
 
@@ -231,6 +243,36 @@
 			<list>
 				<ref bean="user2" />
 				<ref bean="user1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- User 4 -->
+	<bean id="user4" class="domain.User">
+		<property name="name" value="Maria" />
+		<property name="surname" value="Sánchez" />
+		<property name="email" value="mari@gmail.com" />
+		<property name="phone" value="607834578" />
+		<property name="address" value="C/Margarita nº4" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+		<property name="newspapers">
+			<list>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="followed">
+			<list>
 			</list>
 		</property>
 	</bean>
