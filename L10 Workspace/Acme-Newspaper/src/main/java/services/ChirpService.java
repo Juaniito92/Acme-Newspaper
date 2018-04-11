@@ -33,6 +33,8 @@ public class ChirpService {
 	@Autowired
 	private ConfigurationService configurationService;
 
+	@Autowired
+	private AdminService adminService;
 
 	// Constructors
 
@@ -113,6 +115,7 @@ public class ChirpService {
 	}
 	
 	public Collection<Chirp> chirpContainTabooWord(){
+		Assert.notNull(adminService.findByPrincipal());
 		Collection<Chirp> res = new ArrayList<>();
 		Configuration configuration;
 		Integer idMaxConfiguration;

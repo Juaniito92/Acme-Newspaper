@@ -20,6 +20,9 @@ public class ConfigurationService {
 
 	@Autowired
 	private ConfigurationRepository configurationRepository;
+	
+	@Autowired
+	private AdminService adminService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -44,6 +47,7 @@ public class ConfigurationService {
 
 	public Configuration findOne(int configuration) {
 		Assert.isTrue(configuration != 0);
+		Assert.notNull(adminService.findByPrincipal());
 		Configuration res;
 		res = this.configurationRepository.findOne(configuration);
 		Assert.notNull(res);
@@ -52,6 +56,7 @@ public class ConfigurationService {
 
 	public Configuration save(Configuration configuration) {
 		Assert.notNull(configuration);
+		Assert.notNull(adminService.findByPrincipal());
 		Configuration res;
 		res = this.configurationRepository.save(configuration);
 		return res;
@@ -84,6 +89,10 @@ public class ConfigurationService {
 			}
 		}
 		return res;
+	}
+	
+	public void flush() {
+		this.configurationRepository.flush();
 	}
 
 
