@@ -24,7 +24,7 @@
 		<security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 			<ul>
-				<li><a href="administrator/display.do"><spring:message code="master.page.administrator.information" /></a></li>
+				<li><a href="admin/display.do"><spring:message code="master.page.administrator.information" /></a></li>
 				<li><a href="chirp/list.do"><spring:message code="master.page.chirp.list" /></a></li>
 			</ul>
 			<li><a href="configuration/admin/list.do"><spring:message	code="master.page.configuration" /></a>

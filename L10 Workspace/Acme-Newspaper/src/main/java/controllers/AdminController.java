@@ -1,5 +1,5 @@
 /*
- * AdministratorController.java
+ * AdminController.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 
@@ -22,8 +22,8 @@ import services.AdminService;
 import domain.Newspaper;
 
 @Controller
-@RequestMapping("/administrator")
-public class AdministratorController extends AbstractController {
+@RequestMapping("/admin")
+public class AdminController extends AbstractController {
 
 	@Autowired
 	private AdminService	adminService;
@@ -31,30 +31,8 @@ public class AdministratorController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public AdministratorController() {
+	public AdminController() {
 		super();
-	}
-
-	// Action-1 ---------------------------------------------------------------		
-
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
-		ModelAndView result;
-
-		result = new ModelAndView("administrator/action-1");
-
-		return result;
-	}
-
-	// Action-2 ---------------------------------------------------------------
-
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
-		ModelAndView result;
-
-		result = new ModelAndView("administrator/action-2");
-
-		return result;
 	}
 
 	// display
@@ -63,7 +41,7 @@ public class AdministratorController extends AbstractController {
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		result = new ModelAndView("administrator/display");
+		result = new ModelAndView("admin/display");
 
 		Object avgSqtrUser[];
 		Object avgSqtrArticlesByWriter[];
