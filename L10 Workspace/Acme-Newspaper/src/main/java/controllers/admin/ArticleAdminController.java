@@ -38,7 +38,7 @@ public class ArticleAdminController extends AbstractController{
 		
 		res = new ModelAndView("article/list");
 		res.addObject("article",articles);
-		res.addObject("requestURI", "article/list.do");
+		res.addObject("requestURI", "article/admin/list.do");
 		
 		return res;
 	}

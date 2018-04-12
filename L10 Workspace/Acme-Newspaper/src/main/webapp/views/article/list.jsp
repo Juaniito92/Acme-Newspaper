@@ -77,3 +77,5 @@
 			value="${row.writer.name } ${row.writer.surname }" />
 	</jstl:if>
 </display:table>
+
+<a href="welcome/index.do">&laquo; <spring:message code="terms.back"/></a>

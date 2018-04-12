@@ -113,9 +113,9 @@
 
 	<!-- Other domain beans come here -->
 
-	<!-- ADMINISTRATOR1 -->
+	<!-- Admin -->
 
-	<bean id="administrator1" class="domain.Admin">
+	<bean id="admin" class="domain.Admin">
 		<property name="name" value="Administrador" />
 		<property name="surname" value="Acme Explorer" />
 		<property name="email" value="admin@system.com" />

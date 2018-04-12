@@ -19,7 +19,7 @@
 
 	<!-- Security infrastructure -->
 
-	<bean id="loginService" class="security.LoginService" />
+	<bean id="loginService" class="security.LoginService" ></bean>
 
 	<bean id="passwordEncoder"
 		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
@@ -72,9 +72,6 @@
 		<!-- Configuration -->
 		<security:intercept-url pattern="/configuration/admin/**" access="hasRole('ADMIN')" />
 		
-		<security:intercept-url pattern="/chirp/user/create.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/chirp/admin/delete.do" access="hasRole('ADMIN')" />
-	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 
