@@ -82,3 +82,5 @@
 	</display:column>
 
 </display:table>
+
+<a href="welcome/index.do">&laquo; <spring:message code="terms.back"/></a>

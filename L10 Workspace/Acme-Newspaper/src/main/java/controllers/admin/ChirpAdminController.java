@@ -1,6 +1,8 @@
 
 package controllers.admin;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -11,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AdminService;
 import services.ChirpService;
-import services.UserService;
 import controllers.AbstractController;
 import domain.Chirp;
 
@@ -21,8 +22,6 @@ public class ChirpAdminController extends AbstractController {
 
 	// Services -------------------------------------------------------------
 
-	@Autowired
-	private UserService		userService;
 
 	@Autowired
 	private AdminService	adminService;
@@ -36,6 +35,22 @@ public class ChirpAdminController extends AbstractController {
 	public ChirpAdminController() {
 		super();
 	}
+	
+	// Listing --------------------------------------------------------------
+
+		@RequestMapping(value = "/list", method = RequestMethod.GET)
+		public ModelAndView list() {
+			ModelAndView result;
+			Collection<Chirp> chirps;
+
+			chirps = this.chirpService.findAll();
+
+			result = new ModelAndView("chirp/list");
+			result.addObject("chirps", chirps);
+			result.addObject("requestURI", "chirp/admin/list.do");
+
+			return result;
+		}
 
 	//Deleting ---------------------------------
 

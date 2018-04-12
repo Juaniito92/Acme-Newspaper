@@ -1,5 +1,7 @@
 package controllers.admin;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -28,6 +30,21 @@ public class NewspaperAdminController extends AbstractController {
 
 	public NewspaperAdminController() {
 		super();
+	}
+	
+	// List --------------------------------------------------------
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public ModelAndView list(){
+		ModelAndView result;
+		Collection<Newspaper> newspapers;
+		
+		newspapers = this.newspaperService.findAll();
+		
+		result = new ModelAndView("newspaper/list");
+		result.addObject("newspapers", newspapers);
+		result.addObject("requestURI", "newspaper/admin/list.do");
+
+		return result;
 	}
 
 	// Delete -------------------------------------------------------

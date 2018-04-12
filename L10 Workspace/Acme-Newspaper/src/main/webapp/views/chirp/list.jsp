@@ -51,7 +51,9 @@
 	
 </display:table>
 
-<p><a href="chirp/user/create.do"><spring:message code="chirp.publish"/></a></p>
+<security:authorize access="hasRole('USER')">
+	<p><a href="chirp/user/create.do"><spring:message code="chirp.publish"/></a></p>
+</security:authorize>
 
 <a href="welcome/index.do">&laquo; <spring:message code="terms.back"/></a>
 
