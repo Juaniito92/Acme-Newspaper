@@ -22,6 +22,7 @@
 
 <h1><spring:message code="terms.condiciones"></spring:message></h1>
 <p><spring:message code="terms.condiciones.contenido"></spring:message></p>
+<p><spring:message code="terms.condiciones.eliminacion"></spring:message></p>
 
 
 <h1><spring:message code="terms.modificaciones"></spring:message></h1>
