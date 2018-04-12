@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArticleService;
-import services.NewspaperService;
 import domain.Article;
-import domain.Newspaper;
 
 @Controller
 @RequestMapping("/article")
@@ -24,9 +21,7 @@ public class ArticleController extends AbstractController{
 	// Services --------------------------------
 	@Autowired
 	private ArticleService articleService;
-	
-	@Autowired
-	private NewspaperService newspaperService;
+
 	
 	// Constructors ----------------------------
 	public ArticleController(){

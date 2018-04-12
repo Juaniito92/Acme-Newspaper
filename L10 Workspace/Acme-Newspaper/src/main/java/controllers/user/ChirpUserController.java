@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AdminService;
 import services.ChirpService;
 import services.UserService;
 import controllers.AbstractController;
@@ -26,9 +25,6 @@ public class ChirpUserController extends AbstractController {
 
 	@Autowired
 	private UserService		userService;
-
-	@Autowired
-	private AdminService	adminService;
 
 	@Autowired
 	private ChirpService	chirpService;
