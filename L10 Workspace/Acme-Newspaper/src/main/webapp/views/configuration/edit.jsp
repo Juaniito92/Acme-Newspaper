@@ -12,6 +12,8 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="configuration/admin/edit.do" modelAttribute="configuration">
+
+	<form:hidden path="id"/>
 	
 	<acme:textbox code="configuration.tabooWords" path="tabooWords"/>
 	<br/>

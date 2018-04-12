@@ -69,12 +69,6 @@ public class ConfigurationService {
 		this.configurationRepository.delete(configuration);
 	}
 	
-	public Integer getMaxIdConfiguration() {
-		Integer res;
-		res = configurationRepository.maxIdConfiguration();
-		return res;
-	}
-	
 	public Collection<String> findSpamWords() {
 		Collection<String> res;
 		res = configurationRepository.findSpamWords();
@@ -93,6 +87,16 @@ public class ConfigurationService {
 	
 	public void flush() {
 		this.configurationRepository.flush();
+	}
+	
+	public Collection<Configuration> findAllByAdmin() {
+		
+		Assert.notNull(adminService.findByPrincipal());
+		
+		Collection<Configuration> res;
+		res = this.findAll();
+		Assert.notNull(res);
+		return res;
 	}
 
 

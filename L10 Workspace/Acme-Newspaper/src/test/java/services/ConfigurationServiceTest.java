@@ -65,7 +65,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 		
 		try{
 			super.authenticate(userName);
-			configuration = this.configurationService.findOne(this.configurationService.getMaxIdConfiguration());
+			configuration = this.configurationService.findAll().iterator().next();
 			tabooWords = configuration.getTabooWords();
 			tabooWords.add(word);
 			configuration.setTabooWords(tabooWords);
@@ -106,7 +106,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 		
 		try{
 			super.authenticate(userName);
-			configuration = this.configurationService.findOne(this.configurationService.getMaxIdConfiguration());
+			configuration = this.configurationService.findAllByAdmin().iterator().next();
 			tabooWords = configuration.getTabooWords();
 			this.unauthenticate();
 		}catch (final Throwable oops) {

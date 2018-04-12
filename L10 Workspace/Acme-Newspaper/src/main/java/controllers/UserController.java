@@ -56,7 +56,7 @@ public class UserController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "display", method = RequestMethod.GET)
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView listUser(@RequestParam int userId) {
 		ModelAndView result;
 		User user;
@@ -75,9 +75,9 @@ public class UserController extends AbstractController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView res;
-		UserForm userForm;
 
-		userForm = new UserForm();
+		User user = userService.create();
+		UserForm userForm = userService.construct(user);;
 		res = this.createEditModelAndView(userForm);
 
 		return res;

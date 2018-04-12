@@ -43,7 +43,7 @@
 	<br />
 	
 	<acme:submit name="save" code="user.save"/>
-	<acme:submit name="cancel" code="user.cancel"/>
+	<acme:cancel code="user.cancel" url="welcome/index.do"/>
 	
 </form:form>
 	

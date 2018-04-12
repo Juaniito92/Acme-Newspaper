@@ -43,6 +43,10 @@
 <jstl:out value="${user.address}" />
 <br />
 
+<h3>
+	<spring:message code="user.articles" />
+</h3>
+
 <display:table name="${user.articles}" id="row"
 	requestURI="user/display.do" pagesize="5" class="displaytag">
 
@@ -64,14 +68,25 @@
 
 </display:table>
 
+<h3>
+	<spring:message code="user.chirps" />
+</h3>
+
 <display:table name="${user.chirps}" id="row"
 	requestURI="user/display.do" pagesize="5" class="displaytag">
 
 	<spring:message var="titleHeader" code="chirp.title" />
 	<display:column property="description" title="${titleHeader}" />
 
-	<spring:message var="summaryHeader" code="chirp.description" />
-	<display:column property="description" title="${summaryHeader}" />
+	<spring:message var="publicationMomentHeader"
+		code="user.publicationMoment" />
+	<spring:message var="formatDate" code="user.format.date" />
+	<display:column property="publicationMoment"
+		title="${publicationMomentHeader}" format="${formatDate}"
+		sortable="true" />
+
+	<spring:message var="descriptionHeader" code="chirp.description" />
+	<display:column property="description" title="${descriptionHeader}" />
 
 </display:table>
 

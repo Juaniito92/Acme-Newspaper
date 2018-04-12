@@ -234,7 +234,7 @@ public class UserService {
 		editUserForm.setUsername(user.getUserAccount().getUsername());
 		editUserForm.setPassword(user.getUserAccount().getPassword());
 		editUserForm.setRepeatPassword(user.getUserAccount().getPassword());
-		editUserForm.setTermsAndConditions(true);
+		editUserForm.setTermsAndConditions(false);
 
 		return editUserForm;
 	}

@@ -14,6 +14,4 @@ public interface ConfigurationRepository extends JpaRepository<Configuration, In
 	@Query("select tw from Configuration c join c.tabooWords tw")
 	Collection<String> findSpamWords();
 	
-	@Query("select max(id) from Configuration")
-	Integer maxIdConfiguration();
 }

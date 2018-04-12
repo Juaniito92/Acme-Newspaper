@@ -62,18 +62,20 @@ public class LoginService implements UserDetailsService {
 		// republish your project, and start it over.
 
 		context = SecurityContextHolder.getContext();
-		Assert.notNull(context);
-		authentication = context.getAuthentication();
-		if (authentication == null)
+		if(context.getAuthentication() != null){
+			if (context.getAuthentication().getPrincipal() == "anonymousUser"){
+				result = null;
+			}else{
+				authentication = context.getAuthentication();
+				principal = authentication.getPrincipal();
+				Assert.isTrue(principal instanceof UserAccount);
+				result = (UserAccount) principal;
+				Assert.notNull(result);
+				Assert.isTrue(result.getId() != 0);
+			}
+		}else{
 			result = null;
-		else {
-			principal = authentication.getPrincipal();
-			Assert.isTrue(principal instanceof UserAccount);
-			result = (UserAccount) principal;
-			Assert.notNull(result);
-			Assert.isTrue(result.getId() != 0);
 		}
-
 		return result;
 	}
 

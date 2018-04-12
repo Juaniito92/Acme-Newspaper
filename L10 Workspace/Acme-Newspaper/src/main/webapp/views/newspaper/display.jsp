@@ -53,6 +53,10 @@
 	</h3>
 </jstl:if>
 
+<h3>
+	<spring:message code="newspaper.articles"/>
+</h3>
+
 <input type="text" id="keyword"
 		placeholder="<spring:message code="newspaper.search"/>"
 		onkeypress="searchByKeyword(event,${newspaper.id})" />

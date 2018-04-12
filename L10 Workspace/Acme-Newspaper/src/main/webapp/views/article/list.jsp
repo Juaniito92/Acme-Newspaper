@@ -50,7 +50,7 @@
 		<display:column>
 			<jstl:if test="${row.isFinal == false}">
 				<a href="article/user/edit.do?articleId=${row.id}"> <spring:message
-					code="article.edit" /></a>
+						code="article.edit" /></a>
 			</jstl:if>
 		</display:column>
 	</jstl:if>
@@ -71,9 +71,14 @@
 		title="${publicationMomentHeader }" sortable="true"
 		format="${formatDate}" />
 
-	<jstl:if test="${requestURI != 'article/user/list.do'}">
-		<spring:message code="article.writer" var="writerHeader" />
-		<display:column title="${writerHeader }"
-			value="${row.writer.name } ${row.writer.surname }" />
-	</jstl:if>
+	<spring:message code="article.isFinal" var="isFinalHeader" />
+	<display:column title="${ifFinalHeader}" >
+		<jstl:if test="${row.isFinal == true}">
+			<spring:message code="article.yes"/>
+		</jstl:if>
+		<jstl:if test="${row.isFinal == false}">
+			<spring:message code="article.no"/>
+		</jstl:if>
+	</display:column>
+
 </display:table>

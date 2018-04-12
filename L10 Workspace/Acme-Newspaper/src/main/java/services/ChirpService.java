@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ChirpRepository;
-import domain.Article;
 import domain.Chirp;
 import domain.Configuration;
 import domain.User;
@@ -121,12 +120,10 @@ public class ChirpService {
 		Assert.notNull(adminService.findByPrincipal());
 		Collection<Chirp> res = new ArrayList<>();
 		Configuration configuration;
-		Integer idMaxConfiguration;
 		Collection<String> tabooWords = new ArrayList<>();
 		Collection<Chirp> allChirp = new ArrayList<>();
 		
-		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
-		configuration = this.configurationService.findOne(idMaxConfiguration);
+		configuration = this.configurationService.findAll().iterator().next();
 		tabooWords = configuration.getTabooWords();
 		allChirp = this.findAll();
 		

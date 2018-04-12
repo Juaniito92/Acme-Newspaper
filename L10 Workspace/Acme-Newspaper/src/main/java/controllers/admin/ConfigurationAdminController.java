@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArticleService;
@@ -59,8 +58,7 @@ public class ConfigurationAdminController extends AbstractController {
 		newspapersWhitTabooWords = this.newspaperService.newspaperContainTabooWord();
 		chirpsWhitTabooWords = this.chirpService.chirpContainTabooWord();
 		
-		Integer maxId = this.configurationService.getMaxIdConfiguration();
-		configuration = this.configurationService.findOne(maxId);
+		configuration = this.configurationService.findAll().iterator().next();
 
 		res = new ModelAndView("configuration/list");
 		res.addObject("configuration", configuration);		
@@ -74,11 +72,11 @@ public class ConfigurationAdminController extends AbstractController {
 	// Edit -----------------------------------
 
 	@RequestMapping(value="/edit", method=RequestMethod.GET)
-	public ModelAndView editTabooWords(@RequestParam final int configurationId){
+	public ModelAndView editTabooWords(){
 		ModelAndView res;
 		Configuration configuration;
 		
-		configuration = this.configurationService.findOne(configurationId);
+		configuration = this.configurationService.findAll().iterator().next();
 		
 		res = this.createEditModelAndView(configuration);
 		return res;

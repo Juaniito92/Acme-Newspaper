@@ -229,12 +229,10 @@ public class ArticleService {
 		Assert.notNull(adminService.findByPrincipal());
 		Collection<Article> res = new ArrayList<>();
 		Configuration configuration;
-		Integer idMaxConfiguration;
 		Collection<String> tabooWords = new ArrayList<>();
 		Collection<Article> allArticles = new ArrayList<>();
 		
-		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
-		configuration = this.configurationService.findOne(idMaxConfiguration);
+		configuration = this.configurationService.findAll().iterator().next();
 		tabooWords = configuration.getTabooWords();
 		allArticles = this.findAll();
 		

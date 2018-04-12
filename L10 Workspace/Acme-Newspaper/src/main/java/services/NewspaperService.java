@@ -232,12 +232,10 @@ public class NewspaperService {
 		Assert.notNull(adminService.findByPrincipal());
 		Collection<Newspaper> res = new ArrayList<>();
 		Configuration configuration;
-		Integer idMaxConfiguration;
 		Collection<String> tabooWords = new ArrayList<>();
 		Collection<Newspaper> allNewspaper = new ArrayList<>();
 		
-		idMaxConfiguration = this.configurationService.getMaxIdConfiguration();
-		configuration = this.configurationService.findOne(idMaxConfiguration);
+		configuration = this.configurationService.findAll().iterator().next();
 		tabooWords = configuration.getTabooWords();
 		allNewspaper = this.findAll();
 		
