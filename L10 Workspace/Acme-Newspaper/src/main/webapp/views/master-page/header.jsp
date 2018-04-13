@@ -76,7 +76,7 @@
 	
 		</security:authorize>
 		
-		<li><a class="fNiv" href="newspaper/list.do"><spring:message code="master.page.avalibleNewspapers" /></a></li>
+		<li><a class="fNiv" href="newspaper/list.do"><spring:message code="master.page.availableNewspapers" /></a></li>
 		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.listUsers" /></a></li>
 		<li><a class="fNiv" href="terms/list.do"><spring:message code="master.page.termsAndConditions" /></a></li>
 	</ul>

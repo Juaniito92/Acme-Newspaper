@@ -23,6 +23,20 @@
 	}
 </script>
 
+<h3>
+	<jstl:choose>
+		<jstl:when test="${requestURI == 'newspaper/list.do'  }">
+			<spring:message code="newspaper.availableNewspapers"/>
+		</jstl:when>
+		<jstl:when test="${requestURI == 'newspaper/user/list.do'  }">
+			<spring:message code="newspaper.yourNewspapers"/>
+		</jstl:when>
+		<jstl:when test="${requestURI == 'newspaper/user/list-nonPublished.do'  }">
+			<spring:message code="newspaper.nonPublished"/>
+		</jstl:when>
+	</jstl:choose>
+</h3>
+
 <jstl:if test="${requestURI == 'newspaper/list.do'}">
 	<input type="text" id="keyword"
 	placeholder="<spring:message code="newspaper.search" />"

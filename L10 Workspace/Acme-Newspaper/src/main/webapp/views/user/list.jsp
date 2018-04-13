@@ -22,6 +22,20 @@
 
 <!-- displaying grid -->
 
+<h3>
+	<jstl:choose>
+		<jstl:when test="${requestURI == 'user/list.do'  }">
+			<spring:message code="user.system"/>
+		</jstl:when>
+		<jstl:when test="${requestURI == 'user/user/list-followers.do'  }">
+			<spring:message code="user.followers"/>
+		</jstl:when>
+		<jstl:when test="${requestURI == 'user/user/list-followed.do'  }">
+			<spring:message code="user.followed"/>
+		</jstl:when>
+	</jstl:choose>
+</h3>
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="users" requestURI="${requestURI }" id="row">
 
