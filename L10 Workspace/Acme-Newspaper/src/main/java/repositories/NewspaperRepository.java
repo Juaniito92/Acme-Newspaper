@@ -20,6 +20,9 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer>{
 	@Query("select n from Newspaper n where(n.title LIKE %?1% or n.description LIKE %?1%) and n.publicationDate <= current_date")
 	Collection<Newspaper> findPerKeyword(String keyword);
 	
+	@Query("select n from Newspaper n join n.articles a where(n.title LIKE %?1% or n.description LIKE %?1%) and n.publicationDate <= current_date and a.isFinal = false")
+	Collection<Newspaper> findPerKeywordNonFinalArticle(String keyword);
+	
 	@Query("select n from Newspaper n where n.publisher.id = ?1")
 	Collection<Newspaper> findByPublisherId(int publisherId);
 	

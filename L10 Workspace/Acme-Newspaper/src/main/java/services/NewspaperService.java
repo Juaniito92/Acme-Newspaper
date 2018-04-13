@@ -190,18 +190,19 @@ public class NewspaperService {
 
 	public Collection<Newspaper> findPerKeyword(final String keyword) {
 
-		Collection<Newspaper> newspapers = null;
-		newspapers = new ArrayList<Newspaper>();
+		Collection<Newspaper> newspapers1, newspapers2;
 		String aux = "Newspaper";
 
 		if (keyword.equals("")) {
-			newspapers = this.findAvalibleNewspapers();
+			newspapers1 = this.findAvalibleNewspapers();
 		} else {
 			aux = keyword;
-			newspapers = this.newspaperRepository.findPerKeyword(aux);
+			newspapers1 = this.newspaperRepository.findPerKeyword(aux);
+			newspapers2 = newspaperRepository.findPerKeywordNonFinalArticle(aux);
+			newspapers1.removeAll(newspapers2);
 		}
 
-		return newspapers;
+		return newspapers1;
 	}
 
 	public Collection<Newspaper> findByPublisherId(int publisherId) {
