@@ -86,7 +86,8 @@ public class ConfigurationAdminController extends AbstractController {
 	public ModelAndView save(@Valid Configuration configuration, final BindingResult binding) {
 
 		ModelAndView result;
-		configuration.setTabooWords(this.configurationService.getQuitarPosicionesVaciasTabooWords(configuration.getTabooWords()));
+		
+		configuration.setTabooWords(configuration.getTabooWords().replace(" ", ""));
 		
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(configuration);
@@ -95,7 +96,7 @@ public class ConfigurationAdminController extends AbstractController {
 				this.configurationService.save(configuration);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(configuration, "newspaper.commit.error");
+				result = this.createEditModelAndView(configuration, "configuration.commit.error");
 			}
 		return result;
 	}

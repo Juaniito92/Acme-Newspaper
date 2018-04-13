@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -236,13 +237,13 @@ public class NewspaperService {
 		Collection<Newspaper> allNewspaper = new ArrayList<>();
 		
 		configuration = this.configurationService.findAll().iterator().next();
-		tabooWords = configuration.getTabooWords();
+		tabooWords = Arrays.asList(configuration.getTabooWords().split(","));
 		allNewspaper = this.findAll();
 		
 		for(Newspaper newspaper: allNewspaper){
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
-				if(newspaper.getTitle().toLowerCase().contains(lowTabooWord) || newspaper.getDescription().toLowerCase().contains(lowTabooWord)){
+				if(newspaper.getTitle().toLowerCase().contains(lowTabooWord.trim()) || newspaper.getDescription().toLowerCase().contains(lowTabooWord.trim())){
 					if(!res.contains(newspaper)){
 						res.add(newspaper);
 					}

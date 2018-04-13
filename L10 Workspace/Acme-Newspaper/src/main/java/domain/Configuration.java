@@ -1,13 +1,13 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,16 +22,15 @@ public class Configuration extends DomainEntity {
 
 	// Attributes
 
-	private Collection<String>	tabooWords;
-
+	private String tabooWords;
 
 	@NotNull
-	@ElementCollection
-	public Collection<String> getTabooWords() {
+	@SafeHtml(whitelistType = WhiteListType.NONE)
+	public String getTabooWords() {
 		return this.tabooWords;
 	}
 
-	public void setTabooWords(final Collection<String> tabooWords) {
+	public void setTabooWords(final String tabooWords) {
 		this.tabooWords = tabooWords;
 	}
 

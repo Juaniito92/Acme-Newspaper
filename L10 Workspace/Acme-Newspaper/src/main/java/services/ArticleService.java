@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
@@ -233,13 +234,13 @@ public class ArticleService {
 		Collection<Article> allArticles = new ArrayList<>();
 		
 		configuration = this.configurationService.findAll().iterator().next();
-		tabooWords = configuration.getTabooWords();
+		tabooWords = Arrays.asList(configuration.getTabooWords().split(","));
 		allArticles = this.findAll();
 		
 		for(Article article: allArticles){
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
-				if(article.getTitle().toLowerCase().contains(lowTabooWord) || article.getSummary().toLowerCase().contains(lowTabooWord) || article.getBody().toLowerCase().contains(lowTabooWord)){
+				if(article.getTitle().toLowerCase().contains(lowTabooWord.trim()) || article.getSummary().toLowerCase().contains(lowTabooWord.trim()) || article.getBody().toLowerCase().contains(lowTabooWord.trim())){
 					if(!res.contains(article)){
 						res.add(article);
 					}

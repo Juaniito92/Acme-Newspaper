@@ -2,6 +2,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
@@ -124,13 +125,13 @@ public class ChirpService {
 		Collection<Chirp> allChirp = new ArrayList<>();
 		
 		configuration = this.configurationService.findAll().iterator().next();
-		tabooWords = configuration.getTabooWords();
+		tabooWords = Arrays.asList(configuration.getTabooWords().split(","));
 		allChirp = this.findAll();
 		
 		for(Chirp chirp: allChirp){
 			for(String tabooWord: tabooWords){
 				String lowTabooWord = tabooWord.toLowerCase();
-				if(chirp.getTitle().toLowerCase().contains(lowTabooWord) || chirp.getDescription().toLowerCase().contains(lowTabooWord)){
+				if(chirp.getTitle().toLowerCase().contains(lowTabooWord.trim()) || chirp.getDescription().toLowerCase().contains(lowTabooWord.trim())){
 					if(!res.contains(chirp)){
 						res.add(chirp);
 					}

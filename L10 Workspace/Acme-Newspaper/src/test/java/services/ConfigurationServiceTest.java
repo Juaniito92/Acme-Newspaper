@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -43,10 +44,10 @@ public class ConfigurationServiceTest extends AbstractTest {
 		final Object testingEditData[][] = {
 
 				// Casos positivos
-				{ "admin", "body", null },
+				{ "admin", "test1,test2,test3", null },
 				// Casos negativos
-				{ null, "body", NullPointerException.class }, 
-				{ "user1", "body", IllegalArgumentException.class }, 
+				{ null, "test1,test2,test3", NullPointerException.class }, 
+				{ "user1", "test1,test2,test3", IllegalArgumentException.class }, 
 		};
 
 		for (int i = 0; i < testingEditData.length; i++)
@@ -56,18 +57,17 @@ public class ConfigurationServiceTest extends AbstractTest {
 	}
 
 	
-	private void templateEdit(String userName, String word, Class<?> expected) {
+	private void templateEdit(String userName, String words, Class<?> expected) {
 
 		Class<?> caught;
 		caught = null;
 		Configuration configuration;
-		Collection<String> tabooWords = new ArrayList<>();
+		String tabooWords;
 		
 		try{
 			super.authenticate(userName);
 			configuration = this.configurationService.findAll().iterator().next();
-			tabooWords = configuration.getTabooWords();
-			tabooWords.add(word);
+			tabooWords = words;
 			configuration.setTabooWords(tabooWords);
 			this.configurationService.save(configuration);
 			this.configurationService.flush();
@@ -107,7 +107,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 		try{
 			super.authenticate(userName);
 			configuration = this.configurationService.findAllByAdmin().iterator().next();
-			tabooWords = configuration.getTabooWords();
+			tabooWords = Arrays.asList(configuration.getTabooWords().split(","));
 			this.unauthenticate();
 		}catch (final Throwable oops) {
 			caught = oops.getClass();

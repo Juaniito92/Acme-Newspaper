@@ -14,8 +14,10 @@
 <form:form action="configuration/admin/edit.do" modelAttribute="configuration">
 
 	<form:hidden path="id"/>
+	<form:hidden path="version"/>
 	
 	<acme:textbox code="configuration.tabooWords" path="tabooWords"/>
+	<spring:message code="configuration.eachWord"/>
 	<br/>
 	
 	<acme:submit name="save" code="configuration.save"/>

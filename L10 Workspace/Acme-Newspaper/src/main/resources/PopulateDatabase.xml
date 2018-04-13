@@ -733,15 +733,7 @@
 
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
-		<property name="tabooWords">
-			<list>
-				<value>sex</value>
-				<value>sexo</value>
-				<value>viagra</value>
-				<value>cialis</value>
-			</list>
-		</property>
-
+		<property name="tabooWords" value="sex,sexo,viagra,cialis" />
 	</bean>
 
 </beans>

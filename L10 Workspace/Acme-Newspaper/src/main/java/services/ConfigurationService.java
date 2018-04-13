@@ -69,12 +69,6 @@ public class ConfigurationService {
 		this.configurationRepository.delete(configuration);
 	}
 	
-	public Collection<String> findSpamWords() {
-		Collection<String> res;
-		res = configurationRepository.findSpamWords();
-		return res;
-	}
-	
 	public Collection<String> getQuitarPosicionesVaciasTabooWords(Collection<String> tabooWords) {
 		Collection<String> res = new ArrayList<>();
 		for(String word: tabooWords){

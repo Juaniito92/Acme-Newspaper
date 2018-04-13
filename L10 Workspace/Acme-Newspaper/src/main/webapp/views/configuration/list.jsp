@@ -60,14 +60,25 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="chirpsWhitTabooWords" id="row" defaultorder="descending">
 	
-	<display:column>
-		<a href="chirp/display.do?chirpId=${row.id }"> <spring:message
-				code="newspaper.display" /></a>
-	</display:column>
-	
 	<spring:message code="configuration.chirp" var="titleHeader" />
 	<display:column property="title" title="${titleHeader }"
 		sortable="true" />
+		
+	<spring:message code="configuration.user" var="userHeader" />
+	<display:column title="${userHeader }"
+		sortable="true">
+		<jstl:out value="${row.user.name} ${row.user.surname }"/>
+	</display:column>
+		
+	<spring:message var="publicationMomentHeader"
+		code="user.publicationMoment" />
+	<spring:message var="formatDate" code="user.format.date" />
+	<display:column property="publicationMoment"
+		title="${publicationMomentHeader}" format="${formatDate}"
+		sortable="true" />
+
+	<spring:message var="descriptionHeader" code="chirp.description" />
+	<display:column property="description" title="${descriptionHeader}" />
 	
 </display:table>
 
